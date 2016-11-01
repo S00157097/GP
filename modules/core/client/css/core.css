@@ -1,10 +1,58 @@
+html,
 body {
   background-color: #ededed;
 }
 
-.content {
-  margin-top: 50px;
+body {
+  overflow-x: hidden;
 }
+
+.jumbotron {
+  background-color: silver;
+  border-radius: 0;
+}
+
+.darker {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.content {
+  padding-top: 50px;
+}
+.content-page {
+  padding-top: 64px;
+}
+
+.padding--sides {
+  padding: 0 5% !important;
+}
+
+.padding {
+  padding: 50px 5%;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.margin-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  width: 90%;
+  margin: 50px auto;
+  padding-bottom: 10px;
+}
+
+.service__heading {
+  border-bottom: 1px solid #098;
+  padding-bottom: 10px;
+}
+.service__icon {
+  font-size: 10em;
+  text-align: center;
+  width: 100%;
+  color: #098;
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }

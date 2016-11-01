@@ -1,5 +1,51 @@
-<!--<section ng-controller="HomeController">
-  <div class="jumbotron text-center">
+<section ng-controller="HomeController">
+	<div class="jumbotron">
+		<h1>Welcome</h1>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row content padding">
+			<div class="col-md-4" ng-repeat="n in [1, 2, 3]">
+				<div class="service md-padding md-margin">
+					<h3 class="service__heading">Heading</h3>
+
+					<div layout layout-align="center center">
+						<div flex="40">
+							<i class="material-icons service__icon">close</i>
+						</div>
+
+						<div flex="60">
+							<p class="service__paragraph">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum eum reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing
+								elit. Cum eum reiciendis.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row content padding" ng-repeat="n in [1, 2, 3]" ng-class="{darker: $even}">
+			<h2 class="margin-bottom">Heading</h2>
+
+			<div class="row">
+				<div class="col-md-6" ng-show="$odd">
+					<img src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" alt="Some Image" class="img-responsive img-thumbnail">
+				</div>
+
+				<div class="col-md-6">
+					<p class="md-padding text-center lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias assumenda quis a consectetur rem, quibusdam libero
+						cumque vitae quam placeat ut voluptates modi neque fuga tempore nihil veritatis quisquam repudiandae!</p>
+				</div>
+
+        <div class="col-md-6" ng-hide="$odd">
+					<img src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" alt="Some Image" class="img-responsive img-thumbnail">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--div class="jumbotron text-center">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
         <img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/client/img/brand/logo.png" />
@@ -80,5 +126,5 @@
     </p>
   </div>
   <br>Enjoy &amp; Keep Us Updated,
-  <br>The MEAN.JS Team.
-</section>-->
+  <br>The MEAN.JS Team.-->
+</section>
