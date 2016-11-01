@@ -7,7 +7,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
 
     vm.$state = $state;
     vm.authentication = Authentication;
-    //vm.accountMenu = Menus.getMenu('account');
+    vm.accountMenu = Menus.getMenu('account');
     vm.menu = Menus.getMenu('topbar');
     vm.toggleLeft = buildToggler('left');
 

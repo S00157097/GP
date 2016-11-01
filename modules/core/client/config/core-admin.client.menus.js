@@ -19,7 +19,6 @@ angular.module('core.admin').run(['Menus',
       position: 1
     });
 
-
     Menus.addMenuItem('topbar', {
       title: 'Documentation',
       state: 'home',
