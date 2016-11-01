@@ -1,19 +1,19 @@
 <section class="container">
 	<div layout>
-		<div ng-repeat="n in [1, 2]" flex>
+		<div ng-repeat="lat in vm.latest" flex>
 			<md-card>
 				<md-card-title>
 					<md-card-title-text>
-						<span class="md-headline">Storage</span>
+						<span class="md-headline" ng-bind="::lat.name"></span>
 					</md-card-title-text>
 				</md-card-title>
 
 				<md-card-content>
 					<div layout layout-align="space-between end">
-						<span class="md-subhead">01/11/2016</span>
+						<span class="md-subhead" ng-bind="::lat.updated"></span>
 
 						<md-button class="md-raised md-primary">
-							View <span class="md-subhead">12</span>
+							View <span class="md-subhead" ng-bind="::lat.count"></span>
 						</md-button>
 					</div>
 				</md-card-content>
@@ -23,10 +23,21 @@
 
 	<div layout>
 		<div flex>
-			<md-card>
-				<md-card-content style="height: 100px;">
+			<md-card layout flex>
+				<div flex="70" class="md-padding">
+					<canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"></canvas>
+				</div>
+				<div flex="30" class="darker md-padding" layout="column" layout-align="space-between none">
+					<md-content>
+						<md-list>
+							<md-list-item ng-repeat="o in [1, 2, 3, 4, 5]" ng-click="null">
+								<span>Some Item</span>
+							</md-list-item>
+						</md-list>
+					</md-content>
 
-				</md-card-content>
+					<md-button class="md-raised md-primary">Add Statistic</md-button>
+				</div>
 			</md-card>
 		</div>
 	</div>
