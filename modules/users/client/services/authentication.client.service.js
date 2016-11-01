@@ -7,8 +7,6 @@ angular.module('users').factory('Authentication', ['$window',
       user: $window.user
     };
 
-    console.log(auth.user);
-
     return auth;
   }
 ]);
