@@ -1,24 +1,21 @@
-<section ng-controller="HomeController">
+<section ng-controller="HomeController as vm">
 	<div class="jumbotron">
 		<h1>Welcome</h1>
 	</div>
 
 	<div class="container-fluid">
 		<div class="row content padding">
-			<div class="col-md-4" ng-repeat="n in [1, 2, 3]">
+			<div class="col-md-4" ng-repeat="service in ::vm.services">
 				<div class="service md-padding md-margin">
-					<h3 class="service__heading">Heading</h3>
+					<h3 class="service__heading" data-ng-bind="::service.heading"></h3>
 
 					<div layout layout-align="center center">
 						<div flex="40">
-							<i class="material-icons service__icon">close</i>
+							<i class="material-icons service__icon" data-ng-bind="::service.icon"></i>
 						</div>
 
 						<div flex="60">
-							<p class="service__paragraph">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum eum reiciendis. Lorem ipsum dolor sit amet, consectetur adipisicing
-								elit. Cum eum reiciendis.
-							</p>
+							<p class="service__paragraph" data-ng-bind="::service.text"></p>
 						</div>
 					</div>
 				</div>
@@ -38,8 +35,31 @@
 						cumque vitae quam placeat ut voluptates modi neque fuga tempore nihil veritatis quisquam repudiandae!</p>
 				</div>
 
-        <div class="col-md-6" ng-hide="$odd">
+				<div class="col-md-6" ng-hide="$odd">
 					<img src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" alt="Some Image" class="img-responsive img-thumbnail">
+				</div>
+			</div>
+		</div>
+
+		<div class="row content padding">
+			<h2 class="margin-bottom">Heading</h2>
+
+			<div class="row">
+				<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="n in [1, 2, 3, 4]">
+					<md-card>
+						<img ng-src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" class="md-card-image" alt="Washed Out">
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">Developer</span>
+							</md-card-title-text>
+						</md-card-title>
+						<md-card-content>
+							<p>
+								The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
+								Greene's musical language: feel it. It's a simple request, as well...
+							</p>
+						</md-card-content>
+					</md-card>
 				</div>
 			</div>
 		</div>

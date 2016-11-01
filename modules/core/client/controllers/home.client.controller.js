@@ -2,7 +2,14 @@
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
   function ($scope, Authentication) {
-    // This provides Authentication context.
-    $scope.authentication = Authentication;
-  }
-]);
+    var vm = this;
+    this.authentication = Authentication;
+
+    this.services = [
+      { heading: 'Statistics', icon: 'multiline_chart', text: 'Some random rambling content' },
+      { heading: 'Open Source API', icon: 'cloud_download', text: 'Some random rambling content' },
+      { heading: 'Flexible Storage', icon: 'storage', text: 'Some random rambling content' }
+    ];
+
+    
+  }]);
