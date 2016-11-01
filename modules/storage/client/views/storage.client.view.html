@@ -1,3 +1,20 @@
-<section>
-    <h1>Some Heading</h1>
+<section class="container">
+	<div class="row">
+		<div class="col-md-4" ng-repeat="storage in vm.storages track by $index">
+			<md-card>
+				<md-card-title>
+					<md-card-title-text>
+						<span class="md-headline">Card with image</span>
+						<span class="md-subhead">Small</span>
+					</md-card-title-text>
+					<md-card-title-media>
+						<div class="md-media-sm card-media"></div>
+					</md-card-title-media>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="end center">
+					<md-button ng-click="vm.redirect(storage.id)">Action 1</md-button>
+				</md-card-actions>
+			</md-card>
+		</div>
+	</div>
 </section>

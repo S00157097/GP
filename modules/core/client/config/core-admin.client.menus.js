@@ -9,13 +9,5 @@ angular.module('core.admin').run(['Menus',
       roles: ['*'],
       position: 0
     });
-
-    Menus.addMenuItem('topbar', {
-      title: 'Documentation',
-      state: 'home',
-      type: 'item',
-      roles: ['*'],
-      position: 3
-    });
   }
 ]);
