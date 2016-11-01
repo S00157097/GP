@@ -15,7 +15,7 @@ angular.module('core.admin').run(['Menus',
       state: 'home',
       type: 'item',
       roles: ['*'],
-      position: 4
+      position: 3
     });
   }
 ]);
