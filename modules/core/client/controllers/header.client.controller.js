@@ -1,23 +1,26 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus',
-  function ($scope, $state, Authentication, Menus) {
+angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus', '$mdSidenav',
+  function ($scope, $state, Authentication, Menus, $mdSidenav) {
     // Expose view variables
-    $scope.$state = $state;
-    $scope.authentication = Authentication;
+    var vm = this;
 
-    // Get the topbar menu
-    $scope.menu = Menus.getMenu('topbar');
+    vm.$state = $state;
+    vm.authentication = Authentication;
+    //vm.accountMenu = Menus.getMenu('account');
+    vm.menu = Menus.getMenu('topbar');
+    vm.toggleLeft = buildToggler('left');
 
-    // Toggle the menu items
-    $scope.isCollapsed = false;
-    $scope.toggleCollapsibleMenu = function () {
-      $scope.isCollapsed = !$scope.isCollapsed;
-    };
 
     // Collapsing the menu after navigation
     $scope.$on('$stateChangeSuccess', function () {
-      $scope.isCollapsed = false;
+      vm.toggleLeft = buildToggler('left');
     });
+
+    function buildToggler(componentId) {
+      return function () {
+        $mdSidenav(componentId).toggle();
+      };
+    }
   }
 ]);
