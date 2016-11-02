@@ -1,9 +1,15 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('StorageController', ['$mdDialog',
-  function ($mdDialog) {
+angular.module('storage').controller('StorageController', ['$mdDialog', '$http',
+  function ($mdDialog, $http) {
     var vm = this;
+    
+    $http.get('http://localhost:3000/random')
+      .success(function (response) {
+        console.log(response);
+      });
+
     vm.openMenu = function ($mdOpenMenu, ev) {
       $mdOpenMenu(ev);
     };
