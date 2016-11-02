@@ -14,6 +14,4 @@ exports.getCategories = function (request, response) {
     mongoose.model('Storage').findOne({_id: request.body.url_data}).exec(function (err, categories) {
         response.send(categories.categories);
     });
-
-    console.log(request.body.url_data);
 };

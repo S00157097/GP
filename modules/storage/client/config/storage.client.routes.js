@@ -5,7 +5,7 @@ angular.module('storage').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider
       .state('storage', {
-        url: '/storage',
+        url: '/storages',
         templateUrl: 'modules/storage/client/views/storage.client.view.html',
         controller: 'StorageController',
         controllerAs: 'vm',
@@ -14,12 +14,15 @@ angular.module('storage').config(['$stateProvider',
         }
       })
       .state('category', {
-        url: '/storage/:storageId',
+        url: '/categories',
         templateUrl: 'modules/storage/client/views/category.client.view.html',
         controller: 'CategoryController',
         controllerAs: 'vm',
         data: {
           roles: ['user', 'admin']
+        },
+        params: {
+          storageId: null
         }
       });
   }
