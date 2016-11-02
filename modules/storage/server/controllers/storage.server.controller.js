@@ -26,7 +26,7 @@ exports.insertStorage = function (request, response) {
         if (err) {
             console.log('Error');
         } else {
-            cosole.log('All Good');
+            console.log('All Good');
         }
     });
 };

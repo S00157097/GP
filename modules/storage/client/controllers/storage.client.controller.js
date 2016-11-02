@@ -1,16 +1,16 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('StorageController', ['$mdDialog', '$http',
-  function ($mdDialog, $http) {
+angular.module('storage').controller('StorageController', ['$mdDialog', 'StorageService', '$scope',
+  function ($mdDialog, StorageService, $scope) {
     var vm = this;
 
     vm.storages = [];
+    $scope.$watch(vm.storages);
 
-    $http.get('http://localhost:3000/api/read_storages')
-      .success(function (response) {
-        vm.storages = response;
-      });
+    StorageService.getStorages().success(function (response) {
+      vm.storages = response;
+    });
 
     vm.openMenu = function ($mdOpenMenu, ev) {
       $mdOpenMenu(ev);
