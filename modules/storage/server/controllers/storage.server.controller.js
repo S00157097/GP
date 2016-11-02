@@ -1,18 +1,11 @@
 'use strict';
 
 var path = require('path')
-    , mongoose = require('mongoose')
-    , Storage = mongoose.model('Storage');
+    , mongoose = require('mongoose');
 
 
 exports.getStorages = function (request, response) {
-    Storage.find()
-    .populate('storage', 'name')
-    .exec(function (err, storages) {
-        if (err) {
-            response.send('Error');
-        } else {
-            response.json(storages);
-        }
+    mongoose.model('Storage').find(function (err, users) {
+        response.send(users);
     });
 };
