@@ -37,6 +37,9 @@ angular.module('storage').directive('addStorage', [
                     $mdDialog.show(confirm).then(function (result) {
                         if (result.length > 0) {
                             StorageService.addStorage({ data: result });
+                            StorageService.getStorages().success(function (response) {
+                                $scope.collection = response;
+                            });
                         }
                     });
                 };
