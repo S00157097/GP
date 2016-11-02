@@ -6,7 +6,8 @@ var path = require('path')
 
 
 exports.getStorages = function (request, response) {
-    Storage.find({})
+    Storage.find()
+    .populate('storage', 'name')
     .exec(function (err, storages) {
         if (err) {
             response.send('Error');
