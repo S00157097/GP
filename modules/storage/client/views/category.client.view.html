@@ -1,23 +1,23 @@
 <section class="container">
-	<div class="row" style="margin-top: 20px;">
+    <div class="row" style="margin-top: 20px;">
 		<div class="col-md-12">
 			<div layout="row" flex>
 				<md-input-container flex class="md-icon-float md-block">
 					<label>Search</label>
 					<md-icon class="material-icons">search</md-icon>
 					<input type="text">
-					<md-button class="md-primary right">Add Storage</md-button>
+					<md-button class="md-primary right">Add Category</md-button>
 				</md-input-container>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4" ng-repeat="storage in vm.storages track by $index">
+		<div class="col-md-4" ng-repeat="category in vm.categories track by $index">
 			<md-card>
 				<div layout layout-align="space-between top">
 					<md-card-title>
 						<md-card-title-text>
-							<span class="md-headline">Storage</span>
+							<span class="md-headline" ng-bind="::category.name">Storage</span>
 						</md-card-title-text>
 					</md-card-title>
 
@@ -28,7 +28,7 @@
 							</md-button>
 							<md-menu-content width="4">
 								<md-menu-item>
-									<md-button ui-sref="category({storageId: storage.id})">Open</md-button>
+									<md-button>Open</md-button>
 								</md-menu-item>
 								<md-menu-item>
 									<md-button class="md-warn">Delete</md-button>

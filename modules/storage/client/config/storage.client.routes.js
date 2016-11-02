@@ -12,6 +12,15 @@ angular.module('storage').config(['$stateProvider',
         data: {
           roles: ['user', 'admin']
         }
+      })
+      .state('category', {
+        url: '/storage/:storageId',
+        templateUrl: 'modules/storage/client/views/category.client.view.html',
+        controller: 'CategoryController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);

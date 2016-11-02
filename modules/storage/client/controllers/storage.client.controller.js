@@ -1,10 +1,12 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('StorageController', [
-  function () {
+angular.module('storage').controller('StorageController', ['$mdDialog',
+  function ($mdDialog) {
     var vm = this;
-
+    vm.openMenu = function ($mdOpenMenu, ev) {
+      $mdOpenMenu(ev);
+    };
     vm.storages = [
       {
         id: 1,
