@@ -7,8 +7,13 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var StorageSchema = new Schema({
-    name: String,
-    updated: String
+  _id: Schema.Types.ObjectId,
+  name: String,
+  updated: {
+    type: Date,
+    default: Date.now
+  },
+  categories: Array
 });
 
 mongoose.model('Storage', StorageSchema);

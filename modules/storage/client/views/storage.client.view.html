@@ -17,7 +17,7 @@
 				<div layout layout-align="space-between top">
 					<md-card-title>
 						<md-card-title-text>
-							<span class="md-headline">Storage</span>
+							<span class="md-headline" ng-bind="::storage.name"></span>
 						</md-card-title-text>
 					</md-card-title>
 
@@ -28,7 +28,7 @@
 							</md-button>
 							<md-menu-content width="4">
 								<md-menu-item>
-									<md-button ui-sref="category({storageId: storage.id})">Open</md-button>
+									<md-button ui-sref="category({storageId: storage._id})">Open</md-button>
 								</md-menu-item>
 								<md-menu-item>
 									<md-button class="md-warn">Delete</md-button>
@@ -38,7 +38,7 @@
 					</md-card-actions>
 				</div>
 				<md-card-content class="darker">
-					<span class="md-subhead">02/11/2016</span>
+					<span class="md-subhead" ng-bind="storage.updated | date: 'MM/dd/yyyy'"></span>
 				</md-card-content>
 			</md-card>
 		</div>

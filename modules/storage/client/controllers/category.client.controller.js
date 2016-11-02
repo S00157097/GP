@@ -1,24 +1,18 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('CategoryController', ['$state', 'Authentication', '$stateParams', '$mdDialog',
-    function ($state, Authentication, $stateParams, $mdDialog) {
-        function populate(count) {
-            var array = [];
-            var object = { name: 'Category' };
+angular.module('storage').controller('CategoryController', ['$state', 'Authentication', '$stateParams', '$mdDialog', '$http',
+    function ($state, Authentication, $stateParams, $mdDialog, $http) {
 
-            for (var i = 0; i < count; i++) {
-                object.id = i + 1;
-                array.push(object);
-            }
-
-            return array;
-        }
+        $http.post('http://localhost:3000/api/read_storage_categories', {url_data:$stateParams.storageId})
+            .success(function (response) {
+                vm.categories = response;
+            });
 
         var vm = this;
         vm.$state = $state;
         vm.authentication = Authentication;
-        vm.categories = populate($stateParams.storageId);
+        vm.categories = [];
 
         vm.openMenu = function ($mdOpenMenu, ev) {
             $mdOpenMenu(ev);
