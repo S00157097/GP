@@ -67,17 +67,9 @@ exports.removeStorage = function(request, response) {
 };
 
 exports.removeCategory = function(request, response) {
-    /*mongoose.model('Storage').find({_id: request.body.storage}, function (err, storage) {
-        if (! err) {
-            storage.categories.splice(request.body.index, 1);
-            console.log(storage);
-            response.send();
-        }
-    });*/
-
     mongoose.model('Storage').find({ _id: request.body.storage }, function(err, storage) {
         if (!err) {
-            storage[0].categories.splice(request.body.index);
+            storage[0].categories.splice(parseInt(request.body.index), 1);
 
             mongoose.model('Storage').update(
                 { _id: request.body.storage },

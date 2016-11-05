@@ -31,7 +31,10 @@ angular.module('storage').controller('CategoryController', ['$state', 'Authentic
         vm.remove = function(index) {
             StorageService.removeCategory({ index: index, storage: $stateParams.storageId })
                 .success(function(response) {
-
+                    StorageService.getCategories({ url_data: $stateParams.storageId || null })
+                        .success(function(response) {
+                            vm.categories = response;
+                        });
                 });
         };
     }
