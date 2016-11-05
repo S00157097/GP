@@ -9,4 +9,5 @@ module.exports = function (app) {
   app.route('/api/insert_storage').post(storage.insertStorage);
   app.route('/api/remove_storage').post(storage.removeStorage);
   app.route('/api/insert_category').post(storage.insertCategory);
+  app.route('/api/remove_category').post(storage.removeCategory);
 };

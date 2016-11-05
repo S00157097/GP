@@ -21,5 +21,9 @@ angular.module('storage').service('StorageService', ['$http',
         this.addCategory = function (name) {
             return $http.post('http://localhost:3000/api/insert_category', name);
         };
+
+        this.removeCategory = function (data) {
+            return $http.post('http://localhost:3000/api/remove_category', data);
+        };
     }
 ]);
