@@ -15,5 +15,13 @@ angular.module('storage').controller('StorageController', ['$mdDialog', 'Storage
     vm.openMenu = function ($mdOpenMenu, ev) {
       $mdOpenMenu(ev);
     };
+
+    vm.addStorage = function (result) {
+      StorageService.addStorage({ data: result });
+      StorageService.getStorages().success(function (response) {
+        $scope.collection = response;
+      });
+      console.log(result);
+    };
   }
 ]);

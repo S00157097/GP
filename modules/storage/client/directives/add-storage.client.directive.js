@@ -11,7 +11,8 @@ angular.module('storage').directive('addStorage', [
         object.scope = {
             collection: '=collection',
             item: '@item',
-            message: '@message'
+            message: '@message',
+            procedure: '&procedure'
         };
 
         object.link = function (scope, element, attribute, controller) {
@@ -23,7 +24,6 @@ angular.module('storage').directive('addStorage', [
         object.controller = ['$scope', '$mdDialog', 'StorageService',
             function ($scope, $mdDialog, StorageService) {
                 this.showPrompt = function (ev) {
-                    // Appending dialog to document.body to cover sidenav in docs app
                     var confirm = $mdDialog.prompt()
                         .title($scope.message)
                         .textContent('You can change it later.')
