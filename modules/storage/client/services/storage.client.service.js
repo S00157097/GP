@@ -9,5 +9,9 @@ angular.module('storage').service('StorageService', ['$http',
         this.addStorage = function (data) {
             return $http.post('http://localhost:3000/api/insert_storage', data);
         };
+
+        this.removeStorage = function (storage) {
+            return $http.post('http://localhost:3000/api/remove_storage', storage);
+        };
     }
 ]);

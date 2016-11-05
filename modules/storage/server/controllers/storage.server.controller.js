@@ -12,7 +12,7 @@ exports.getStorages = function (request, response) {
 };
 
 exports.getCategories = function (request, response) {
-    mongoose.model('Storage').findOne({_id: request.body.url_data}).exec(function (err, categories) {
+    mongoose.model('Storage').findOne({ _id: request.body.url_data }).exec(function (err, categories) {
         response.send(categories.categories);
     });
 };
@@ -27,6 +27,16 @@ exports.insertStorage = function (request, response) {
             console.log('Error');
         } else {
             console.log('All Good');
+        }
+    });
+};
+
+exports.removeStorage = function (request, response) {
+    mongoose.model('Storage').remove({_id: request.body._id}, function (err, removed) {
+        if (err) {
+            console.log(err);
+        } else {
+            response.end('Done');
         }
     });
 };

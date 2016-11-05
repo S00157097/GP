@@ -8,20 +8,22 @@ angular.module('storage').controller('StorageController', ['$mdDialog', 'Storage
     vm.storages = [];
     $scope.$watch(vm.storages);
 
-    StorageService.getStorages().success(function (response) {
-      vm.storages = response;
-    });
+    StorageService.getStorages()
+      .success(function (response) {
+        vm.storages = response;
+      });
+
+    vm.remove = function (storage) {
+      StorageService.removeStorage(storage)
+        .success(function (response) {
+          StorageService.getStorages().success(function (res) {
+            vm.storages = res;
+          });
+        });
+    };
 
     vm.openMenu = function ($mdOpenMenu, ev) {
       $mdOpenMenu(ev);
-    };
-
-    vm.addStorage = function (result) {
-      StorageService.addStorage({ data: result });
-      StorageService.getStorages().success(function (response) {
-        $scope.collection = response;
-      });
-      console.log(result);
     };
   }
 ]);
