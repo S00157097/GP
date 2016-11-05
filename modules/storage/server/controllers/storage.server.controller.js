@@ -12,8 +12,37 @@ exports.getStorages = function (request, response) {
 };
 
 exports.getCategories = function (request, response) {
-    mongoose.model('Storage').findOne({ _id: request.body.url_data }).exec(function (err, categories) {
-        response.send(categories.categories);
+    mongoose.model('Storage').findOne({ _id: request.body.url_data }).exec(function (err, storage) {
+        if (err || request.body.url_data == undefined) {
+            response.end();
+        } else {
+            response.send(storage.categories);
+        }
+    });
+};
+
+exports.insertCategory = function (request, response) {
+    mongoose.model('Storage').update(
+        { _id: request.body.url_data },
+        {
+            $push: {
+                categories: {
+                    name: request.body.data,
+                    updated: new Date(), 
+                }
+            }
+        }
+    ).exec(function (err, storage) {
+        if (err || request.body.url_data == undefined) {
+            console.log('Err');
+            response.end();
+        } else {
+            /*storage.categories.push({
+                name: request.body.data,
+                updated: new Date(),  
+            });*/
+            response.send('Done');
+        }
     });
 };
 

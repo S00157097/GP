@@ -9,6 +9,7 @@ angular.module('storage').directive('addStorage', [
         object.templateUrl = 'modules/storage/client/templates/add-storage.client.template.html';
 
         object.scope = {
+            buttonName: '@',
             collection: '=collection',
             item: '@item',
             message: '@message',
