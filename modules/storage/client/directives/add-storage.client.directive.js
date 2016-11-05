@@ -12,7 +12,7 @@ angular.module('storage').directive('addStorage', [
             collection: '=collection',
             item: '@item',
             message: '@message',
-            procedure: '&procedure'
+            add: '&add'
         };
 
         object.link = function (scope, element, attribute, controller) {
@@ -35,12 +35,7 @@ angular.module('storage').directive('addStorage', [
                         .cancel('Cancel');
 
                     $mdDialog.show(confirm).then(function (result) {
-                        if (result.length > 0) {
-                            StorageService.addStorage({ data: result });
-                            StorageService.getStorages().success(function (response) {
-                                $scope.collection = response;
-                            });
-                        }
+                        $scope.add({data: result});
                     });
                 };
             }
