@@ -72,39 +72,34 @@ exports.insertCategory = function(request, response) {
 };
 
 exports.removeStorage = function(request, response) {
-    Storages.remove({ _id: request.body.storage._id }, function(err, removed) {
+    Storages.remove({ _id: request.body.storage._id }, function(err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
+            console.log(data);
             response.end();
         }
     });
 };
 
 exports.removeCategory = function(request, response) {
-    Storages.findOne({ _id: request.body.storageId }).exec(function(err, storage) {
+    Storages.update(
+        { _id: request.body.storageId },
+        {
+            $pull: {
+                categories: { _id: mongoose.Types.ObjectId(request.body.category._id) }
+            }
+        }
+    ).exec(function(err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            storage.categories.splice(parseInt(request.body.category), 1);
-
-            Storages.update({ _id: request.body.storageId }, {
-                $set: {
-                    categories: storage.categories
-                }
-            }).exec(function(err, data) {
-                if (err) {
-                    return response.status(400).send({
-                        message: errorHandler.getErrorMessage(err)
-                    });
-                } else {
-                    response.send(storage.categories);
-                }
-            });
+            console.log(storage);
+            response.end();
         }
     });
 };

@@ -20,7 +20,8 @@ angular.module('storage').controller('CategoryController', ['$stateParams', 'Sto
         vm.remove = function (category) {
             StorageService.removeCategory(category, $stateParams.storageId)
                 .success(function (response) {
-                    vm.categories = response;
+                    var index = vm.categories.indexOf(category);
+                    vm.categories.splice(index, 1);
                 });
         };
 
