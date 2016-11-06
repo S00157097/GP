@@ -14,16 +14,16 @@ angular.module('storage').config(['$stateProvider',
         }
       })
       .state('category', {
-        url: '/categories',
+        url: '/categories/:storageId',
         templateUrl: 'modules/storage/client/views/category.client.view.html',
         controller: 'CategoryController',
         controllerAs: 'vm',
         data: {
           roles: ['user', 'admin']
-        },
+        }/*,
         params: {
           storageId: null
-        }
+        }*/
       });
   }
 ]);

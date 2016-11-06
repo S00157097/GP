@@ -11,15 +11,16 @@ angular.module('storage').controller('CategoryController', ['$stateParams', 'Sto
 
         vm.add = function (categoryName) {
             if (categoryName.length > 0) {
-                StorageService.addCategory({ categoryName: categoryName, storageId: $stateParams.storageId });
-                readCategories();
+                StorageService.addCategory(categoryName, $stateParams.storageId).success(function (response) {
+                    vm.categories.push(response);
+                });
             }
         };
 
         vm.remove = function (category) {
-            StorageService.removeCategory({ category: category, storageId: $stateParams.storageId })
+            StorageService.removeCategory(category, $stateParams.storageId)
                 .success(function (response) {
-                    readCategories();
+                    vm.categories = response;
                 });
         };
 
