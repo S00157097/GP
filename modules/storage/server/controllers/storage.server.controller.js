@@ -19,6 +19,18 @@ exports.getStorages = function (request, response) {
     });
 };
 
+exports.getCategories = function (request, response) {
+    Storages.findOne({ _id: request.body.storageId }).exec(function (err, storage) {
+        if (err) {
+           return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            response.send(storage.categories);
+        }
+    });
+};
+
 exports.insertStorage = function (request, response) {
     var newStorage = {
         _id: mongoose.Types.ObjectId(),
@@ -49,15 +61,7 @@ exports.removeStorage = function (request, response) {
     });
 };
 
-exports.getCategories = function (request, response) {
-    mongoose.model('Storage').findOne({ _id: request.body.url_data }).exec(function (err, storage) {
-        if (err || request.body.url_data == undefined) {
-            response.end();
-        } else {
-            response.send(storage.categories);
-        }
-    });
-};
+
 
 exports.insertCategory = function (request, response) {
     mongoose.model('Storage').update(

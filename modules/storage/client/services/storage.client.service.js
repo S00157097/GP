@@ -18,7 +18,7 @@ angular.module('storage').service('StorageService', ['$http',
 
 
         this.getCategories = function (storageId) {
-            return $http.post('http://localhost:3000/api/read_categories', storageId);
+            return $http.post('http://localhost:3000/api/read_categories', {storageId: storageId});
         };
 
         this.addCategory = function (categoryName) {
