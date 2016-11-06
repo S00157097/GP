@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('StorageController', ['$mdDialog', 'StorageService', '$scope',
-    function ($mdDialog, StorageService, $scope) {
+angular.module('storage').controller('StorageController', ['StorageService', '$scope',
+    function(StorageService, $scope) {
         var vm = this;
 
         vm.storages = [];
@@ -10,28 +10,26 @@ angular.module('storage').controller('StorageController', ['$mdDialog', 'Storage
 
         readStorages();
 
-        vm.remove = function (storage) {
+        vm.remove = function(storage) {
             StorageService.removeStorage(storage)
-                .success(function (response) {
-                    console.log(response);
-                    readStorages();
+                .success(function(response) {
+                    var index = vm.storages.indexOf(storage);
+                    vm.storages.splice(index, 1);
                 });
         };
 
-        vm.add = function (data) {
-            if (data.length > 0) {
-                StorageService.addStorage({ data: data });
-                readStorages()
+        vm.add = function(storageName) {
+            if (storageName.length > 0) {
+                StorageService.addStorage(storageName)
+                    .success(function(response) {
+                        vm.storages.push(response);
+                    });
             }
-        };
-
-        vm.openMenu = function ($mdOpenMenu, ev) {
-            $mdOpenMenu(ev);
         };
 
         function readStorages() {
             StorageService.getStorages()
-                .success(function (response) {
+                .success(function(response) {
                     vm.storages = response;
                 });
         }

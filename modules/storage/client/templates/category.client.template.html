@@ -1,0 +1,30 @@
+<div>
+    <md-card>
+        <div layout layout-align="space-between top">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline" ng-bind="::category.name">Storage</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-actions>
+                <md-menu>
+                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="__.openMenu($mdOpenMenu, $event)">
+                        <i class="material-icons">more_vert</i>
+                    </md-button>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button>Open</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="md-warn" ng-click="remove($index)">Delete</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-card-actions>
+        </div>
+        <md-card-content class="darker">
+            <span class="md-subhead">02/11/2016</span>
+        </md-card-content>
+    </md-card>
+</div>

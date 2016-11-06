@@ -1,8 +1,10 @@
 <section class="container">
+
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-12">
 			<div layout="row" flex>
 				<md-input-container flex class="md-icon-float md-block">
+					
 					<label>Search</label>
 					<md-icon class="material-icons">search</md-icon>
 					<input type="text">
@@ -13,40 +15,21 @@
 						data-item="Storage"
 						data-message="What would you name your storage?"
 						data-add="vm.add(data)"></div>
+
 				</md-input-container>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-4" ng-repeat="storage in vm.storages track by storage._id">
-			<md-card>
-				<div layout layout-align="space-between top">
-					<md-card-title>
-						<md-card-title-text>
-							<span class="md-headline" ng-bind="::storage.name"></span>
-						</md-card-title-text>
-					</md-card-title>
 
-					<md-card-actions>
-						<md-menu>
-							<md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="vm.openMenu($mdOpenMenu, $event)">
-								<i class="material-icons">more_vert</i>
-							</md-button>
-							<md-menu-content width="4">
-								<md-menu-item>
-									<md-button ui-sref="category({storageId: storage._id})">Open</md-button>
-								</md-menu-item>
-								<md-menu-item>
-									<md-button class="md-warn" ng-click="vm.remove(storage)">Delete</md-button>
-								</md-menu-item>
-							</md-menu-content>
-						</md-menu>
-					</md-card-actions>
-				</div>
-				<md-card-content class="darker">
-					<span class="md-subhead" ng-bind="storage.updated | date: 'MM/dd/yyyy'"></span>
-				</md-card-content>
-			</md-card>
+	<div class="row">
+		<div
+			class="col-md-4"
+			ng-repeat="storage in vm.storages track by storage._id">
+
+			<storage
+				data-storage="storage"
+				data-remove="vm.remove(storage)"></storage>
 		</div>
 	</div>
+
 </section>

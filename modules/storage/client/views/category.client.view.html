@@ -1,12 +1,14 @@
 <section class="container">
-    <div class="row" style="margin-top: 20px;">
+
+	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-12">
 			<div layout="row" flex>
 				<md-input-container flex class="md-icon-float md-block">
 					<label>Search</label>
 					<md-icon class="material-icons">search</md-icon>
 					<input type="text">
-					<div add-storage
+					<div
+						add-storage
 						data-button-name="Add Category"
 						data-collection="vm.categories"
 						data-item="Category"
@@ -16,36 +18,13 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="row">
 		<div class="col-md-6" ng-repeat="category in vm.categories track by $index">
-			<md-card>
-				<div layout layout-align="space-between top">
-					<md-card-title>
-						<md-card-title-text>
-							<span class="md-headline" ng-bind="::category.name">Storage</span>
-						</md-card-title-text>
-					</md-card-title>
-
-					<md-card-actions>
-						<md-menu>
-							<md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="vm.openMenu($mdOpenMenu, $event)">
-								<i class="material-icons">more_vert</i>
-							</md-button>
-							<md-menu-content width="4">
-								<md-menu-item>
-									<md-button>Open</md-button>
-								</md-menu-item>
-								<md-menu-item>
-									<md-button class="md-warn" ng-click="vm.remove($index)">Delete</md-button>
-								</md-menu-item>
-							</md-menu-content>
-						</md-menu>
-					</md-card-actions>
-				</div>
-				<md-card-content class="darker">
-					<span class="md-subhead">02/11/2016</span>
-				</md-card-content>
-			</md-card>
+			<category
+				data-storage="category"
+				data-remove="vm.remove(category)"></category>
 		</div>
 	</div>
+
 </section>

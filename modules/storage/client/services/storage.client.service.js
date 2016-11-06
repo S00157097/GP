@@ -6,24 +6,27 @@ angular.module('storage').service('StorageService', ['$http',
             return $http.get('http://localhost:3000/api/read_storages');
         };
 
-        this.addStorage = function (data) {
-            return $http.post('http://localhost:3000/api/insert_storage', data);
+        this.addStorage = function (storageName) {
+            return $http.post('http://localhost:3000/api/insert_storage', {storageName: storageName});
         };
 
         this.removeStorage = function (storage) {
-            return $http.post('http://localhost:3000/api/remove_storage', storage);
+            return $http.post('http://localhost:3000/api/remove_storage', {storage: storage});
         };
 
-        this.getCategories = function (storage) {
-            return $http.post('http://localhost:3000/api/read_categories', storage);
+
+
+
+        this.getCategories = function (storageId) {
+            return $http.post('http://localhost:3000/api/read_categories', storageId);
         };
 
-        this.addCategory = function (name) {
-            return $http.post('http://localhost:3000/api/insert_category', name);
+        this.addCategory = function (categoryName) {
+            return $http.post('http://localhost:3000/api/insert_category', categoryName);
         };
 
-        this.removeCategory = function (data) {
-            return $http.post('http://localhost:3000/api/remove_category', data);
+        this.removeCategory = function (category) {
+            return $http.post('http://localhost:3000/api/remove_category', category);
         };
     }
 ]);
