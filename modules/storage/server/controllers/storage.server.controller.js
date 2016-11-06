@@ -14,7 +14,9 @@ exports.getStorages = function(request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            response.send(storages);
+            if (storages != null) {
+                response.send(storages);
+            }
         }
     });
 };
@@ -26,7 +28,9 @@ exports.getCategories = function(request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            response.send(storage.categories);
+            if (storage != null) {
+                response.send(storage.categories);
+            }
         }
     });
 };
