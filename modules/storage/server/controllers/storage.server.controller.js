@@ -7,8 +7,8 @@ var path = require('path')
     , connection = mongoose.connection;
 
 
-exports.getStorages = function(request, response) {
-    Storages.find({}).exec(function(err, storages) {
+exports.getStorages = function (request, response) {
+    Storages.find({ userId: request.body.userId }).exec(function (err, storages) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -21,8 +21,13 @@ exports.getStorages = function(request, response) {
     });
 };
 
-exports.getCategories = function(request, response) {
-    Storages.findOne({ _id: request.body.storageId }).exec(function(err, storage) {
+exports.getCategories = function (request, response) {
+    Storages.findOne({
+        $and: [
+            { _id: request.body.storageId },
+            { userId: request.body.userId }
+        ]
+    }).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -35,15 +40,16 @@ exports.getCategories = function(request, response) {
     });
 };
 
-exports.insertStorage = function(request, response) {
+exports.insertStorage = function (request, response) {
     var newStorage = {
         _id: mongoose.Types.ObjectId(),
+        userId: request.body.userId,
         name: request.body.storageName,
         updated: new Date(),
         categories: []
     };
 
-    connection.collection('storages').insert(newStorage, function(err, storage) {
+    connection.collection('storages').insert(newStorage, function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -54,17 +60,21 @@ exports.insertStorage = function(request, response) {
     });
 };
 
-exports.insertCategory = function(request, response) {
+exports.insertCategory = function (request, response) {
     var newCategory = {
         _id: mongoose.Types.ObjectId(),
         name: request.body.categoryName,
         updated: new Date(),
     };
 
-    Storages.update(
-        { _id: request.body.storageId },
+    Storages.update({
+        $and: [
+            { _id: request.body.storageId },
+            { userId: request.body.userId }
+        ]
+    },
         { $push: { categories: newCategory } }
-    ).exec(function(err, storage) {
+    ).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -75,8 +85,13 @@ exports.insertCategory = function(request, response) {
     });
 };
 
-exports.removeStorage = function(request, response) {
-    Storages.remove({ _id: request.body.storage._id }, function(err, data) {
+exports.removeStorage = function (request, response) {
+    Storages.remove({
+        $and: [
+            { _id: request.body.storage._id },
+            { userId: request.body.userId }
+        ]
+    }, function (err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -88,15 +103,20 @@ exports.removeStorage = function(request, response) {
     });
 };
 
-exports.removeCategory = function(request, response) {
+exports.removeCategory = function (request, response) {
     Storages.update(
-        { _id: request.body.storageId },
+        {
+            $and: [
+                { _id: request.body.storage._id },
+                { userId: request.body.userId }
+            ]
+        },
         {
             $pull: {
                 categories: { _id: mongoose.Types.ObjectId(request.body.category._id) }
             }
         }
-    ).exec(function(err, storage) {
+    ).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
