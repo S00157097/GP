@@ -31,6 +31,7 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
             StorageService.getStorages()
                 .success(function(response) {
                     vm.storages = response;
+                    console.log(response);
                 });
         }
     }

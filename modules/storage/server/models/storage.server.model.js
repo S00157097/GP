@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 
 var StorageSchema = new Schema({
   _id: Schema.Types.ObjectId,
-  userId: Schema.Types.ObjectId,
+  userId: String,
   name: String,
   updated: {
     type: Date,
