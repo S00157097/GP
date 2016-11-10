@@ -7,7 +7,7 @@
 					
 					<label>Search</label>
 					<md-icon class="material-icons">search</md-icon>
-					<input type="text">
+					<input type="text" ng-model="search" />
 					
 					<div add-storage
 						data-button-name="Add Storage"
@@ -24,7 +24,7 @@
 	<div class="row">
 		<div
 			class="col-md-4"
-			ng-repeat="storage in vm.storages track by storage._id">
+			ng-repeat="storage in vm.storages | filter:search track by storage._id ">
 
 			<storage
 				data-storage="storage"
