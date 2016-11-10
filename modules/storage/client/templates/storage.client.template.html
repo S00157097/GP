@@ -3,11 +3,16 @@
         <div layout layout-align="space-between top">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline" ng-bind="::storage.name"></span>
+                    <span ng-show="!__.editing" class="md-headline" ng-bind="storage.name"></span>
+                    <md-input-container ng-show="__.editing">
+                        <label>Change Name</label>
+                        <input  type="text" ng-model="storage.name" />
+                    </md-input-container>
+                
                 </md-card-title-text>
             </md-card-title>
 
-            <md-card-actions>
+            <md-card-actions layout="column">
                 <md-menu>
                     <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="__.openMenu($mdOpenMenu, $event)">
                         <i class="material-icons">more_vert</i>
@@ -21,6 +26,9 @@
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
+                <md-button class="md-icon-button" ng-click="__.edit()">
+                    <i class="material-icons">mode_edit</i>
+                </md-button>
             </md-card-actions>
         </div>
         <md-card-content class="darker">

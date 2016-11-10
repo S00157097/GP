@@ -17,6 +17,17 @@ angular.module('storage').directive('storage', [
                 this.openMenu = function ($mdOpenMenu, ev) {
                     $mdOpenMenu(ev);
                 };
+
+                this.edit = function () {
+                    this.editing = this.editing ? false : true;
+
+                    if (this.editing) {
+                        // Update Database
+                        // Also change the logic, instead of checking for exiting edit mode, check was the name changed
+                    }
+                };
+
+                this.editing = false;
             }
         ];
 
