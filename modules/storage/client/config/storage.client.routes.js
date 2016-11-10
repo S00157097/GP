@@ -20,10 +20,16 @@ angular.module('storage').config(['$stateProvider',
         controllerAs: 'vm',
         data: {
           roles: ['user', 'admin']
-        }/*,
-        params: {
-          storageId: null
-        }*/
+        }
+      })
+      .state('record', {
+        url: '/records/:categoryId',
+        templateUrl: 'modules/storage/client/views/record.client.view.html',
+        controller: 'RecordController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user', 'admin']
+        }
       });
   }
 ]);
