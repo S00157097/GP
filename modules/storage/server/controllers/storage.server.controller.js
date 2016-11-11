@@ -6,45 +6,50 @@ var path = require('path')
     , Storages = mongoose.model('Storage')
     , connection = mongoose.connection;
 
-exports.updateName = function (request, response) {
-    Storages.update({
-        $and: [
-            { _id: request.body.storage._id },
-            { userId: request.body.userId }
-        ]
-    },
+exports.updateName = function(request, response) {
+    Storages.update(
         {
-            name: request.body.storage.name
-        }).exec(function (err, storages) {
-            if (err) {
-                return response.status(400).send({
-                    message: errorHandler.getErrorMessage(err)
-                });
-            } else {
-                if (storages != null) {
-                    response.send('Huraaagh');
-                }
-            }
-        });
-};
-
-
-exports.list = function (request, response) {
-    Storages.find({ userId: request.body.userId }).exec(function (err, storages) {
+            $and: [
+                { _id: request.body.storage._id },
+                { userId: request.body.userId }
+            ]
+        },
+        {
+            name: request.body.storage.name,
+            updated: new Date()
+        }
+    ).exec(function(err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            if (storages != null) {
-                response.send(storages);
+            if (data != null) {
+                response.end();
             }
         }
     });
 };
 
 
-exports.add = function (request, response) {
+exports.list = function(request, response) {
+    Storages.find(
+        { userId: request.body.userId }
+    ).exec(function(err, data) {
+        if (err) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            if (data != null) {
+                response.send(data);
+            }
+        }
+    });
+};
+
+
+exports.add = function(request, response) {
     var newStorage = {
         _id: mongoose.Types.ObjectId(),
         userId: request.body.userId,
@@ -53,7 +58,7 @@ exports.add = function (request, response) {
         categories: []
     };
 
-    connection.collection('storages').insert(newStorage, function (err, storage) {
+    connection.collection('storages').insert(newStorage, function(err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -64,15 +69,13 @@ exports.add = function (request, response) {
     });
 };
 
-
-
-exports.remove = function (request, response) {
+exports.remove = function(request, response) {
     Storages.remove({
         $and: [
             { _id: request.body.storage._id },
             { userId: request.body.userId }
         ]
-    }, function (err, data) {
+    }, function(err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)

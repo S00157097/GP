@@ -8,24 +8,25 @@ var path = require('path')
 
 exports.updateName = function (request, response) {
     var toUpdate = {};
-    toUpdate['categories.'+request.body.index+'.name'] = request.body.category.name;
-    Storages.update({
-        $and: [
-            { userId: request.body.userId },
-            { _id: request.body.storageId }
-        ]
-    }, {
+    toUpdate['categories.' + request.body.index + '.name'] = request.body.category.name;
+
+    Storages.update(
+        {
+            $and: [
+                { userId: request.body.userId },
+                { _id: request.body.storageId }
+            ]
+        }, {
             $set: toUpdate
-        }).exec(function (err, storages) {
+        }).exec(function (err, data) {
             if (err) {
                 console.log(err);
                 return response.status(400).send({
                     message: errorHandler.getErrorMessage(err)
                 });
             } else {
-                if (storages != null) {
-                    console.log(toUpdate);
-                    response.send(storages);
+                if (data != null) {
+                    response.end();
                 }
             }
         });
@@ -37,14 +38,14 @@ exports.list = function (request, response) {
             { _id: request.body.storageId },
             { userId: request.body.userId }
         ]
-    }).exec(function (err, storage) {
+    }).exec(function (err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            if (storage != null) {
-                response.send(storage.categories);
+            if (data != null) {
+                response.send(data.categories);
             }
         }
     });
@@ -57,14 +58,15 @@ exports.add = function (request, response) {
         updated: new Date(),
     };
 
-    Storages.update({
-        $and: [
-            { _id: request.body.storageId },
-            { userId: request.body.userId }
-        ]
-    },
+    Storages.update(
+        {
+            $and: [
+                { _id: request.body.storageId },
+                { userId: request.body.userId }
+            ]
+        },
         { $push: { categories: newCategory } }
-    ).exec(function (err, storage) {
+    ).exec(function (err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -88,13 +90,12 @@ exports.remove = function (request, response) {
                 categories: { _id: mongoose.Types.ObjectId(request.body.category._id) }
             }
         }
-    ).exec(function (err, storage) {
+    ).exec(function (err, data) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            console.log(storage);
             response.end();
         }
     });
