@@ -10,8 +10,8 @@ module.exports = function (app) {
   app.route('/api/insert_storage').post(storage.add);
   app.route('/api/remove_storage').post(storage.remove);
 
-  app.route('/api/read_categories').post(storage.list);
-  app.route('/api/update_category_name').post(storage.updateName);
-  app.route('/api/insert_category').post(storage.add);
-  app.route('/api/remove_category').post(storage.remove);
+  app.route('/api/read_categories').post(category.list);
+  app.route('/api/update_category_name').post(category.updateName);
+  app.route('/api/insert_category').post(category.add);
+  app.route('/api/remove_category').post(category.remove);
 };
