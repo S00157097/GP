@@ -7,6 +7,29 @@ var path = require('path')
     , connection = mongoose.connection;
 
 
+exports.updateStorageName = function (request, response) {
+    Storages.update({
+        $and: [
+            { _id: request.body.storage._id },
+            { userId: request.body.userId }
+        ]
+    },
+    {
+        name: request.body.storage.name
+    }).exec(function (err, storages) {
+         if (err) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            if (storages != null) {
+                response.send('Huraaagh');
+            }
+        }
+    });
+};
+
+
 exports.getStorages = function (request, response) {
     Storages.find({ userId: request.body.userId }).exec(function (err, storages) {
         if (err) {

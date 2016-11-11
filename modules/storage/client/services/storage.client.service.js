@@ -8,6 +8,13 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication',
             });
         };
 
+        this.updateStorageName = function (storage) {
+            return $http.post('http://localhost:3000/api/update_storage_name', {
+                userId: Authentication.user._id,
+                storage: storage
+            });
+        };
+
         this.addStorage = function (storageName) {
             return $http.post('http://localhost:3000/api/insert_storage', {
                 userId: Authentication.user._id,

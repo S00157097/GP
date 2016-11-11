@@ -12,8 +12,10 @@ angular.module('storage').directive('storage', [
             remove: '&remove'
         };
 
-        object.controller = ['$mdDialog',
-            function ($mdDialog) {
+        object.controller = ['$mdDialog','$scope', 'StorageService',
+            function ($mdDialog, $scope, StorageService) {
+                var newName = $scope.storage.name;
+
                 this.openMenu = function ($mdOpenMenu, ev) {
                     $mdOpenMenu(ev);
                 };
@@ -21,9 +23,13 @@ angular.module('storage').directive('storage', [
                 this.edit = function () {
                     this.editing = this.editing ? false : true;
 
-                    if (this.editing) {
-                        // Update Database
-                        // Also change the logic, instead of checking for exiting edit mode, check was the name changed
+                    if (!this.editing && newName != $scope.storage.name) {
+                        newName = $scope.storage.name;
+
+                        StorageService.updateStorageName($scope.storage)
+                            .success(function (response) {
+                                console.log(response);
+                            });
                     }
                 };
 
