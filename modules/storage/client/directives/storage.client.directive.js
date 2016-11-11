@@ -16,6 +16,7 @@ angular.module('storage').directive('storage', [
             function ($mdDialog, $scope, StorageService) {
                 var newName = $scope.storage.name;
 
+                this.editing = false;
                 this.openMenu = function ($mdOpenMenu, ev) {
                     $mdOpenMenu(ev);
                 };
@@ -32,8 +33,6 @@ angular.module('storage').directive('storage', [
                             });
                     }
                 };
-
-                this.editing = false;
             }
         ];
 

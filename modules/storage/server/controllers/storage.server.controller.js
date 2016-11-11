@@ -7,6 +7,31 @@ var path = require('path')
     , connection = mongoose.connection;
 
 
+exports.updateCategoryName = function (request, response) {
+    var toUpdate = {};
+    toUpdate['categories.'+request.body.index+'.name'] = request.body.category.name;
+    Storages.update({
+        $and: [
+            { userId: request.body.userId },
+            { _id: request.body.storageId }
+        ]
+    }, {
+            $set: toUpdate
+        }).exec(function (err, storages) {
+            if (err) {
+                console.log(err);
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                if (storages != null) {
+                    console.log(toUpdate);
+                    response.send(storages);
+                }
+            }
+        });
+};
+
 exports.updateStorageName = function (request, response) {
     Storages.update({
         $and: [
@@ -14,19 +39,19 @@ exports.updateStorageName = function (request, response) {
             { userId: request.body.userId }
         ]
     },
-    {
-        name: request.body.storage.name
-    }).exec(function (err, storages) {
-         if (err) {
-            return response.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            if (storages != null) {
-                response.send('Huraaagh');
+        {
+            name: request.body.storage.name
+        }).exec(function (err, storages) {
+            if (err) {
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                if (storages != null) {
+                    response.send('Huraaagh');
+                }
             }
-        }
-    });
+        });
 };
 
 

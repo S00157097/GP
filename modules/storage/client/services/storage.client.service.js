@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('storage').service('StorageService', ['$http', 'Authentication',
-    function ($http, Authentication) {
+angular.module('storage').service('StorageService', ['$http', 'Authentication','$state',
+    function ($http, Authentication, $state) {
         this.getStorages = function () {
             return $http.post('http://localhost:3000/api/read_storages', {
                 userId: Authentication.user._id
@@ -12,6 +12,15 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication',
             return $http.post('http://localhost:3000/api/update_storage_name', {
                 userId: Authentication.user._id,
                 storage: storage
+            });
+        };
+
+        this.updateCategoryName = function (category, index) {
+            return $http.post('http://localhost:3000/api/update_category_name', {
+                userId: Authentication.user._id,
+                category: category,
+                storageId: $state.params.storageId,
+                index: index
             });
         };
 
