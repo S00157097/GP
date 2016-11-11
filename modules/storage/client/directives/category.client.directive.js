@@ -17,6 +17,7 @@ angular.module('storage').directive('category', [
             function ($mdDialog, $scope, StorageService) {
                 var newName = $scope.category.name;
 
+                this.editText = 'edit';
                 this.editing = false;
                 this.openMenu = function ($mdOpenMenu, ev) {
                     $mdOpenMenu(ev);
@@ -24,14 +25,19 @@ angular.module('storage').directive('category', [
 
                 this.edit = function () {
                     this.editing = this.editing ? false : true;
+                    this.editText = this.editing ? 'save' : 'edit';
 
-                    if (!this.editing && newName != $scope.category.name) {
-                        newName = $scope.category.name;
+                    if ($scope.category.name != '') {
+                        if (!this.editing && newName != $scope.category.name) {
+                            newName = $scope.category.name;
 
-                        StorageService.updateCategoryName($scope.category, $scope.index)
-                            .success(function (response) {
-                                console.log(response);
-                            });
+                            StorageService.updateCategoryName($scope.category, $scope.index)
+                                .success(function (response) {
+                                    console.log(response);
+                                });
+                        }
+                    } else {
+                        $scope.category.name = newName;
                     }
                 };
             }
