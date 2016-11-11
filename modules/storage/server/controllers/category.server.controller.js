@@ -7,80 +7,95 @@ var path = require('path')
     , connection = mongoose.connection;
 
 exports.updateName = function (request, response) {
+    var toUpdate = {};
+    toUpdate['categories.'+request.body.index+'.name'] = request.body.category.name;
     Storages.update({
         $and: [
-            { _id: request.body.storage._id },
-            { userId: request.body.userId }
+            { userId: request.body.userId },
+            { _id: request.body.storageId }
         ]
-    },
-        {
-            name: request.body.storage.name
+    }, {
+            $set: toUpdate
         }).exec(function (err, storages) {
             if (err) {
+                console.log(err);
                 return response.status(400).send({
                     message: errorHandler.getErrorMessage(err)
                 });
             } else {
                 if (storages != null) {
-                    response.send('Huraaagh');
+                    console.log(toUpdate);
+                    response.send(storages);
                 }
             }
         });
 };
 
-
 exports.list = function (request, response) {
-    Storages.find({ userId: request.body.userId }).exec(function (err, storages) {
+    Storages.findOne({
+        $and: [
+            { _id: request.body.storageId },
+            { userId: request.body.userId }
+        ]
+    }).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            if (storages != null) {
-                response.send(storages);
+            if (storage != null) {
+                response.send(storage.categories);
             }
         }
     });
 };
 
-
 exports.add = function (request, response) {
-    var newStorage = {
+    var newCategory = {
         _id: mongoose.Types.ObjectId(),
-        userId: request.body.userId,
-        name: request.body.storageName,
+        name: request.body.categoryName,
         updated: new Date(),
-        categories: []
     };
 
-    connection.collection('storages').insert(newStorage, function (err, storage) {
+    Storages.update({
+        $and: [
+            { _id: request.body.storageId },
+            { userId: request.body.userId }
+        ]
+    },
+        { $push: { categories: newCategory } }
+    ).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            response.send(newStorage);
+            response.send(newCategory);
         }
     });
 };
 
-
-
 exports.remove = function (request, response) {
-    Storages.remove({
-        $and: [
-            { _id: request.body.storage._id },
-            { userId: request.body.userId }
-        ]
-    }, function (err, data) {
+    Storages.update(
+        {
+            $and: [
+                { _id: request.body.storage._id },
+                { userId: request.body.userId }
+            ]
+        },
+        {
+            $pull: {
+                categories: { _id: mongoose.Types.ObjectId(request.body.category._id) }
+            }
+        }
+    ).exec(function (err, storage) {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            console.log(data);
+            console.log(storage);
             response.end();
         }
     });
 };
-
