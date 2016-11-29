@@ -34,3 +34,16 @@
   min-height: 150px;
   max-height: 150px;
 }
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    background-color: none;
+}
+
+input.ng-not-empty, input.ng-dirty, input.ng-touched {
+  background-color: red;
+}
+
+.prog-bad { background-color: red;}
+.prog-med { background-color: yellow;}
+.prog-good { background-color: green;}
