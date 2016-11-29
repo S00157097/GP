@@ -9,18 +9,26 @@
 					<input type="text">
 
 					<md-button class="md-primary right">Add Record</md-button>
-					<md-button class="md-primary right">Edit Form</md-button>
+					<md-button ng-click="vm.showAdvanced($event)" class="md-primary right">Edit Form</md-button>
 				</md-input-container>
 			</div>
 		</div>
 	</div>
 
 	<div class="row">
-		<!--<div class="col-md-6" ng-repeat="category in vm.categories track by category._id">
-			<category
-				data-category="category"
-				data-remove="vm.remove(category)"></category>
-		</div>-->
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th ng-repeat="o in [1, 2, 3, 4, 5, 6]">Column</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="p in [1, 2, 3, 4]">
+					<td ng-repeat="o in [1, 2, 3, 4, 5, 6]">Data</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 </section>
