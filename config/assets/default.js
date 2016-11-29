@@ -6,7 +6,8 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-material/angular-material.css'
+        'public/lib/angular-material/angular-material.css',
+        'public/lib/angular-material-data-table/dist/md-data-table.min.css'
       ],
       js: [
         'public/lib/jquery/dist/jquery.min.js',
@@ -20,6 +21,8 @@ module.exports = {
         'public/lib/angular-material/angular-material.js',
         'public/lib/chart.js/dist/Chart.js',
         'public/lib/angular-chart.js/dist/angular-chart.js',
+        'public/lib/angular-sortable-view/src/angular-sortable-view.min.js',
+        'public/lib/angular-material-data-table/dist/md-data-table.min.js',
 
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
