@@ -25,16 +25,6 @@ angular.module('storage').controller('RecordController', ['$stateParams', 'Stora
                 });
         };
 
-        $scope.query = {
-            order: 'name',
-            limit: 5,
-            page: 1
-        };
-
-        vm.deserts = [1, 2, 3, 4, 5, 6, 7];
-
-        vm.getDesserts = function () {
-            
-        };
+        vm.items = [1, 2, 4, 5, 7, 8, 9];
     }
 ]);
