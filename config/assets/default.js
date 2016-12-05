@@ -21,8 +21,8 @@ module.exports = {
         'public/lib/angular-material/angular-material.js',
         'public/lib/chart.js/dist/Chart.js',
         'public/lib/angular-chart.js/dist/angular-chart.js',
-        'public/lib/angular-sortable-view/src/angular-sortable-view.min.js',
         'public/lib/angular-material-data-table/dist/md-data-table.min.js',
+        'public/lib/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js',
 
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',

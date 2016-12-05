@@ -14,8 +14,8 @@ var ApplicationConfiguration = (function () {
     'angularFileUpload',
     'ngMaterial',
     'chart.js',
-    'angular-sortable-view',
-    'md.data.table'
+    'md.data.table',
+    'dndLists'
     ];
 
   // Add a new vertical module

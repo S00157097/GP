@@ -26,5 +26,8 @@ angular.module('storage').controller('RecordController', ['$stateParams', 'Stora
         };
 
         vm.items = [1, 2, 4, 5, 7, 8, 9];
+        vm.models = {
+            selected: null
+        };
     }
 ]);

@@ -1,10 +1,13 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('DialogController', ['$mdDialog',
-    function ($mdDialog) {
+angular.module('storage').controller('DialogController', ['$mdDialog', 'FormService',
+    function ($mdDialog , FormService) {
 
         var vm = this;
+
+        vm.formControls = FormService.formControls;
+        vm.selected = null;
 
         vm.hide = function () {
             $mdDialog.hide();

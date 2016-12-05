@@ -12,5 +12,7 @@ angular.module('form').service('FormService', [
                 icon: 'edit'
             }
         ];
+
+        this.formControls = [];
     }
 ]);

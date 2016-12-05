@@ -1,30 +1,15 @@
-<div layout flex layout-align="space-between" style="width: 800px">
+<md-fab-speed-dial md-open="false" md-direction="down" ng-class="'md-fling'">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-fab md-accent" style="line-height: 70px;">
+            <i class="material-icons">close</i>
+        </md-button>
+    </md-fab-trigger>
 
-    <div flex="80">
-        <div class="sortable-container" sv-root sv-part="__.formControls">
-            <div ng-repeat="item in __.formControls" sv-element class="well" flex layout>
-                <span sv-handle>
-                    <i class="material-icons">menu</i>
-                </span>
-                <span>{{item}}</span>
-            </div>
-        </div>
-    </div>
-
-    <md-fab-speed-dial md-open="demo.isOpen" md-direction="down" ng-class="'md-fling'">
-        <md-fab-trigger>
-            <md-button aria-label="menu" class="md-fab md-accent" style="line-height: 70px;">
-                <i class="material-icons">close</i>
+    <md-fab-actions>
+        <div ng-repeat="control in __.controls" aria-label="{{control.text}}">
+            <md-button class="md-fab md-raised md-mini" style="line-height: 55px;" ng-click="__.addControl(control.text)">
+                <i class="material-icons" aria-label="{{control.icon}}" ng-bind="control.icon" flex></i>
             </md-button>
-        </md-fab-trigger>
-
-        <md-fab-actions>
-            <div ng-repeat="control in __.controls" aria-label="{{control.text}}">
-                <md-button class="md-fab md-raised md-mini" style="line-height: 55px;" ng-click="__.addControl(control.text)">
-                    <i class="material-icons" aria-label="{{control.icon}}" ng-bind="control.icon" flex></i>
-                </md-button>
-            </div>
-        </md-fab-actions>
-    </md-fab-speed-dial>
-
-</div>
+        </div>
+    </md-fab-actions>
+</md-fab-speed-dial>

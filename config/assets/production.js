@@ -19,7 +19,7 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/chart.js/dist/Chart.js',
         'public/lib/angular-chart.js/dist/angular-chart.js',
-        'public/lib/angular-sortable-view/src/angular-sortable-view.min.js'
+        'public/lib/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js'
       ]
     },
     css: 'public/dist/application.min.css',
