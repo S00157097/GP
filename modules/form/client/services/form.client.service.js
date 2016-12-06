@@ -4,14 +4,20 @@ angular.module('form').service('FormService', [
     function () {
         this.controls = [
             {
-                text: 'Text field',
-                type: 'text',
-                icon: 'close'
+                text: 'Text Control',
+                type: 'text'
             },
             {
-                text: 'Number field',
-                type: 'numerical',
-                icon: 'edit'
+                text: 'Number Control',
+                type: 'number'
+            },
+            {
+                text: 'Datepicker',
+                type: 'date'
+            },
+            {
+                text: 'Dropdown List',
+                type: 'dropdown'
             }
         ];
 

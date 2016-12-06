@@ -1,0 +1,11 @@
+<div layout flex>
+    <md-input-container flex>
+        <label ng-bind="passed.settings.label"></label>
+        <md-select
+            ng-model="passed.settings.value"
+            ng-required="passed.settings.required">
+            <md-option><em>None</em></md-option>
+            <md-option ng-repeat="value in passed.settings.values" ng-value="$index" ng-bind="value"></md-option>
+        </md-select>
+    </md-input-container>
+</div>
