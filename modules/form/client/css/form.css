@@ -27,9 +27,9 @@
  * added to the dnd-list while the user is dragging
  * over it.
  */
- ul[dnd-list] .dndPlaceholder {
+[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: #ddd;
+    background-color: rgba(0, 0, 0, .1);
     min-height: 42px;
 }
 
@@ -40,14 +40,8 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
- ul[dnd-list] li {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    display: block;
-    padding: 10px 15px;
-    margin-bottom: -1px;
+[dnd-list] md-list-item {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
 /**
@@ -58,11 +52,19 @@
     color: #3c763d;
 }
 
-ul[dnd-list] li dnd-nodrag {
+[dnd-list] dnd-nodrag {
   display: block;
   padding: 10px 15px;
 }
 
- ul[dnd-list] .handle {
+ [dnd-list] .handle {
   cursor: move;
+}
+
+.drag-content {
+    display: block;
+}
+
+.drop-list {
+    min-height: 42px;
 }

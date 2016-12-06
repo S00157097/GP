@@ -9,17 +9,11 @@ angular.module('form').directive('addControl', [
         object.templateUrl = 'modules/form/client/templates/add-control.client.template.html';
 
 
-        object.controller = ['FormService', '$mdDialog',
-            function (FormService, $mdDialog) {
+        object.controller = ['FormService',
+            function (FormService) {
                 this.controls = FormService.controls;
-                
-                this.openMenu = function ($mdOpenMenu, ev) {
-                    $mdOpenMenu(ev);
-                };
-
-                this.addControl = function (controlValue) {
-                    FormService.formControls.push(controlValue);
-                };
+                this.selected = null;
+                this.allowed = [];
             }
         ];
 

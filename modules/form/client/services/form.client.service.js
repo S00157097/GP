@@ -5,10 +5,12 @@ angular.module('form').service('FormService', [
         this.controls = [
             {
                 text: 'Text field',
+                type: 'text',
                 icon: 'close'
             },
             {
                 text: 'Number field',
+                type: 'numerical',
                 icon: 'edit'
             }
         ];
