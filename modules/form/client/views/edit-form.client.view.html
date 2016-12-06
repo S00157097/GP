@@ -1,5 +1,8 @@
 <md-card layout>
     <md-card-content flex="70">
+
+        <md-button class="md-raised md-primary" ng-click="vm.save()">Save</md-button>
+
         <md-list
             dnd-list="vm.formControls"
             class="darker drop-list">
@@ -7,8 +10,7 @@
                 ng-repeat="control in vm.formControls"
                 dnd-draggable="control"
                 dnd-moved="vm.formControls.splice($index, 1)"
-                dnd-effect-allowed="move"
-                dnd-drop="vm.add(item)">
+                dnd-effect-allowed="move">
 
                 <dnd-nodrag flex>
                     <div layout layout-align="space-between">

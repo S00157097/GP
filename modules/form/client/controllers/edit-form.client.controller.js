@@ -6,8 +6,9 @@ angular.module('form').controller('EditFormController', ['$mdDialog', 'FormServi
         var vm = this;
 
         vm.formControls = FormService.formControls;
-        vm.add = function (newControl) {
-            vm.formControls.push(newControl);
+
+        vm.save = function () {
+            console.log(FormService.formControls);
         };
     }
 ]);
