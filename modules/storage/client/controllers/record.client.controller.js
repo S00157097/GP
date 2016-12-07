@@ -1,15 +1,26 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('RecordController', ['$stateParams', 'StorageService', '$mdDialog', '$scope',
-    function($stateParams, StorageService, $mdDialog, $scope) {
-
+angular.module('storage').controller('RecordController',['$http',
+    function ($http) {
         var vm = this;
-        vm.status = '';
 
-        vm.items = [1, 2, 4, 5, 7, 8, 9];
-        vm.models = {
-            selected: null
+        vm.data = undefined;
+        
+
+        vm.getData = function () {
+            vm.promise = $http.get('https://jsonplaceholder.typicode.com/posts')
+                .success(function (response) {
+                    vm.data = response;
+                });
+        };
+
+        vm.getData();
+
+        vm.query = {
+            page: 1,
+            limit: 5,
+            limitOptions: [5, 10, 15]
         };
     }
 ]);

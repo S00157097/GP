@@ -6,6 +6,7 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.min.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+        'public/lib/angular-material-data-table/dist/md-data-table.min.css'
       ],
       js: [
         'public/lib/angular/angular.min.js',
@@ -19,7 +20,8 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/chart.js/dist/Chart.js',
         'public/lib/angular-chart.js/dist/angular-chart.js',
-        'public/lib/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js'
+        'public/lib/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js',
+        'public/lib/angular-material-data-table/dist/md-data-table.min.js'
       ]
     },
     css: 'public/dist/application.min.css',
