@@ -11,7 +11,6 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     vm.menu = Menus.getMenu('topbar');
     vm.toggleLeft = buildToggler('left');
 
-
     // Collapsing the menu after navigation
     $scope.$on('$stateChangeSuccess', function () {
       vm.toggleLeft = buildToggler('left');

@@ -9,11 +9,12 @@
         </md-input-container>
     </div>
 
-    <md-content ng-show="__.editing" class="md-padding md-whiteframe-1dp">
-        <md-input-container>
+    <md-content ng-show="__.editing" class="md-padding md-whiteframe-1dp" layout="column">
+        <md-input-container flex>
             <label>Label Name</label>
             <input type="text" ng-model="passed.settings.label" />
         </md-input-container>
+
         <md-switch ng-model="passed.settings.required" aria-label "required">
             Required: <span ng-bind="passed.settings.required"></span>
         </md-switch>

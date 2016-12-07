@@ -28,6 +28,8 @@ angular.module('form').directive('controlEditDropdown', function () {
             this.edit = function () {
                 this.editing = this.editing ? false : true;
             };
+
+            $scope.passed.id = new Date().valueOf();
             $scope.passed.settings = {
                 value: 0,
                 label: 'Change Label',
