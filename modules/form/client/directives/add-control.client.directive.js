@@ -11,9 +11,16 @@ angular.module('form').directive('addControl', [
 
         object.controller = ['FormService',
             function (FormService) {
-                this.controls = FormService.controls;
-                this.selected = null;
-                this.allowed = [];
+                var vm = this;
+                vm.controls = [];
+
+                vm.selected = null;
+                vm.allowed = [];
+
+                FormService.controls()
+                    .success(function (response) {
+                        vm.controls = response;
+                    });
             }
         ];
 
