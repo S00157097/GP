@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('form').directive('controlNumber', function() {
+angular.module('form').directive('controlNumber', function () {
     return {
         restrict: 'A',
         controllerAs: '__',
@@ -12,7 +12,7 @@ angular.module('form').directive('controlNumber', function() {
     };
 });
 
-angular.module('form').directive('controlEditNumber', function() {
+angular.module('form').directive('controlEditNumber', function () {
     return {
         restrict: 'E',
         controllerAs: '__',
@@ -24,7 +24,7 @@ angular.module('form').directive('controlEditNumber', function() {
             editing: '=editing'
         },
         controller: ['$scope',
-            function($scope) {
+            function ($scope) {
                 if ($scope.passed.settings === undefined || $scope.passed.settings == {}) {
                     $scope.passed.settings = {
                         label: 'Default',
@@ -35,6 +35,8 @@ angular.module('form').directive('controlEditNumber', function() {
                         value: ''
                     };
                 }
+
+                $scope.passed._id = new Date().valueOf();
             }
         ]
     };

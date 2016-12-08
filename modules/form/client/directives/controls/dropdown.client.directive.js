@@ -34,7 +34,8 @@ angular.module('form').directive('controlEditDropdown', function() {
                         value: ''
                     };
                 }
-
+                
+                $scope.passed._id = new Date().valueOf();
             }
         ]
     };

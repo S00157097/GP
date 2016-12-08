@@ -34,7 +34,7 @@ angular.module('form').directive('controlEditDate', function () {
                     };
                 }
 
-
+                $scope.passed._id = new Date().valueOf();
             }
         ]
     };
