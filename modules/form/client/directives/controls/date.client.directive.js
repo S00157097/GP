@@ -21,20 +21,21 @@ angular.module('form').directive('controlEditDate', function () {
         replace: true,
         transclude: true,
         scope: {
-            passed: '=passed'
+            passed: '=passed',
+            editing: '=editing'
         },
-        controller: function ($scope) {
-            this.editing = false;
-            this.edit = function () {
-                this.editing = this.editing ? false : true;
-            };
+        controller: ['$scope',
+            function ($scope) {
+                if ($scope.passed.settings === undefined || $scope.passed.settings == {}) {
+                    $scope.passed.settings = {
+                        label: 'Default',
+                        required: false,
+                        value: ''
+                    };
+                }
 
-            $scope.passed.id = new Date().valueOf();
-            $scope.passed.settings = {
-                value: '',
-                label: 'Change Label',
-                required: false
-            };
-        }
+
+            }
+        ]
     };
 });

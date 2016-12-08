@@ -1,13 +1,13 @@
 <div layout flex>
     <md-input-container>
         <md-datepicker
-            name="{{ passed.id }}"
+            name="{{ passed._id }}"
             md-placeholder="{{passed.settings.label}}"
             ng-required="passed.settings.required"
             ng-model="passed.settings.value"
             aria-label="Datepicker"></md-datepicker>
 
-        <div ng-messages="Form[passed.id].$error" role="alert" multiple>
+        <div ng-messages="Form[passed._id].$error" role="alert" multiple>
             <div ng-message="required" class="my-message">This field is required</div>
         </div>
     </md-input-container>

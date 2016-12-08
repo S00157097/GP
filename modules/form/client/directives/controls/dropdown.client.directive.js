@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('form').directive('controlDropdown', function () {
+angular.module('form').directive('controlDropdown', function() {
     return {
         restrict: 'A',
         controllerAs: '__',
@@ -13,7 +13,7 @@ angular.module('form').directive('controlDropdown', function () {
 });
 
 
-angular.module('form').directive('controlEditDropdown', function () {
+angular.module('form').directive('controlEditDropdown', function() {
     return {
         restrict: 'E',
         controllerAs: '__',
@@ -21,21 +21,21 @@ angular.module('form').directive('controlEditDropdown', function () {
         replace: true,
         transclude: true,
         scope: {
-            passed: '=passed'
+            passed: '=passed',
+            editing: '=editing'
         },
-        controller: function ($scope) {
-            this.editing = false;
-            this.edit = function () {
-                this.editing = this.editing ? false : true;
-            };
+        controller: ['$scope',
+            function($scope) {
+                if ($scope.passed.settings === undefined || $scope.passed.settings == {}) {
+                    $scope.passed.settings = {
+                        label: 'Default',
+                        required: false,
+                        values: [],
+                        value: ''
+                    };
+                }
 
-            $scope.passed.id = new Date().valueOf();
-            $scope.passed.settings = {
-                value: 0,
-                label: 'Change Label',
-                required: false,
-                values: []
-            };
-        }
+            }
+        ]
     };
 });

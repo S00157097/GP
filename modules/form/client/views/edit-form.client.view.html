@@ -17,8 +17,9 @@
                         <div dnd-handle class="handle">
                             <i class="material-icons">&#xE25D;</i>
                         </div>
-                        <div flex="90">
-                            <render:edit directive="{{control.type}}" control="control"></render:edit>
+                        
+                        <div flex>
+                            <render:edit directive="{{control.type}}" control="control" collection="vm.formControls"></render:edit>
                         </div>
                     </div>
                 </dnd-nodrag>

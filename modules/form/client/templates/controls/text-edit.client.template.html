@@ -1,15 +1,9 @@
 <div>
     <div layout layout-align="space-between center" flex>
         <div ng-transclude flex="90"></div>
-
-        <md-input-container>
-            <md-button ng-click="__.edit()" class="md-primary md-icon-button">
-                <i class="material-icons">edit</i>
-            </md-button>
-        </md-input-container>
     </div>
 
-    <md-content ng-show="__.editing" class="md-padding md-whiteframe-1dp" layout="column">
+    <md-content ng-show="editing" class="md-padding md-whiteframe-1dp" layout="column">
         <md-input-container flex>
             <label>Label Name</label>
             <input type="text" ng-model="passed.settings.label" />

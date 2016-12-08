@@ -2,13 +2,13 @@
     <md-input-container flex class="md-block">
         <label ng-bind="passed.settings.label"></label>
         <input
-            name="{{ passed.id }}"
+            name="{{ passed._id }}"
             type="text"
             ng-trim="true"
             ng-model="passed.settings.value"
             ng-required="passed.settings.required" />
 
-        <div ng-messages="Form[passed.id].$error" role="alert" multiple>
+        <div ng-messages="Form[passed._id].$error" role="alert" multiple>
             <div ng-message="required" class="my-message">This field is required</div>
         </div>
     </md-input-container>
