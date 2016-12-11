@@ -30,6 +30,7 @@ angular.module('form').directive('controlEditDropdown', function() {
                     $scope.passed.settings = {
                         label: 'Default',
                         required: false,
+                        multipleEntries: false,
                         values: [],
                         value: ''
                     };

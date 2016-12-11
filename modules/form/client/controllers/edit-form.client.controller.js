@@ -15,7 +15,15 @@ angular.module('form').controller('EditFormController', ['$mdDialog', 'FormServi
         vm.save = function () {
             FormService.updateForm(vm.formControls)
                 .success(function (response) {
-                    console.log(response);
+                    $mdDialog.show(
+                        $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title(response)
+                            .textContent('Successfuly saved your form')
+                            .ariaLabel('Save status')
+                            .ok('Got it!')
+                            .targetEvent(event));
                 });
         };
     }

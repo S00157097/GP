@@ -32,6 +32,7 @@ angular.module('form').directive('controlEditNumber', function () {
                         max: undefined,
                         step: 1,
                         required: false,
+                        multipleEntries: false,
                         value: ''
                     };
                 }
