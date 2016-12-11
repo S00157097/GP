@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state',
-    function (FormService, $mdDialog, StorageService, $state) {
+angular.module('storage').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state', '$rootScope',
+    function (FormService, $mdDialog, StorageService, $state, $rootScope) {
         var vm = this;
 
         vm.data = undefined;
@@ -40,7 +40,6 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
         vm.getData = function () {
             vm.promise = StorageService.getRecords($state.params.categoryId)
                 .success(function (response) {
-                    console.log(response);
                     vm.data = response;
                 });
         };
@@ -52,5 +51,9 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
             limit: 5,
             limitOptions: [5, 10, 15]
         };
+
+        $rootScope.$on('recordInserted', function () {
+            vm.getData();
+        })
     }
 ]);

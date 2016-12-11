@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('InsertRecordController', ['FormService', 'StorageService','$state',
-    function (FormService, StorageService, $state) {
+angular.module('storage').controller('InsertRecordController', ['FormService', 'StorageService','$state','$rootScope',
+    function (FormService, StorageService, $state, $rootScope) {
 
         var vm = this;
 
@@ -22,14 +22,8 @@ angular.module('storage').controller('InsertRecordController', ['FormService', '
                 .success(function (response) {
                     console.log(response);
                 });
-        };
 
-        vm.addTo = function (control) {
-            if (!control.settings.multipleValues) {
-                control.settings.multipleValues = [];
-            }
-            console.log(control.settings.multipleValues);
-            control.settings.multipleValues.push('');
+                $rootScope.$broadcast('recordInserted');
         };
     }
 ]);

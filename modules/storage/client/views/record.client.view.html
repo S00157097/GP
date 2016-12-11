@@ -20,13 +20,18 @@
 				</thead>
 
 				<tbody md-body>
+					<tr md-row ng-if="vm.data.length == 0">
+						<td colspan="{{ vm.headings.length || 1 }}" md-cell>
+							<div class="text-center well" layout-margin>No records</div>
+						</td>
+					</tr>
 					<tr
 						md-row
 						ng-repeat="recordData in vm.data | limitTo: vm.query.limit: (vm.query.page - 1) * vm.query.limit">
 						<td
 							md-cell
 							ng-repeat="heading in vm.headings">
-							{{ recordData.values[heading] ? recordData.values[heading] : '---'  }}
+							{{ (recordData.values[heading] ? recordData.values[heading] : '---')  }}
 							</td>
 					</tr>
 				</tbody>
