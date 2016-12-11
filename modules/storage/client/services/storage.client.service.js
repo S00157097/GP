@@ -60,5 +60,20 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
                 storageId: storageId
             });
         };
+
+        this.addRecord = function (record, categoryId) {
+            return $http.post('http://localhost:3000/api/insert_record', {
+                userId: Authentication.user._id,
+                categoryId: categoryId,
+                record: record
+            })
+        };
+
+        this.getRecords = function (categoryId) {
+            return $http.post('http://localhost:3000/api/get_records', {
+                userId: Authentication.user._id,
+                categoryId: categoryId
+            });
+        };
     }
 ]);

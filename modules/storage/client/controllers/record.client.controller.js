@@ -1,12 +1,13 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('RecordController', ['FormService', '$mdDialog',
-    function (FormService, $mdDialog) {
+angular.module('storage').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state',
+    function (FormService, $mdDialog, StorageService, $state) {
         var vm = this;
 
         vm.data = undefined;
         vm.status = '';
+        vm.headings = [];
 
         vm.insertRecord = function (ev) {
             $mdDialog.show({
@@ -20,20 +21,26 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
             })
                 .then(function (answer) {
                     vm.status = 'You said the information was "' + answer + '".';
+
                 }, function () {
                     vm.status = 'You cancelled the dialog.';
                 });
+
+            vm.getData();
         };
 
         // I Should be reading the records
         FormService.readFormControls()
             .success(function (response) {
-                vm.headings = response.controls || [];
+                for (var i = 0; i < response.controls.length; i++) {
+                    vm.headings.push(response.controls[i].settings.label);
+                }
             });
 
-        /*vm.getData = function () {
-            vm.promise = $http.get('https://jsonplaceholder.typicode.com/posts')
+        vm.getData = function () {
+            vm.promise = StorageService.getRecords($state.params.categoryId)
                 .success(function (response) {
+                    console.log(response);
                     vm.data = response;
                 });
         };
@@ -44,6 +51,6 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
             page: 1,
             limit: 5,
             limitOptions: [5, 10, 15]
-        };*/
+        };
     }
 ]);
