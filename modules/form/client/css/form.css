@@ -9,7 +9,7 @@
  */
  ul[dnd-list] {
     min-height: 42px;
-    padding-left: 0px;
+    padding-left: 0;
 }
 
 /**
@@ -29,6 +29,7 @@
  */
 [dnd-list] .dndPlaceholder {
     display: block;
+    background-color: #eee;
     background-color: rgba(0, 0, 0, .1);
     min-height: 42px;
 }
@@ -41,7 +42,10 @@
  * browsers we can use event.offsetY for this.
  */
 [dnd-list] md-list-item {
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    border-bottom-color: #eee;
+    border-bottom-color: rgba(0, 0, 0, .1);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 /**

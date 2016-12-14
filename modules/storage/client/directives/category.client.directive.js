@@ -6,7 +6,7 @@ angular.module('storage').directive('category', [
         object.restrict = 'E';
         object.replace = true;
         object.controllerAs = '__';
-        object.templateUrl = 'modules/storage/client/templates/category.client.template.html'
+        object.templateUrl = 'modules/storage/client/templates/category.client.template.html';
         object.scope = {
             category: '=category',
             remove: '&remove',
@@ -27,8 +27,8 @@ angular.module('storage').directive('category', [
                     this.editing = this.editing ? false : true;
                     this.editText = this.editing ? 'save' : 'edit';
 
-                    if ($scope.category.name != '') {
-                        if (!this.editing && newName != $scope.category.name) {
+                    if ($scope.category.name !== '') {
+                        if (!this.editing && newName !== $scope.category.name) {
                             newName = $scope.category.name;
 
                             StorageService.updateCategoryName($scope.category, $scope.index)

@@ -66,7 +66,7 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
                 userId: Authentication.user._id,
                 categoryId: categoryId,
                 record: record
-            })
+            });
         };
 
         this.getRecords = function (categoryId) {

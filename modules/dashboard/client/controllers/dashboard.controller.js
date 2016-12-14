@@ -6,22 +6,9 @@ angular.module('dashboard').controller('DashboardController', [
     var vm = this;
 
     vm.latest = [
-      {name: 'Storage', updated: '01/11/2016', count: 4},
-      {name: 'Category', updated: '01/11/2016', count: 14}
+      { name: 'Storage', updated: '01/11/2016', count: 4 },
+      { name: 'Category', updated: '01/11/2016', count: 14 }
     ];
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     vm.labels = ["January", "February", "March", "April", "May", "June", "July"];
     vm.series = ['Series A', 'Series B'];

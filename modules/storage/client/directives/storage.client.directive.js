@@ -6,7 +6,7 @@ angular.module('storage').directive('storage', [
         object.restrict = 'E';
         object.replace = true;
         object.controllerAs = '__';
-        object.templateUrl = 'modules/storage/client/templates/storage.client.template.html'
+        object.templateUrl = 'modules/storage/client/templates/storage.client.template.html';
         object.scope = {
             storage: '=storage',
             remove: '&remove'
@@ -27,8 +27,8 @@ angular.module('storage').directive('storage', [
                     this.editing = this.editing ? false : true;
                     this.editText = this.editing ? 'save' : 'edit';
 
-                    if ($scope.storage.name != '') {
-                        if (!this.editing && newName != $scope.storage.name) {
+                    if ($scope.storage.name !== '') {
+                        if (!this.editing && newName !== $scope.storage.name) {
                             newName = $scope.storage.name;
 
                             StorageService.updateStorageName($scope.storage)

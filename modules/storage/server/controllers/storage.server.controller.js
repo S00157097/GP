@@ -24,7 +24,7 @@ exports.updateName = function(request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            if (data != null) {
+            if (data !== null) {
                 response.end();
             }
         }
@@ -41,7 +41,7 @@ exports.list = function(request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            if (data != null) {
+            if (data !== null) {
                 response.send(data);
             }
         }

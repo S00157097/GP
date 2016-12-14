@@ -25,7 +25,7 @@ angular.module('form').directive('controlEditNumber', function () {
         },
         controller: ['$scope',
             function ($scope) {
-                if ($scope.passed.settings === undefined || $scope.passed.settings == {}) {
+                if ($scope.passed.settings === undefined || $scope.passed.settings === {}) {
                     $scope.passed.settings = {
                         label: 'Default',
                         min: undefined,

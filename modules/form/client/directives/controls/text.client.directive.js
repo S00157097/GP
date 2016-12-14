@@ -26,7 +26,7 @@ angular.module('form').directive('controlEditText', function() {
         },
         controller: ['$scope',
             function($scope) {
-                if ($scope.passed.settings === undefined || $scope.passed.settings == {}) {
+                if ($scope.passed.settings === undefined || $scope.passed.settings === {}) {
                     $scope.passed.settings = {
                         label: 'Default',
                         required: false,

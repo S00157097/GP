@@ -36,7 +36,7 @@ angular.module('storage').directive('addStorage', [
                         .cancel('Cancel');
 
                     $mdDialog.show(confirm).then(function (result) {
-                        $scope.add({data: result});
+                        $scope.add({ data: result });
                     });
                 };
             }

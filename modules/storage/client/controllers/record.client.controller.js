@@ -54,6 +54,6 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
 
         $rootScope.$on('recordInserted', function () {
             vm.getData();
-        })
+        });
     }
 ]);

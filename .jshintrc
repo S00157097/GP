@@ -1,4 +1,6 @@
 {
+  "laxcomma": true,
+  "indent": false,
   "node": true, // Enable globals available when code is running inside of the NodeJS runtime environment.
   "mocha": true, // Enable globals available when code is running inside of the Mocha tests.
   "jasmine": true, // Enable globals available when code is running inside of the Jasmine tests.
@@ -11,7 +13,7 @@
   "noarg": true, // Prohibit use of `arguments.caller` and `arguments.callee`.
   "undef": true, // Require all non-global variables be declared before they are used.
   "unused": false, // Warn unused variables.
-  "strict": true, // Require `use strict` pragma in every file.
+  "strict": false, // Require `use strict` pragma in every file.
   "globals": { // Globals variables.
     "angular": true,
     "io": true,
