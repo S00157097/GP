@@ -9,7 +9,7 @@ angular.module('form').controller('EditFormController', ['$mdDialog', 'FormServi
 
         FormService.readFormControls()
             .success(function (response) {
-                vm.formControls = response.controls;
+                vm.formControls = response.controls || [];
             });
 
         vm.save = function () {

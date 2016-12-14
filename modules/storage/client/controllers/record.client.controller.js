@@ -32,6 +32,7 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
         // I Should be reading the records
         FormService.readFormControls()
             .success(function (response) {
+                console.log(response);
                 for (var i = 0; i < response.controls.length; i++) {
                     vm.headings.push(response.controls[i].settings.label);
                 }
