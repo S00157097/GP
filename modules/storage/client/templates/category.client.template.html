@@ -1,6 +1,7 @@
 <div>
     <md-card>
         <div layout layout-align="space-between top">
+            <!-- Category's Name' -->
             <md-card-title>
                 <md-card-title-text>
                     <span ng-show="!__.editing" class="md-headline" ng-bind="category.name"></span>
@@ -11,6 +12,7 @@
                 </md-card-title-text>
             </md-card-title>
 
+            <!-- Category buttons / actions -->
             <md-card-actions>
                 <md-menu>
                     <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="__.openMenu($mdOpenMenu, $event)">
@@ -27,6 +29,8 @@
                 </md-menu>
             </md-card-actions>
         </div>
+
+        <!-- Category's creation date -->
         <md-card-content class="darker" layout layout-align="space-between center">
             <span class="md-subhead" ng-bind="category.updated | date: 'MM/dd/yyyy'"></span>
             <md-button aria-label="Edit" class="md-primary" ng-click="__.edit()" ng-class="{'md-raised':__.editing}" ng-bind="__.editText"></md-button>

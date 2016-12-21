@@ -17,16 +17,20 @@ angular.module('storage').directive('category', [
             function ($mdDialog, $scope, StorageService) {
                 var newName = $scope.category.name;
 
+                // This will be toggled between edit and save
+                // Button name and classes change
                 this.editText = 'edit';
                 this.editing = false;
                 this.openMenu = function ($mdOpenMenu, ev) {
                     $mdOpenMenu(ev);
                 };
 
+                // Button's name changes
                 this.edit = function () {
                     this.editing = this.editing ? false : true;
                     this.editText = this.editing ? 'save' : 'edit';
 
+                    // Categories name get's sent to the DB
                     if ($scope.category.name !== '') {
                         if (!this.editing && newName !== $scope.category.name) {
                             newName = $scope.category.name;

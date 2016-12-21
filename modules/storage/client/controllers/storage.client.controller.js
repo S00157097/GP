@@ -10,6 +10,7 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
 
         readStorages();
 
+        // Remove Storage
         vm.remove = function(storage) {
             StorageService.removeStorage(storage)
                 .success(function(response) {
@@ -18,6 +19,7 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
                 });
         };
 
+        // Add Storage
         vm.add = function(storageName) {
             if (storageName.length > 0) {
                 StorageService.addStorage(storageName)

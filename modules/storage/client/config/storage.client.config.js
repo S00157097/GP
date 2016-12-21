@@ -3,7 +3,7 @@
 // Configuring the Chat module
 angular.module('storage').run(['Menus',
   function (Menus) {
-    // Set top bar menu items
+    // Set top bar menu items for Storage
     Menus.addMenuItem('topbar', {
       title: 'Storages',
       state: 'storage',

@@ -17,12 +17,14 @@ angular.module('storage').directive('addStorage', [
         };
 
         object.link = function (scope, element, attribute, controller) {
+            // When storage needs to be added - triggers onClick            
             element.find('#showPrompt_Click').on('click', function (e) {
                 controller.showPrompt(e);
             });
         };
 
         object.controller = ['$scope', '$mdDialog', 'StorageService',
+            // When storage needs to be added - opens modal
             function ($scope, $mdDialog, StorageService) {
                 this.showPrompt = function (ev) {
                     var confirm = $mdDialog.prompt()

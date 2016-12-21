@@ -9,6 +9,7 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
         vm.status = '';
         vm.headings = [];
 
+        // Record insertion modal opens up
         vm.insertRecord = function (ev) {
             $mdDialog.show({
                 controller: 'InsertRecordController',
@@ -29,15 +30,15 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
             vm.getData();
         };
 
-        // I Should be reading the records
+        // I am reading table headings
         FormService.readFormControls()
             .success(function (response) {
-                console.log(response);
                 for (var i = 0; i < response.controls.length; i++) {
                     vm.headings.push(response.controls[i].settings.label);
                 }
             });
 
+        // Getting category records
         vm.getData = function () {
             vm.promise = StorageService.getRecords($state.params.categoryId)
                 .success(function (response) {
@@ -45,14 +46,17 @@ angular.module('storage').controller('RecordController', ['FormService', '$mdDia
                 });
         };
 
+        // Getting records
         vm.getData();
 
+        // Pagination settings
         vm.query = {
             page: 1,
             limit: 5,
             limitOptions: [5, 10, 15]
         };
 
+        // If event triggered, refresh records
         $rootScope.$on('recordInserted', function () {
             vm.getData();
         });

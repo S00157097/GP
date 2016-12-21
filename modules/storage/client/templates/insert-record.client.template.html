@@ -2,12 +2,14 @@
     <md-dialog-content layout-padding>
 
         <ng-form>
+            <!-- Form template -->
             <md-list>
                 <md-list-item ng-repeat="control in vm.formControls track by control._id">
                     <render:control directive="{{control.type}}" control="control" collection="vm.formControls"></render:control>
                 </md-list-item>
             </md-list>
 
+            <!-- Insert record button -->
             <md-input-container class="md-block" layout layout-align="center center">
                 <md-button class="md-raised md-primary" ng-click="vm.insert()">
                     Insert Record

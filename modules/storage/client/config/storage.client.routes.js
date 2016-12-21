@@ -3,7 +3,10 @@
 // Configure the 'chat' module routes
 angular.module('storage').config(['$stateProvider',
   function ($stateProvider) {
+
+    // Routes to route around storages
     $stateProvider
+      // Storages
       .state('storage', {
         url: '/storages',
         templateUrl: 'modules/storage/client/views/storage.client.view.html',
@@ -13,6 +16,7 @@ angular.module('storage').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
+      // Categories
       .state('category', {
         url: '/categories/:storageId',
         templateUrl: 'modules/storage/client/views/category.client.view.html',
@@ -22,6 +26,7 @@ angular.module('storage').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
+      // Records
       .state('record', {
         url: '/records/:categoryId',
         templateUrl: 'modules/storage/client/views/record-tabs.client.view.html',
@@ -31,6 +36,7 @@ angular.module('storage').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
+      // Records Table View
       .state('record.view', {
         url: '/view',
         templateUrl: 'modules/storage/client/views/record.client.view.html',
@@ -40,6 +46,7 @@ angular.module('storage').config(['$stateProvider',
           roles: ['user', 'admin']
         }
       })
+      // Records Form Edit View
       .state('record.edit-form', {
         url: '/edit-form',
         templateUrl: 'modules/form/client/views/edit-form.client.view.html',
