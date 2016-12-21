@@ -11,7 +11,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       });
     });
 
-    // Home state routing
+    //-- Home state routing --//
     $stateProvider
     .state('home', {
       url: '/',

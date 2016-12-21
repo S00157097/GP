@@ -1,5 +1,6 @@
 'use strict';
 
+// Defines Template
 angular.module('form').directive('controlDropdown', function() {
     return {
         restrict: 'A',
@@ -12,7 +13,7 @@ angular.module('form').directive('controlDropdown', function() {
     };
 });
 
-
+// Second template for the Settings part of the control
 angular.module('form').directive('controlEditDropdown', function() {
     return {
         restrict: 'E',
@@ -26,6 +27,7 @@ angular.module('form').directive('controlEditDropdown', function() {
         },
         controller: ['$scope',
             function($scope) {
+                // Define default settings
                 if ($scope.passed.settings === undefined || $scope.passed.settings === {}) {
                     $scope.passed.settings = {
                         label: 'Default',
@@ -36,6 +38,7 @@ angular.module('form').directive('controlEditDropdown', function() {
                     };
                 }
                 
+                // Generate an ID
                 $scope.passed._id = new Date().valueOf();
             }
         ]

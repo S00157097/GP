@@ -3,6 +3,8 @@
 // Configuring the Chat module
 angular.module('dashboard').run(['Menus',
   function (Menus) {
+
+    // Dashboard menu item
     Menus.addMenuItem('topbar', {
       title: 'Dashboard',
       state: 'dashboard',

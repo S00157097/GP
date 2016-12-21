@@ -5,13 +5,18 @@ angular.module('form').controller('EditFormController', ['$mdDialog', 'FormServi
     function ($mdDialog, FormService) {
         var vm = this;
 
+        // Will hold controls which will be customizable
         vm.formControls = [];
 
+        // Read user defined controls from DB
         FormService.readFormControls()
             .success(function (response) {
                 vm.formControls = response.controls || [];
             });
 
+        // When the form is saved
+            // 1. Update Form by rewriting it - form is being passed to Server Side
+            // 2. Display success message in a modal - Most / All of the code is for this part
         vm.save = function () {
             FormService.updateForm(vm.formControls)
                 .success(function (response) {

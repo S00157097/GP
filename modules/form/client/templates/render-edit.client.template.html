@@ -1,9 +1,20 @@
 <div layout layout-align="end">
+    <!-- CTRLEDIT: Rendered Control Options with settings -->
+
+    <!-- Edit button -->
     <md-button ng-click="__.edit()" class="md-primary md-icon-button">
         <i class="material-icons">edit</i>
     </md-button>
     
+    <!-- Remove button -->
     <md-button ng-click="__.remove()" class="md-primary md-icon-button">
         <i class="material-icons">close</i>
     </md-button>
+    <!-- end CTRLEDIT -->
 </div>
+
+<!--
+    There is no template for the standard render directive
+        - There's no need because the control templates cover the need
+        - This is only used for settings
+-->

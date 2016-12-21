@@ -3,6 +3,8 @@
 // Configure the 'chat' module routes
 angular.module('docs').config(['$stateProvider',
   function ($stateProvider) {
+
+    // Documentation routing
     $stateProvider
       .state('docs', {
         url: '/documentation',

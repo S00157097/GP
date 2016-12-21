@@ -5,6 +5,6 @@ angular.module('docs').controller('DocsController', [
   function () {
     var vm = this;
 
-   
+    // Nothing here ...
   }
 ]);

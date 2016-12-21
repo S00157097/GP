@@ -6,6 +6,7 @@ var path = require('path')
     , Form = mongoose.model('form')
     , connection = mongoose.connection;
 
+// Read User's Form
 exports.list = function (request, response) {
     Form.findOne({
         userId: request.body.userId,
@@ -21,6 +22,7 @@ exports.list = function (request, response) {
     });
 };
 
+// Update User's form'
 exports.update = function (request, response) {
     Form.update({
         userId: request.body.userId,

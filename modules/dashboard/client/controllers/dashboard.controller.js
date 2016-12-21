@@ -5,11 +5,13 @@ angular.module('dashboard').controller('DashboardController', [
   function () {
     var vm = this;
 
+    // 2 mdCards at the top
     vm.latest = [
       { name: 'Storage', updated: '01/11/2016', count: 4 },
       { name: 'Category', updated: '01/11/2016', count: 14 }
     ];
 
+    // These settings render the chart
     vm.labels = ["January", "February", "March", "April", "May", "June", "July"];
     vm.series = ['Series A', 'Series B'];
     vm.data = [

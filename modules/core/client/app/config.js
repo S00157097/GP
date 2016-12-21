@@ -4,6 +4,8 @@
 var ApplicationConfiguration = (function () {
   // Init module configuration options
   var applicationModuleName = 'mean';
+
+  //-- Insert Your Dependencies Here --//
   var applicationModuleVendorDependencies = [
     'ngResource',
     'ngAnimate',

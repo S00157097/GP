@@ -3,6 +3,8 @@
 // Configure the 'chat' module routes
 angular.module('dashboard').config(['$stateProvider',
   function ($stateProvider) {
+
+    // Dashboard routes
     $stateProvider
       .state('dashboard', {
         url: '/dashboard',

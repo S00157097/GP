@@ -1,4 +1,5 @@
 <div class="darker">
+    <!-- DNDLIST: Dragable items are being generated here -->
     <md-list
         dnd-list="__.controls"
         dnd-allowed-types="__.allowed">
@@ -11,12 +12,16 @@
 
             <dnd-nodrag flex>
                 <div layout>
+                    <!-- Handle to be dragged by -->
                     <div flex dnd-handle class="handle">
                         <i class="material-icons">&#xE25D;</i>
                     </div>
+
+                    <!-- Control's Name -->
                     <div flex class="text-right" ng-bind="control.text"></div>
                 </div>
             </dnd-nodrag>
         </md-list-item>
     </md-list>
+    <!-- end DNDLIST -->
 </div>

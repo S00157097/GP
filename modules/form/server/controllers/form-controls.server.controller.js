@@ -6,6 +6,7 @@ var path = require('path')
     , FormControls = mongoose.model('formcontrol')
     , connection = mongoose.connection;
 
+// Read available customizable controls
 exports.list = function (request, response) {
   FormControls.find({}).exec(function (err, data) {
         if (err) {

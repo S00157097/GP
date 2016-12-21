@@ -1,8 +1,9 @@
 <md-card layout>
     <md-card-content flex="70">
-
+        <!-- Save The Form -->
         <md-button class="md-raised md-primary" ng-click="vm.save()">Save</md-button>
 
+        <!-- DRAGEDCONTROLS: You drag your controls over here -->
         <md-list
             dnd-list="vm.formControls"
             class="darker drop-list">
@@ -14,10 +15,12 @@
 
                 <dnd-nodrag flex>
                     <div layout layout-align="space-between">
+                        <!-- Handle for dragging actual controls, not the ones in the aside menu on the right -->
                         <div dnd-handle class="handle">
                             <i class="material-icons">&#xE25D;</i>
                         </div>
                         
+                        <!-- Rendering controls with settings -->
                         <div flex>
                             <render:edit directive="{{control.type}}" control="control" collection="vm.formControls"></render:edit>
                         </div>
@@ -28,8 +31,13 @@
             <md-list-item class="dndPlaceholder">
             </md-list-item>
         </md-list>
+        <!-- end DRAGEDCONTROLS -->
+
     </md-card-content>
 
+    <!-- DNDCUSTOMCONTROLS: Custom controls which are draggable are here -->
     <add-control flex></add-control>
+    <!-- end DNDCUSTOMCONTROLS -->
+
     <div id="popupContainer"></div>
 </md-card>
