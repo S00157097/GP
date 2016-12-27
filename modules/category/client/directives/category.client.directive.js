@@ -27,7 +27,7 @@ angular.module('category').directive('category', [
 
                 // Button's name changes
                 this.edit = function () {
-                    this.editing = this.editing ? false : true;
+                    this.editing = !this.editing;
                     this.editText = this.editing ? 'save' : 'edit';
 
                     // Categories name get's sent to the DB
@@ -35,7 +35,7 @@ angular.module('category').directive('category', [
                         if (!this.editing && newName !== $scope.category.name) {
                             newName = $scope.category.name;
 
-                            CategoryService.updateCategoryName($scope.category, $scope.index)
+                            CategoryService.updateName($scope.category, $scope.index)
                                 .success((response) => {
                                     console.log(response);
                                 });

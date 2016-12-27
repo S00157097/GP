@@ -10,16 +10,16 @@ angular.module('form').controller('EditFormController', ['$mdDialog', 'FormServi
 
         // Read user defined controls from DB
         FormService.readFormControls()
-            .success(function (response) {
+            .success((response) => {
                 vm.formControls = response.controls || [];
             });
 
         // When the form is saved
             // 1. Update Form by rewriting it - form is being passed to Server Side
             // 2. Display success message in a modal - Most / All of the code is for this part
-        vm.save = function () {
+        vm.save = () => {
             FormService.updateForm(vm.formControls)
-                .success(function (response) {
+                .success((response) => {
                     $mdDialog.show(
                         $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#popupContainer')))

@@ -8,6 +8,7 @@ var path = require('path')
 
 exports.updateName = function (request, response) {
     var toUpdate = {};
+    
     toUpdate['categories.' + request.body.index + '.name'] = request.body.category.name;
 
     Storages.update(
@@ -77,7 +78,7 @@ exports.add = function (request, response) {
     });
 };
 
-exports.remove = function (request, response) {
+exports.delete = function (request, response) {
     Storages.update(
         {
             $and: [

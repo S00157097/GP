@@ -4,8 +4,8 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
     function ($http, Authentication, $state) {
 
         // Updates Category Name
-        this.updateCategoryName = function (category, index) {
-            return $http.post('http://localhost:3000/api/update_category_name', {
+        this.updateName = function (category, index) {
+            return $http.post('http://localhost:3000/api/category/update_name', {
                 userId: Authentication.user._id,
                 category: category,
                 storageId: $state.params.storageId,
@@ -14,16 +14,16 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
         };
 
         // Get Categories for the user
-        this.getCategories = function (storageId) {
-            return $http.post('http://localhost:3000/api/read_categories', {
+        this.list = function (storageId) {
+            return $http.post('http://localhost:3000/api/category/list', {
                 userId: Authentication.user._id,
                 storageId: storageId
             });
         };
 
         // Add Category
-        this.addCategory = function (categoryName, storageId) {
-            return $http.post('http://localhost:3000/api/insert_category', {
+        this.add = function (categoryName, storageId) {
+            return $http.post('http://localhost:3000/api/category/add', {
                 userId: Authentication.user._id,
                 categoryName: categoryName,
                 storageId: storageId
@@ -31,8 +31,8 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
         };
 
         // Remove Category
-        this.removeCategory = function (category, storageId) {
-            return $http.post('http://localhost:3000/api/remove_category', {
+        this.delete = function (category, storageId) {
+            return $http.post('http://localhost:3000/api/category/delete', {
                 userId: Authentication.user._id,
                 category: category,
                 storageId: storageId
