@@ -23,6 +23,7 @@
 		<div class="col-md-6" ng-repeat="category in vm.categories | filter:vm.search track by category._id">
 			<category
 				data-category="category"
+				data-remove="vm.remove(category)"
 				data-index="$index"></category>
 		</div>
 	</div>

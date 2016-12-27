@@ -15,20 +15,20 @@ angular.module('category').controller('CategoryController', ['CategoryService', 
 
 
         // Add Category
-        vm.add = function (categoryName) {
+        vm.add = (categoryName) => {
             if (categoryName.length > 0) {
                 CategoryService.add(categoryName, $state.params.storageId)
                     .success((response) => {
                         vm.categories.push(response);
-                        console.log('Category Added:', JSON.stringify(response, null, 2));
+                        console.log('Category Added:', JSON.stringify(vm.categories, null, 2));
                     });
             }
         };
 
 
         // Remove Category
-        vm.remove = function (category) {
-            CategoryService.delete(category, $state.params.storageId)
+        vm.remove = (category) => {
+            CategoryService.delete(category)
                 .success((response) => {
                     let index = vm.categories.indexOf(category);
                     vm.categories.splice(index, 1);

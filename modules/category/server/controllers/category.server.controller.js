@@ -3,101 +3,96 @@
 var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
-    , Storages = mongoose.model('Storage')
+    , Category = mongoose.model('Category')
     , connection = mongoose.connection;
 
+/**
+ * Upcate Category's Name
+ */
 exports.updateName = function (request, response) {
-    var toUpdate = {};
-    
-    toUpdate['categories.' + request.body.index + '.name'] = request.body.category.name;
-
-    Storages.update(
+    Category.update(
         {
             $and: [
                 { userId: request.body.userId },
-                { _id: request.body.storageId }
+                { storageId: request.body.storageId }
             ]
         }, {
-            $set: toUpdate
-        }).exec(function (err, data) {
-            if (err) {
-                console.log(err);
-                return response.status(400).send({
-                    message: errorHandler.getErrorMessage(err)
-                });
-            } else {
-                if (data !== null) {
-                    response.end();
-                }
-            }
-        });
+            name: request.body.categoryName,
+            updated: new Date()
+        }
+    ).exec((err, data) => {
+        if (err) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        }
+
+        response.end();
+    });
 };
 
+/**
+ * Get Categories
+ */
 exports.list = function (request, response) {
-    Storages.findOne({
+    Category.find({
         $and: [
-            { _id: request.body.storageId },
-            { userId: request.body.userId }
+            { userId: request.body.userId },
+            { storageId: request.body.storageId }
         ]
-    }).exec(function (err, data) {
+    }).exec((err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            if (data !== null) {
-                response.send(data.categories);
-            }
+        }
+
+        if (data !== null) {
+            response.send(data);
         }
     });
 };
 
+
+/**
+ * Add Category
+ */
 exports.add = function (request, response) {
-    var newCategory = {
+    let category = new Category({
         _id: mongoose.Types.ObjectId(),
+        userId: request.body.userId,
+        storageId: request.body.storageId,
         name: request.body.categoryName,
-        updated: new Date(),
-    };
+        updated: new Date()
+    });
 
-    Storages.update(
-        {
-            $and: [
-                { _id: request.body.storageId },
-                { userId: request.body.userId }
-            ]
-        },
-        { $push: { categories: newCategory } }
-    ).exec(function (err, data) {
+    category.save((err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            response.send(newCategory);
+            response.send(category);
         }
     });
 };
 
+/**
+ * Delete Category
+ */
 exports.delete = function (request, response) {
-    Storages.update(
-        {
-            $and: [
-                { _id: request.body.storage._id },
-                { userId: request.body.userId }
-            ]
-        },
-        {
-            $pull: {
-                categories: { _id: mongoose.Types.ObjectId(request.body.category._id) }
-            }
-        }
-    ).exec(function (err, data) {
+    Category.remove({
+        $and: [
+            { userId: request.body.userId },
+            { _id: request.body.categoryId }
+        ]
+    }, (err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            response.end();
         }
+
+        response.end();
     });
 };

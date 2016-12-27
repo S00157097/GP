@@ -7,7 +7,7 @@ angular.module('storage').directive('addStorage', [
             replace: true,
             controllerAs: '__',
             templateUrl: 'modules/storage/client/templates/add-storage.client.template.html',
-            scope = {
+            scope: {
                 buttonName: '@',
                 collection: '=collection',
                 item: '@item',
@@ -22,7 +22,7 @@ angular.module('storage').directive('addStorage', [
                 });
             },
             
-            controller =['$scope', '$mdDialog', 'StorageService',
+            controller: ['$scope', '$mdDialog', 'StorageService',
                 function ($scope, $mdDialog, StorageService) {
                     let vm = this;
                     // When storage needs to be added - opens modal

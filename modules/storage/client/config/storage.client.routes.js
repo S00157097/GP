@@ -6,7 +6,6 @@ angular.module('storage').config(['$stateProvider',
 
     // Routes to route around storages
     $stateProvider
-      // Storages
       .state('storage', {
         url: '/storages',
         templateUrl: 'modules/storage/client/views/storage.client.view.html',

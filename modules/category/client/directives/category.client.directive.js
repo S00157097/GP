@@ -13,26 +13,26 @@ angular.module('category').directive('category', [
                 index: '=index'
             },
             controller: ['$mdDialog', '$scope', 'CategoryService',
-                ($mdDialog, $scope, CategoryService) => {
-                    this.openMenu = ($mdOpenMenu, ev) => {
-                        $mdOpenMenu(ev);
-                    };
+                function ($mdDialog, $scope, CategoryService) {
+                    let vm = this;
+                    let btnNames = ['edit', 'save'];
+                    let newName = $scope.category.name;
+                    vm.editText = btnNames[0];
+                    vm.editing = false;
 
                     // This will be toggled between edit and save
                     // Button name and classes change
-                    let newName = $scope.category.name;
-                    let btnText = ['edit', 'save'];
-                    this.editText = btnText[0];
-                    this.editing = false;
+                    vm.openMenu = ($mdOpenMenu, ev) => {
+                        $mdOpenMenu(ev);
+                    };
 
                     // Button's name changes
-                    this.edit = () => {
-                        this.editing = !this.editing;
-                        this.editText = this.editing ? btnText[1] : btnText[0];
+                    vm.edit = () => {
+                        changeEditingState();
 
                         // Categories name get's sent to the DB
                         if ($scope.category.name !== '') {
-                            if (!this.editing && newName !== $scope.category.name) {
+                            if (!vm.editing && newName !== $scope.category.name) {
                                 newName = $scope.category.name;
 
                                 CategoryService.updateName($scope.category, $scope.index)
@@ -44,6 +44,11 @@ angular.module('category').directive('category', [
                             $scope.category.name = newName;
                         }
                     };
+
+                    let changeEditingState = () => {
+                        vm.editing = !vm.editing;
+                        vm.editText = vm.editing ? btnNames[1] : btnNames[0];
+                    }
                 }
             ]
         };

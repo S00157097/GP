@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
 var StorageSchema = new Schema({
   _id: Schema.Types.ObjectId,
   userId: String,
+  storageId: String,
   name: String,
   updated: {
     type: Date,
@@ -16,4 +17,4 @@ var StorageSchema = new Schema({
   }
 });
 
-mongoose.model('category', StorageSchema);
+mongoose.model('Category', StorageSchema);

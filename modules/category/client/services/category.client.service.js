@@ -4,12 +4,11 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
     function ($http, Authentication, $state) {
 
         // Updates Category Name
-        this.updateName = function (category, index) {
+        this.updateName = (category, index) => {
             return $http.post('http://localhost:3000/api/category/update_name', {
                 userId: Authentication.user._id,
-                category: category,
-                storageId: $state.params.storageId,
-                index: index
+                category: category.name,
+                storageId: $state.params.storageId
             });
         };
 
@@ -31,11 +30,10 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
         };
 
         // Remove Category
-        this.delete = function (category, storageId) {
+        this.delete = function (category) {
             return $http.post('http://localhost:3000/api/category/delete', {
                 userId: Authentication.user._id,
-                category: category,
-                storageId: storageId
+                categoryId: category._id
             });
         };
     }
