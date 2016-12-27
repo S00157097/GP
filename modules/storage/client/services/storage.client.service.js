@@ -22,16 +22,6 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
             });
         };
 
-        // Updates Category Name
-        this.updateCategoryName = function (category, index) {
-            return $http.post('http://localhost:3000/api/update_category_name', {
-                userId: Authentication.user._id,
-                category: category,
-                storageId: $state.params.storageId,
-                index: index
-            });
-        };
-
         // Add Storage
         this.addStorage = function (storageName) {
             return $http.post('http://localhost:3000/api/insert_storage', {
@@ -45,32 +35,6 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
             return $http.post('http://localhost:3000/api/remove_storage', {
                 userId: Authentication.user._id,
                 storage: storage
-            });
-        };
-
-        // Get Categories for the user
-        this.getCategories = function (storageId) {
-            return $http.post('http://localhost:3000/api/read_categories', {
-                userId: Authentication.user._id,
-                storageId: storageId
-            });
-        };
-
-        // Add Category
-        this.addCategory = function (categoryName, storageId) {
-            return $http.post('http://localhost:3000/api/insert_category', {
-                userId: Authentication.user._id,
-                categoryName: categoryName,
-                storageId: storageId
-            });
-        };
-
-        // Remove Category
-        this.removeCategory = function (category, storageId) {
-            return $http.post('http://localhost:3000/api/remove_category', {
-                userId: Authentication.user._id,
-                category: category,
-                storageId: storageId
             });
         };
 

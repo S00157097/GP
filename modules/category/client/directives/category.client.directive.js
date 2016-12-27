@@ -1,20 +1,20 @@
 'use strict';
 
-angular.module('storage').directive('category', [
+angular.module('category').directive('category', [
     function () {
         var object = {};
         object.restrict = 'E';
         object.replace = true;
         object.controllerAs = '__';
-        object.templateUrl = 'modules/storage/client/templates/category.client.template.html';
+        object.templateUrl = 'modules/category/client/templates/category.client.template.html';
         object.scope = {
             category: '=category',
             remove: '&remove',
             index: '=index'
         };
 
-        object.controller = ['$mdDialog','$scope', 'StorageService',
-            function ($mdDialog, $scope, StorageService) {
+        object.controller = ['$mdDialog','$scope', 'CategoryService',
+            function ($mdDialog, $scope, CategoryService) {
                 var newName = $scope.category.name;
 
                 // This will be toggled between edit and save
@@ -35,7 +35,7 @@ angular.module('storage').directive('category', [
                         if (!this.editing && newName !== $scope.category.name) {
                             newName = $scope.category.name;
 
-                            StorageService.updateCategoryName($scope.category, $scope.index)
+                            CategoryService.updateCategoryName($scope.category, $scope.index)
                                 .success(function (response) {
                                     console.log(response);
                                 });

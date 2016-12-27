@@ -1,7 +1,7 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state', '$rootScope',
+angular.module('record').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state', '$rootScope',
     function (FormService, $mdDialog, StorageService, $state, $rootScope) {
         var vm = this;
 

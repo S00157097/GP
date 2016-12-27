@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('CategoryController', ['StorageService', '$state',
-    function (StorageService, $state) {
+angular.module('category').controller('CategoryController', ['CategoryService', '$state',
+    function (CategoryService, $state) {
 
         var vm = this;
         vm.categories = [];
@@ -13,7 +13,7 @@ angular.module('storage').controller('CategoryController', ['StorageService', '$
         // Add Category
         vm.add = function (categoryName) {
             if (categoryName.length > 0) {
-                StorageService.addCategory(categoryName, $state.params.storageId).success(function (response) {
+                CategoryService.addCategory(categoryName, $state.params.storageId).success(function (response) {
                     vm.categories.push(response);
                 });
             }
@@ -21,7 +21,7 @@ angular.module('storage').controller('CategoryController', ['StorageService', '$
 
         // Remove Category
         vm.remove = function (category) {
-            StorageService.removeCategory(category, $state.params.storageId)
+            CategoryService.removeCategory(category, $state.params.storageId)
                 .success(function (response) {
                     var index = vm.categories.indexOf(category);
                     vm.categories.splice(index, 1);
@@ -30,7 +30,7 @@ angular.module('storage').controller('CategoryController', ['StorageService', '$
 
         // Read Categories For the user
         function readCategories() {
-            StorageService.getCategories($state.params.storageId)
+            CategoryService.getCategories($state.params.storageId)
                 .success(function (response) {
                     vm.categories = response;
                 });
