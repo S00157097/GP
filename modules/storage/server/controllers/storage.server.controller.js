@@ -3,11 +3,33 @@
 var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
-    , Storages = mongoose.model('Storage')
+    , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
 
-exports.updateName = function(request, response) {
-    Storages.update(
+/**
+ * Read Storages
+ */
+exports.list = function (request, response) {
+    Storage.find(
+        { userId: request.body.userId }
+    ).exec((err, data) => {
+        if (err) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        }
+
+        if (data !== null) {
+            response.send(data);
+        }
+    });
+};
+
+/**
+ * Update Storage's Name
+ */
+exports.updateName = function (request, response) {
+    Storage.update(
         {
             $and: [
                 { _id: request.body.storage._id },
@@ -18,72 +40,56 @@ exports.updateName = function(request, response) {
             name: request.body.storage.name,
             updated: new Date()
         }
-    ).exec(function(err, data) {
+    ).exec((err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            if (data !== null) {
-                response.end();
-            }
         }
+
+        response.end();
     });
 };
 
-
-exports.list = function(request, response) {
-    Storages.find(
-        { userId: request.body.userId }
-    ).exec(function(err, data) {
-        if (err) {
-            return response.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            if (data !== null) {
-                response.send(data);
-            }
-        }
-    });
-};
-
-
-exports.add = function(request, response) {
-    var newStorage = {
+/**
+ * Add Storage
+ */
+exports.add = (request, response) => {
+    let storage = new Storage({
         _id: mongoose.Types.ObjectId(),
         userId: request.body.userId,
         name: request.body.storageName,
-        updated: new Date(),
-        categories: []
-    };
+        updated: new Date()
+    });
 
-    connection.collection('storages').insert(newStorage, function(err, data) {
+    storage.save((err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            response.send(newStorage);
         }
+
+        response.send(storage);
     });
 };
 
-exports.remove = function(request, response) {
-    Storages.remove({
+/**
+ * Delete Storage
+ */
+exports.delete = function (request, response) {
+    Storage.remove({
         $and: [
             { _id: request.body.storage._id },
             { userId: request.body.userId }
         ]
-    }, function(err, data) {
+    }, (err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            console.log(data);
-            response.end();
         }
+
+        response.end();
     });
 };
 

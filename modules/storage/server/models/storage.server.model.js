@@ -13,8 +13,7 @@ var StorageSchema = new Schema({
   updated: {
     type: Date,
     default: Date.now
-  },
-  categories: Array
+  }
 });
 
 mongoose.model('Storage', StorageSchema);

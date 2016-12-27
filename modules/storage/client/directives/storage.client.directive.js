@@ -2,51 +2,55 @@
 
 angular.module('storage').directive('storage', [
     function () {
-        var object = {};
-        object.restrict = 'E';
-        object.replace = true;
-        object.controllerAs = '__';
-        object.templateUrl = 'modules/storage/client/templates/storage.client.template.html';
-        object.scope = {
-            storage: '=storage',
-            remove: '&remove'
-        };
+        return {
+            restrict: 'E',
+            replace: true,
+            controllerAs: '__',
+            templateUrl: 'modules/storage/client/templates/storage.client.template.html',
+            scope: {
+                storage: '=storage',
+                remove: '&remove'
+            },
+            controller: ['$mdDialog', '$scope', 'StorageService',
+                function ($mdDialog, $scope, StorageService) {
+                    let vm = this;
+                    let btnNames = ['edit', 'save'];
+                    let newName = $scope.storage.name;
+                    vm.editText = '';
+                    vm.editText = btnNames[0];
+                    vm.editing = false;
 
-        object.controller = ['$mdDialog', '$scope', 'StorageService',
-            function ($mdDialog, $scope, StorageService) {
-                var newName = $scope.storage.name;
+                    // This will be toggled between edit and save
+                    // Button name and classes change
+                    vm.openMenu = ($mdOpenMenu, ev) => {
+                        $mdOpenMenu(ev);
+                    };
 
-                // This will be toggled between edit and save
-                // Button name and classes change
-                this.openMenu = function ($mdOpenMenu, ev) {
-                    $mdOpenMenu(ev);
-                };
+                    // Button's name changes
+                    vm.edit = () => {
+                        changeEditingState();
 
-                this.editText = 'edit';
-                this.editing = false;
+                        // Categories name get's sent to the DB
+                        if ($scope.storage.name !== '') {
+                            if (!vm.editing && newName !== $scope.storage.name) {
+                                newName = $scope.storage.name;
 
-                // Button's name changes
-                this.edit = function () {
-                    this.editing = this.editing ? false : true;
-                    this.editText = this.editing ? 'save' : 'edit';
-
-                    // Categories name get's sent to the DB
-                    if ($scope.storage.name !== '') {
-                        if (!this.editing && newName !== $scope.storage.name) {
-                            newName = $scope.storage.name;
-
-                            StorageService.updateStorageName($scope.storage)
-                                .success(function (response) {
-                                    console.log(response);
-                                });
+                                StorageService.updateName($scope.storage)
+                                    .success((response) => {
+                                        console.log('Storage\'s Name Updated');
+                                    });
+                            }
+                        } else {
+                            $scope.storage.name = newName;
                         }
-                    } else {
-                        $scope.storage.name = newName;
-                    }
-                };
-            }
-        ];
+                    };
 
-        return object;
+                    let changeEditingState = () => {
+                        vm.editing = !vm.editing;
+                        vm.editText = vm.editing ? btnNames[1] : btnNames[0];
+                    }
+                }
+            ]
+        };
     }
 ]);
