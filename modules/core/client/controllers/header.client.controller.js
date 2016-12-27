@@ -21,5 +21,4 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
         $mdSidenav(componentId).toggle();
       };
     }
-  }
-]);
+  }]);

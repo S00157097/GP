@@ -11,6 +11,4 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       { heading: 'Open Source API', icon: 'cloud_download', text: 'Some random rambling content' },
       { heading: 'Flexible Storage', icon: 'storage', text: 'Some random rambling content' }
     ];
-
-    
   }]);
