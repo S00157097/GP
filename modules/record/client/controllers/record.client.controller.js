@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('record').controller('RecordController', ['FormService', '$mdDialog', 'StorageService', '$state', '$rootScope',
-    function (FormService, $mdDialog, StorageService, $state, $rootScope) {
+angular.module('record').controller('RecordController', ['FormService', '$mdDialog', 'RecordService', '$state', '$rootScope',
+    function (FormService, $mdDialog, RecordService, $state, $rootScope) {
         var vm = this;
 
         vm.data = undefined;
@@ -40,7 +40,7 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
 
         // Getting category records
         vm.getData = function () {
-            vm.promise = StorageService.getRecords($state.params.categoryId)
+            vm.promise = RecordService.getRecords($state.params.categoryId)
                 .success(function (response) {
                     vm.data = response;
                 });

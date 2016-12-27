@@ -1,15 +1,16 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('record').controller('InsertRecordController', ['FormService', 'StorageService','$state','$rootScope',
-    function (FormService, StorageService, $state, $rootScope) {
+angular.module('record').controller('InsertRecordController', ['FormService', 'RecordService', '$state', '$rootScope',
+    function (FormService, RecordService, $state, $rootScope) {
 
         var vm = this;
 
         // Reads user defined controls
         vm.formControls = [];
+
         FormService.readFormControls()
-            .success(function (response) {
+            .success((response) => {
                 vm.formControls = response.controls;
             });
 
@@ -22,14 +23,14 @@ angular.module('record').controller('InsertRecordController', ['FormService', 'S
                 record[vm.formControls[i].settings.label] = vm.formControls[i].settings.value;
 
             // Insert the record
-            StorageService.addRecord(record, $state.params.categoryId)
-                .success(function (response) {
+            RecordService.addRecord(record, $state.params.categoryId)
+                .success((response) => {
                     console.log(response);
                 });
 
-                // Fire an event that the record has been inserted
-                // Used for refreshing the table
-                $rootScope.$broadcast('recordInserted');
+            // Fire an event that the record has been inserted
+            // Used for refreshing the table
+            $rootScope.$broadcast('recordInserted');
         };
     }
 ]);

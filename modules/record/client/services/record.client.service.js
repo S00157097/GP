@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('category').service('CategoryService', ['$http', 'Authentication','$state',
+angular.module('category').service('RecordService', ['$http', 'Authentication','$state',
     function ($http, Authentication, $state) {
 
         // Add Record

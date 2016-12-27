@@ -3,10 +3,6 @@
 angular.module('storage').service('StorageService', ['$http', 'Authentication','$state',
     function ($http, Authentication, $state) {
 
-        /**
-         * I need to clean this up separating [ Storages , Categories , Records ]
-         */
-
         // Gets Storages for the user
         this.getStorages = function () {
             return $http.post('http://localhost:3000/api/read_storages', {

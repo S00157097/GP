@@ -4,9 +4,8 @@
 angular.module('category').config(['$stateProvider',
   function ($stateProvider) {
 
-    // Routes to route around storages
+    // Category Routes
     $stateProvider
-      // Categories
       .state('category', {
         url: '/categories/:storageId',
         templateUrl: 'modules/category/client/views/category.client.view.html',

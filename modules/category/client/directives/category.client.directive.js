@@ -36,7 +36,7 @@ angular.module('category').directive('category', [
                             newName = $scope.category.name;
 
                             CategoryService.updateCategoryName($scope.category, $scope.index)
-                                .success(function (response) {
+                                .success((response) => {
                                     console.log(response);
                                 });
                         }
