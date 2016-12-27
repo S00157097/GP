@@ -11,8 +11,7 @@ var StorageSchema = new Schema({
   userId: String,
   categoryId: String,
   updated: Date,
-  created: Date,
   values: Object
 });
 
-mongoose.model('records', StorageSchema);
+mongoose.model('record', StorageSchema);

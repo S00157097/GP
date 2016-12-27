@@ -2,7 +2,7 @@
 
 // Create the 'chat' controller
 angular.module('record').controller('InsertRecordController', ['FormService', 'RecordService', '$state', '$rootScope',
-    function (FormService, RecordService, $state, $rootScope) {
+    function(FormService, RecordService, $state, $rootScope) {
 
         var vm = this;
 
@@ -15,15 +15,15 @@ angular.module('record').controller('InsertRecordController', ['FormService', 'R
             });
 
         // Inserts the record
-        vm.insert = function () {
+        vm.insert = function() {
             var record = {};
 
             // Creating a JSON object from the forms to be inserted into the DB
             for (var i = 0; i < vm.formControls.length; i++)
-                record[vm.formControls[i].settings.label] = vm.formControls[i].settings.value;
+                 record[vm.formControls[i].settings.label] = vm.formControls[i].settings.value;
 
             // Insert the record
-            RecordService.addRecord(record, $state.params.categoryId)
+            RecordService.add(record, $state.params.categoryId)
                 .success((response) => {
                     console.log(response);
                 });

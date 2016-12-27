@@ -14,7 +14,7 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
             $mdDialog.show({
                 controller: 'InsertRecordController',
                 controllerAs: 'vm',
-                templateUrl: 'modules/storage/client/templates/insert-record.client.template.html',
+                templateUrl: 'modules/record/client/templates/insert-record.client.template.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: true,
@@ -32,17 +32,18 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
 
         // I am reading table headings
         FormService.readFormControls()
-            .success(function (response) {
-                for (var i = 0; i < response.controls.length; i++) {
+            .success((response) => {
+                for (let i = 0; i < response.controls.length; i++) {
                     vm.headings.push(response.controls[i].settings.label);
                 }
             });
 
         // Getting category records
-        vm.getData = function () {
-            vm.promise = RecordService.getRecords($state.params.categoryId)
-                .success(function (response) {
+        vm.getData = () => {
+            vm.promise = RecordService.list($state.params.categoryId)
+                .success((response) => {
                     vm.data = response;
+                    console.log("Data Records:", JSON.stringify(vm.data, null, 2));
                 });
         };
 

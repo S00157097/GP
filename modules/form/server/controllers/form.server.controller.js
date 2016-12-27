@@ -7,18 +7,18 @@ var path = require('path')
     , connection = mongoose.connection;
 
 // Read User's Form
-exports.list = function (request, response) {
+exports.list = (request, response) => {
     Form.findOne({
         userId: request.body.userId,
         categoryId: request.body.categoryId
-    }).exec(function (err, data) {
+    }).exec((err, data) => {
         if (err) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
-        } else {
-            response.send(data);
         }
+        
+        response.send(data);
     });
 };
 

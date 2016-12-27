@@ -4,8 +4,8 @@ angular.module('category').service('RecordService', ['$http', 'Authentication','
     function ($http, Authentication, $state) {
 
         // Add Record
-        this.addRecord = function (record, categoryId) {
-            return $http.post('http://localhost:3000/api/insert_record', {
+        this.add = (record, categoryId) => {
+            return $http.post('http://localhost:3000/api/record/add', {
                 userId: Authentication.user._id,
                 categoryId: categoryId,
                 record: record
@@ -13,8 +13,8 @@ angular.module('category').service('RecordService', ['$http', 'Authentication','
         };
 
         // Get Records
-        this.getRecords = function (categoryId) {
-            return $http.post('http://localhost:3000/api/get_records', {
+        this.list = (categoryId) => {
+            return $http.post('http://localhost:3000/api/record/list', {
                 userId: Authentication.user._id,
                 categoryId: categoryId
             });
