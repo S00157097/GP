@@ -14,7 +14,6 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
                 console.log('Storage List:', JSON.stringify(vm.storages, null, 2));
             });
 
-
         // Remove Storage
         vm.remove = (storage) => {
             StorageService.delete(storage)
