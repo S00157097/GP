@@ -6,15 +6,17 @@
     var scope,
       HeaderController,
       $state,
-      Authentication;
+      Authentication,
+      Menus;
 
     // Load the main application module
     beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
-    beforeEach(inject(function ($controller, $rootScope, _$state_, _Authentication_) {
+    beforeEach(inject(function ($controller, $rootScope, _$state_, _Authentication_, _Menus_) {
       scope = $rootScope.$new();
       $state = _$state_;
       Authentication = _Authentication_;
+      Menus = _Menus_;
 
       HeaderController = $controller('HeaderController', {
         $scope: scope
@@ -22,43 +24,15 @@
     }));
 
     it('should expose the authentication service', function () {
-      expect(scope.authentication).toBe(Authentication);
+      expect(HeaderController.authentication).toBe(Authentication);
     });
 
     it('should expose the $state service', function () {
-      expect(scope.$state).toBe($state);
+      expect(HeaderController.$state).toBe($state);
     });
 
-    it('should default menu to collapsed', function () {
-      expect(scope.isCollapsed).toBeFalsy();
-    });
-
-    describe('when toggleCollapsibleMenu', function () {
-      var defaultCollapse;
-      beforeEach(function () {
-        defaultCollapse = scope.isCollapsed;
-        scope.toggleCollapsibleMenu();
-      });
-
-      it('should toggle isCollapsed to non default value', function () {
-        expect(scope.isCollapsed).not.toBe(defaultCollapse);
-      });
-
-      it('should then toggle isCollapsed back to default value', function () {
-        scope.toggleCollapsibleMenu();
-        expect(scope.isCollapsed).toBe(defaultCollapse);
-      });
-    });
-
-    describe('when view state changes', function () {
-      beforeEach(function () {
-        scope.isCollapsed = true;
-        scope.$broadcast('$stateChangeSuccess');
-      });
-
-      it('should set isCollapsed to false', function () {
-        expect(scope.isCollapsed).toBeFalsy();
-      });
+    it('should expose the Menu service', function () {
+      expect(HeaderController.menu).toBe(Menus.getMenu('topbar'));
     });
   });
 })();

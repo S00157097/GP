@@ -18,7 +18,11 @@
     }));
 
     it('should expose the authentication service', function () {
-      expect(scope.authentication).toBeTruthy();
+      expect(HomeController.authentication).toBeTruthy();
+    });
+
+    it('should populate 3 services in an array', function () {
+      expect(HomeController.services.length).toBe(3);
     });
   });
 })();

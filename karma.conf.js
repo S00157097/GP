@@ -19,15 +19,21 @@ module.exports = function (karmaConfig) {
     // Frameworks to use
     frameworks: ['jasmine'],
 
+    babelPreprocessor: {
+        options: {
+            "presets": ["es2015"]
+        }
+    },
+
     preprocessors: {
       'modules/*/client/views/**/*.html': ['ng-html2js'],
       'modules/core/client/app/config.js': ['coverage'],
       'modules/core/client/app/init.js': ['coverage'],
-      'modules/*/client/*.js': ['coverage'],
-      'modules/*/client/config/*.js': ['coverage'],
-      'modules/*/client/controllers/*.js': ['coverage'],
-      'modules/*/client/directives/*.js': ['coverage'],
-      'modules/*/client/services/*.js': ['coverage']
+      'modules/*/client/*.js': ['coverage', 'babel'],
+      'modules/*/client/config/*.js': ['coverage', 'babel'],
+      'modules/*/client/controllers/*.js': ['coverage', 'babel'],
+      'modules/*/client/directives/*.js': ['coverage', 'babel'],
+      'modules/*/client/services/*.js': ['coverage', 'babel']
     },
 
     ngHtml2JsPreprocessor: {
