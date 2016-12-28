@@ -5,6 +5,7 @@ angular.module('category').controller('CategoryController', ['CategoryService', 
 
         let vm = this;
         vm.categories = [];
+        vm. pie = 'pie';
 
         // Read Categories For the user
         CategoryService.list($state.params.storageId)

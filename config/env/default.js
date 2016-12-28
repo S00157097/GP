@@ -10,8 +10,8 @@ module.exports = {
   db: {
     uri: process.env.MONGOHQ_URL || 'mongodb://newdatabaseuser:some_random_password_123@ds057386.mlab.com:57386/storagedb' || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
     options: {
-      user: '',
-      pass: ''
+      user: 'newdatabaseuser',
+      pass: 'some_random_password_123'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
