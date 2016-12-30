@@ -13,6 +13,7 @@ exports.updateName = function (request, response) {
     Category.update(
         {
             $and: [
+                { _id: request.body.category._id },
                 { userId: request.body.userId },
                 { storageId: request.body.storageId }
             ]

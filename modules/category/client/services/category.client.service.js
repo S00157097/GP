@@ -4,28 +4,28 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
     function ($http, Authentication, $state) {
 
         // Updates Category Name
-        this.updateName = (category, index) => {
+        this.updateName = (category) => {
             return $http.post('http://localhost:3000/api/category/update_name', {
                 userId: Authentication.user._id,
-                category: category.name,
+                category: category,
                 storageId: $state.params.storageId
             });
         };
 
         // Get Categories for the user
-        this.list = function (storageId) {
+        this.list = function () {
             return $http.post('http://localhost:3000/api/category/list', {
                 userId: Authentication.user._id,
-                storageId: storageId
+                storageId: $state.params.storageId
             });
         };
 
         // Add Category
-        this.add = function (categoryName, storageId) {
+        this.add = function (categoryName) {
             return $http.post('http://localhost:3000/api/category/add', {
                 userId: Authentication.user._id,
                 categoryName: categoryName,
-                storageId: storageId
+                storageId: $state.params.storageId
             });
         };
 

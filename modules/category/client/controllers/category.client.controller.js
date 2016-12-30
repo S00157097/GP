@@ -5,10 +5,9 @@ angular.module('category').controller('CategoryController', ['CategoryService', 
 
         let vm = this;
         vm.categories = [];
-        vm. pie = 'pie';
 
         // Read Categories For the user
-        CategoryService.list($state.params.storageId)
+        CategoryService.list()
             .success((response) => {
                 vm.categories = response;
                 console.log('Category List:', JSON.stringify(vm.categories, null, 2));
@@ -18,7 +17,7 @@ angular.module('category').controller('CategoryController', ['CategoryService', 
         // Add Category
         vm.add = (categoryName) => {
             if (categoryName.length > 0) {
-                CategoryService.add(categoryName, $state.params.storageId)
+                CategoryService.add(categoryName)
                     .success((response) => {
                         vm.categories.push(response);
                         console.log('Category Added:', JSON.stringify(vm.categories, null, 2));

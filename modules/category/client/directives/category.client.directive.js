@@ -35,7 +35,7 @@ angular.module('category').directive('category', [
                             if (!vm.editing && newName !== $scope.category.name) {
                                 newName = $scope.category.name;
 
-                                CategoryService.updateName($scope.category, $scope.index)
+                                CategoryService.updateName($scope.category)
                                     .success((response) => {
                                         console.log(response);
                                     });
