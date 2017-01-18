@@ -1,30 +1,3 @@
-import Markdown
-import Html
-import Html.Attributes exposing (class)
-
-type Msg
-  = Default
-
-bootstrap : String -> Html.Html Msg
-bootstrap theme =
-  let
-    attrs =
-      [ Html.Attributes.rel "stylesheet"
-      , Html.Attributes.type_ "text/css"
-      , Html.Attributes.href ("https://bootswatch.com/" ++ theme ++ "/bootstrap.min.css")
-      ]
-  in
-    Html.node "link" attrs []
-
-
-main =
-  Html.div [ class "container" ]
-  [ bootstrap "lumen"
-  , Markdown.toHtml [] markdown
-  ]
-
-markdown = """
-  
 # DBDone Project Documentation
 ---
 ## Introduction
@@ -122,5 +95,3 @@ The data structure consist of 4 main componets. Storage -> Category -> Record an
     - e.g. price : Number, size : Dropdown list, color, Dropdown list etc.
 
 <br />
-
-"""
