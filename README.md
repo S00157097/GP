@@ -1,3 +1,4 @@
+
 # DBDone Project Documentation
 ---
 ## Introduction
@@ -35,8 +36,10 @@
     * Bower & NPM
     * Git
   * ES6 (little bit)
-  * GitHub
-  
+  * GitHub + Git Version Control
+ 
+<br />
+
 ---
 ## Program
 <br />
@@ -44,8 +47,9 @@
 **Feautures**
 
   * Build form templates
-  * Structure data with 3 branch pattern
+  * Structure data with a 3 branch pattern
   * Outsourced API of the data
+  * Maintain and change the data
 
 <br />
 
@@ -95,3 +99,33 @@ The data structure consist of 4 main componets. Storage -> Category -> Record an
     - e.g. price : Number, size : Dropdown list, color, Dropdown list etc.
 
 <br />
+
+---
+## Stakeholders
+<br />
+
+> Low Interest - Low Power
+> F
+
+> Low Interest - High Power
+> D
+
+> High Interest - Low Power
+> E A
+
+> High Interest - High Power
+> B C
+
+
+
+<br />
+
+Stakeholder | Note 
+----|----
+**A** Stock Keeper | Useful to record products in the shop. - Knowing expenditure every time when new stock needs to be refilled.
+**B** Website Owner | Will be able to manage his own item for his website by interfering with out program. The website owner will become independant from the developer.
+**C** Web Developer | There is a need for a free sourced API for the company or personal reasons. The ease of creating one and maintaining it for those types of projects is what this program provides that user.
+**D** Data Analyst | Data analysts need to be satisfied because they know how data should be structured. Learning from those people and getting their feedback on how to accomplish certain tasks.
+**E** Developers | We could bring this project further or begin something new. We can get new resources and new knowledge from this project.
+**F** Users Who Need Order And Lists Of Data | People who have hobbies, and they want to keep records of recipes and other things of interest. - We need to be concenred with ordinary people in order to make the program's interface simplistic.
+
