@@ -18,7 +18,7 @@ exports.updateName = function (request, response) {
                 { storageId: request.body.storageId }
             ]
         }, {
-            name: request.body.categoryName,
+            name: request.body.category.name,
             updated: new Date()
         }
     ).exec((err, data) => {

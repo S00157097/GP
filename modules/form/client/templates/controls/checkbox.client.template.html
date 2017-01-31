@@ -1,0 +1,16 @@
+<div layout flex>
+  <md-input-container flex class="md-block">
+    <p ng-bind="passed.settings.label" class="lead"></p>
+
+    <md-checkbox
+      ng-repeat="opt in passed.settings.values"
+      ng-click="__.toggle(opt, passed.settings.selected)"
+      aria-label="Checkbox">
+      {{ opt }}
+    </md-checkbox>
+
+    <div ng-messages="Form[passed._id].$error" role="alert" multiple>
+      <div ng-message="required" class="my-message">Required</div>
+    </div>
+  </md-input-container>
+</div>
