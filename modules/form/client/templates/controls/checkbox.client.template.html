@@ -4,13 +4,18 @@
 
     <md-checkbox
       ng-repeat="opt in passed.settings.values"
-      ng-click="__.toggle(opt, passed.settings.selected)"
+      ng-model="something"
       aria-label="Checkbox">
       {{ opt }}
     </md-checkbox>
-
+    
     <div ng-messages="Form[passed._id].$error" role="alert" multiple>
       <div ng-message="required" class="my-message">Required</div>
     </div>
   </md-input-container>
+
 </div>
+<!--
+      ng-checked="exists(opt, passed.settings.selected)"
+  
+-->

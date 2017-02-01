@@ -32,16 +32,15 @@ angular.module('form').directive('controlEditCheckbox', function () {
                     $scope.passed.settings = {
                         label: 'Default',
                         required: false,
-                        values: ['Cake', 'Pizza', 'Snow'],
+                        values: ['Default'],
                         selected: []
                     };
                 }
 
-                // Generate an ID
-                $scope.passed._id = new Date().valueOf();
+                
 
-                this.toggle = function (item, selected) {
-                    console.log('Pizza');
+                $scope.exists = function (item, list) {
+                    return list.indexOf(item) > -1;
                 };
             }
         ]
