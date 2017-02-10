@@ -20,11 +20,20 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-6" ng-repeat="category in vm.categories | filter:vm.search track by category._id">
+		<div
+			ng-if="vm.categories.length > 0"
+			class="col-lg-4 col-md-6 col-sm-6 col-xs-12"
+			ng-repeat="category in vm.categories | filter:vm.search track by category._id">
 			<category
 				data-category="category"
 				data-remove="vm.remove(category)"
 				data-index="$index"></category>
+		</div>
+
+		<div
+			ng-if="vm.categories.length == 0"
+			class="well well-lg text-center col-md-6 col-md-offset-3">
+			Please Add A Category
 		</div>
 	</div>
 

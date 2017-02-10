@@ -12,24 +12,15 @@
             </md-card-title>
 
             <md-card-actions>
-                <md-menu>
-                    <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="__.openMenu($mdOpenMenu, $event)">
-                        <i class="material-icons">more_vert</i>
-                    </md-button>
-                    <md-menu-content width="4">
-                        <md-menu-item>
-                            <md-button ui-sref="category({storageId: storage._id})">Open</md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button class="md-warn" ng-click="remove(storage)">Delete</md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
+                <md-button class="md-warn md-icon-button" ng-click="remove(storage)"><i class="material-icons">clear</i></md-button>
             </md-card-actions>
         </div>
         <md-card-content class="darker" layout layout-align="space-between center">
             <span class="md-subhead" ng-bind="storage.updated | date: 'MM/dd/yyyy'"></span>
-            <md-button aria-label="Edit" class="md-primary" ng-click="__.edit()" ng-class="{'md-raised':__.editing}" ng-bind="__.editText"></md-button>
+            <div>
+                <md-button aria-label="Edit" class="md-primary" ng-click="__.edit()" ng-class="{'md-raised':__.editing}" ng-bind="__.editText"></md-button>
+                <md-button aria-label="Open" class="md-primary md-raised" ui-sref="category({storageId: storage._id})">Open</md-button>
+            </div>
         </md-card-content>
     </md-card>
 </div>
