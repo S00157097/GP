@@ -1,15 +1,27 @@
 'use strict';
 
-angular.module('category').controller('CategoryController', ['CategoryService', '$state',
-    function (CategoryService, $state) {
+angular.module('category').controller('CategoryController', ['CategoryService', '$state', 'filterFilter','$scope',
+    function (CategoryService, $state, filterFilter, $scope) {
 
         let vm = this;
         vm.categories = [];
+        vm.maxSize = 9;
+        vm.currentPage = 1;
+        vm.filtered = [];
+
+        $scope.$watch('search', (newVal, oldVal) => {
+            vm.filtered = filterFilter(vm.categories, newVal);
+            vm.totalItems = vm.filtered.length;
+            vm.noOfPages = Math.ceil(vm.totalItems / vm.maxSize);
+            vm.currentPage = 1;
+        }, true);
 
         // Read Categories For the user
         CategoryService.list()
             .success((response) => {
                 vm.categories = response;
+                vm.totalItems = vm.categories.length;
+                vm.noOfPages = Math.ceil(vm.totalItems / vm.maxSize);
                 console.log('Category List:', JSON.stringify(vm.categories, null, 2));
             });
 

@@ -6,7 +6,7 @@
 				<md-input-container flex class="md-icon-float md-block">
 					<label>Search</label>
 					<md-icon class="material-icons">search</md-icon>
-					<input type="text" ng-model="vm.search" />
+					<input type="text" ng-model="search" />
 					<div
 						add-storage
 						data-button-name="Add Category"
@@ -23,7 +23,12 @@
 		<div
 			ng-if="vm.categories.length > 0"
 			class="col-lg-4 col-md-6 col-sm-6 col-xs-12"
-			ng-repeat="category in vm.categories | filter:vm.search track by category._id">
+			ng-repeat="category in vm.filtered = vm.categories
+				| filter: search
+				| startFrom: (vm.currentPage - 1) * vm.maxSize
+				| limitTo: vm.maxSize
+				track by category._id
+				">
 			<category
 				data-category="category"
 				data-remove="vm.remove(category)"
@@ -34,6 +39,17 @@
 			ng-if="vm.categories.length == 0"
 			class="well well-lg text-center col-md-6 col-md-offset-3">
 			Please Add A Category
+		</div>
+	</div>
+
+		<div class="row">
+		<div class="col-md-12">
+				<pagination
+					ng-model="vm.currentPage"
+					total-items="vm.totalItems"
+					max-size="vm.noOfPages"
+					items-per-page="vm.maxSize">
+				</pagination>
 		</div>
 	</div>
 

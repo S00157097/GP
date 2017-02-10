@@ -13,3 +13,14 @@ md-input-container.no-margin {
 md-table-pagination .label {
     color: gray;
 }
+
+.pagination>li.active>a {
+  background: #00796b;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+.pagination>li.active>a:hover {
+  background: #00695c;
+  color: #fff;
+}
