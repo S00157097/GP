@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module('storage').filter('startFrom', [
-    function () {
+angular.module('storage').filter('startFrom', ['PaginationService',
+    function (PaginationService) {
       return function (data, start) {
-        return data.slice(start);
+        var sliced = data.slice(start);
+        PaginationService.paginationItems = sliced.length;
+        return sliced;
       };
     }
 ]);

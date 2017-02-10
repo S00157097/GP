@@ -5,8 +5,7 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
     function (StorageService, $scope) {
         let vm = this;
         vm.storages = [];
-        vm.maxSize = 9;
-        vm.totalItems = vm.storages.length;
+        vm.maxSize = 3;
         vm.currentPage = 1;
 
         $scope.$watch(vm.storages);
@@ -14,6 +13,7 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
         StorageService.list()
             .success((response) => {
                 vm.storages = response;
+                vm.totalItems = vm.storages.length;
                 console.log('Storage List:', JSON.stringify(vm.storages, null, 2));
             });
 
