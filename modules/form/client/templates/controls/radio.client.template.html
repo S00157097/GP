@@ -1,0 +1,15 @@
+<div layout flex>
+  <md-input-container flex class="md-block">
+    <p ng-bind="passed.settings.label" class="lead"></p>
+    <md-radio-group ng-model="passed.settings.value">
+      <md-radio-button ng-required="passed.settings.required" aria-label="Radio Button" ng-repeat="opt in passed.settings.values"
+        ng-value="opt">
+        {{ opt }}
+      </md-radio-button>
+    </md-radio-group>
+
+    <div ng-messages="Form[passed._id].$error" role="alert" multiple>
+      <div ng-message="required" class="my-message">Required</div>
+    </div>
+  </md-input-container>
+</div>
