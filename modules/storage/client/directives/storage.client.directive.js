@@ -14,7 +14,7 @@ angular.module('storage').directive('storage', [
             controller: ['$mdDialog', '$scope', 'StorageService',
                 function ($mdDialog, $scope, StorageService) {
                     let vm = this;
-                    let btnNames = ['edit', 'save'];
+                    let btnNames = ['rename', 'save'];
                     let newName = $scope.storage.name;
                     vm.editText = '';
                     vm.editText = btnNames[0];

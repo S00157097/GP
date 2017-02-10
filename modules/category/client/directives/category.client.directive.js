@@ -15,7 +15,7 @@ angular.module('category').directive('category', [
             controller: ['$mdDialog', '$scope', 'CategoryService',
                 function ($mdDialog, $scope, CategoryService) {
                     let vm = this;
-                    let btnNames = ['edit', 'save'];
+                    let btnNames = ['rename', 'save'];
                     let newName = $scope.category.name;
                     vm.editText = btnNames[0];
                     vm.editing = false;
