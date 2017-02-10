@@ -13,12 +13,12 @@ angular.module('form').service('FormService', ['$http', 'Authentication', '$stat
 
         // Reads Available Controls: Number, Text, Date etc.
         vm.controls = function () {
-            return $http.get('http://localhost:3000/api/form/get_controls');
+            return $http.get('/backend/form/get_controls');
         };
 
         // Read User's Form for a specific category
         vm.readFormControls = function () {
-            return $http.post('http://localhost:3000/api/form/get_form', {
+            return $http.post('/backend/form/get_form', {
                 userId: Authentication.user._id,
                 categoryId: $state.params.categoryId
             });
@@ -26,7 +26,7 @@ angular.module('form').service('FormService', ['$http', 'Authentication', '$stat
 
         // Update User's Form
         vm.updateForm = function (controls) {
-            return $http.post('http://localhost:3000/api/form/update_form', {
+            return $http.post('/backend/form/update_form', {
                 userId: Authentication.user._id,
                 categoryId: $state.params.categoryId,
                 controls: controls

@@ -5,14 +5,14 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
 
         // Gets Storages for the user
         this.list = function () {
-            return $http.post('http://localhost:3000/api/storage/list', {
+            return $http.post('/backend/storage/list', {
                 userId: Authentication.user._id
             });
         };
 
         // Updates Storages name
         this.updateName = function (storage) {
-            return $http.post('http://localhost:3000/api/storage/update_name', {
+            return $http.post('/backend/storage/update_name', {
                 userId: Authentication.user._id,
                 storage: storage
             });
@@ -20,7 +20,7 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
 
         // Add Storage
         this.add = function (storageName) {
-            return $http.post('http://localhost:3000/api/storage/add', {
+            return $http.post('/backend/storage/add', {
                 userId: Authentication.user._id,
                 storageName: storageName
             });
@@ -28,7 +28,7 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
 
         // Remove Storage
         this.delete = function (storage) {
-            return $http.post('http://localhost:3000/api/storage/delete', {
+            return $http.post('/backend/storage/delete', {
                 userId: Authentication.user._id,
                 storage: storage
             });
