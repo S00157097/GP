@@ -25,7 +25,7 @@
 		<div
 			ng-if="vm.storages.length > 0"
 			class="col-lg-4 col-md-6 col-sm-6 col-xs-12"
-			ng-repeat="storage in vm.storages
+			ng-repeat="storage in vm.filtered = vm.storages
 				| filter: search
 				| startFrom: (vm.currentPage - 1) * vm.maxSize
 				| limitTo: vm.maxSize
@@ -46,9 +46,9 @@
 	<div class="row">
 		<div class="col-md-12">
 				<pagination
-					total-items="vm.totalItems"
 					ng-model="vm.currentPage"
-					direction-links="true"
+					total-items="vm.totalItems"
+					max-size="vm.noOfPages"
 					items-per-page="vm.maxSize">
 				</pagination>
 		</div>

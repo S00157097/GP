@@ -1,19 +1,29 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('storage').controller('StorageController', ['StorageService', '$scope',
-    function (StorageService, $scope) {
+angular.module('storage').controller('StorageController', ['StorageService', '$scope','filterFilter',
+    function (StorageService, $scope, filterFilter) {
         let vm = this;
         vm.storages = [];
-        vm.maxSize = 3;
+        vm.maxSize = 9;
         vm.currentPage = 1;
+        vm.filtered = [];
 
         $scope.$watch(vm.storages);
+
+        $scope.$watch('search', (newVal, oldVal) => {
+            vm.filtered = filterFilter(vm.storages, newVal);
+            vm.totalItems = vm.filtered.length;
+            vm.noOfPages = Math.ceil(vm.totalItems / vm.maxSize);
+            vm.currentPage = 1;
+        }, true);
+
 
         StorageService.list()
             .success((response) => {
                 vm.storages = response;
                 vm.totalItems = vm.storages.length;
+                vm.noOfPages = Math.ceil(vm.totalItems / vm.maxSize);
                 console.log('Storage List:', JSON.stringify(vm.storages, null, 2));
             });
 

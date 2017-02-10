@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('storage').filter('startFrom', ['PaginationService',
-    function (PaginationService) {
-      return function (data, start) {
-        var sliced = data.slice(start);
-        PaginationService.paginationItems = sliced.length;
-        return sliced;
+angular.module('storage').filter('startFrom', [
+    function () {
+      return function (input, start) {
+        if (input) {
+          start = +start;
+          return input.slice(start);
+        }
       };
     }
 ]);
