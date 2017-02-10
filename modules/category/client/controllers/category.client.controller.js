@@ -5,6 +5,9 @@ angular.module('category').controller('CategoryController', ['CategoryService', 
 
         let vm = this;
         vm.categories = [];
+        vm.maxSize = 9;
+        vm.totalItems = vm.categories.length;
+        vm.currentPage = 1;
 
         // Read Categories For the user
         CategoryService.list()

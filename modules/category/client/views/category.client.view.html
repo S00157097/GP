@@ -23,7 +23,12 @@
 		<div
 			ng-if="vm.categories.length > 0"
 			class="col-lg-4 col-md-6 col-sm-6 col-xs-12"
-			ng-repeat="category in vm.categories | filter:vm.search track by category._id">
+			ng-repeat="category in vm.categories
+				| filter: vm.search
+				| startFrom: (vm.currentPage - 1) * vm.maxSize
+				| limitTo: vm.maxSize
+				track by category._id
+				">
 			<category
 				data-category="category"
 				data-remove="vm.remove(category)"
@@ -34,6 +39,17 @@
 			ng-if="vm.categories.length == 0"
 			class="well well-lg text-center col-md-6 col-md-offset-3">
 			Please Add A Category
+		</div>
+	</div>
+
+		<div class="row">
+		<div class="col-md-12">
+				<pagination
+					total-items="vm.categories.length"
+					ng-model="vm.currentPage"
+					direction-links="true"
+					items-per-page="vm.maxSize">
+				</pagination>
 		</div>
 	</div>
 

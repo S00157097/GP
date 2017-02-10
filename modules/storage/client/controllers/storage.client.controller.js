@@ -5,13 +5,9 @@ angular.module('storage').controller('StorageController', ['StorageService', '$s
     function (StorageService, $scope) {
         let vm = this;
         vm.storages = [];
-
+        vm.maxSize = 9;
+        vm.totalItems = vm.storages.length;
         vm.currentPage = 1;
-        vm.pages = Math.ceil(vm.storages / 9);
-        vm.pageChanged = () => {
-            console.log('Page changed');
-        }
-
 
         $scope.$watch(vm.storages);
 
