@@ -1,6 +1,12 @@
 <md-dialog aria-label="Insert record" style="width: 500px">
     <md-dialog-content layout-padding>
 
+        <div layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-click="vm.closeDialog()">
+                <i class="material-icons">clear</i>
+            </md-button>
+        </div>
+
         <ng-form>
             <!-- Form template -->
             <md-list>
