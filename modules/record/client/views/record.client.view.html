@@ -28,7 +28,7 @@
 						</tr>
 						<tr md-row ng-repeat="recordData in vm.data | limitTo: vm.query.limit: (vm.query.page - 1) * vm.query.limit">
 							<td md-cell ng-repeat="heading in vm.headings">
-								{{ (recordData.values[heading] ? recordData.values[heading] : '---') }}
+								{{ (recordData.values[heading] ? vm.isDate(recordData.values[heading]) : '---') }}
 							</td>
 						</tr>
 					</tbody>

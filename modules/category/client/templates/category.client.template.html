@@ -23,7 +23,7 @@
             <span class="md-subhead" ng-bind="category.updated | date: 'MM/dd/yyyy'"></span>
             <div>
                 <md-button aria-label="Edit" class="md-primary" ng-click="__.edit()" ng-class="{'md-raised':__.editing}" ng-bind="__.editText"></md-button>
-                <md-button aria-label="Open" class="md-primary md-raised" ui-sref="category({categoryId: category._id})">Open</md-button>
+                <md-button aria-label="Open" class="md-primary md-raised" ui-sref="record({categiryId: category._id})">Open</md-button>
             </div>
         </md-card-content>
     </md-card>

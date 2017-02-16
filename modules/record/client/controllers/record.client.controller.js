@@ -30,6 +30,15 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
             vm.getData();
         };
 
+        vm.isDate = function (val) {
+            if (Date.parse(val)) {
+                let date = new Date(val);
+                return date.toLocaleDateString("en-US")
+            } else {
+                return val;
+            }
+        };
+
         // I am reading table headings
         FormService.readFormControls()
             .success((response) => {

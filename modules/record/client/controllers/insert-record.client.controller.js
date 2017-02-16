@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('record').controller('InsertRecordController', ['FormService', 'RecordService', '$state', '$rootScope',
-    function(FormService, RecordService, $state, $rootScope) {
+angular.module('record').controller('InsertRecordController', ['FormService', 'RecordService', '$state', '$rootScope','$mdDialog',
+    function(FormService, RecordService, $state, $rootScope, $mdDialog) {
 
         var vm = this;
 
@@ -12,7 +12,12 @@ angular.module('record').controller('InsertRecordController', ['FormService', 'R
         FormService.readFormControls()
             .success((response) => {
                 vm.formControls = response.controls;
+                console.log('Form Controls', vm.formControls);
             });
+
+        vm.closeDialog = function () {
+            $mdDialog.hide();
+        };  
 
         // Inserts the record
         vm.insert = function() {
@@ -26,6 +31,8 @@ angular.module('record').controller('InsertRecordController', ['FormService', 'R
             RecordService.add(record, $state.params.categoryId)
                 .success((response) => {
                     console.log(response);
+                    for (var i = 0; i < vm.formControls.length; i++)
+                        vm.formControls[i].settings.value = '';
                 });
 
             // Fire an event that the record has been inserted
