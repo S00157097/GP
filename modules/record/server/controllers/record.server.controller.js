@@ -15,6 +15,8 @@ exports.add = (request, response) => {
         values: request.body.record
     });
 
+    console.log('CATEGORYID', request.body.categoryId);
+
     record.save((err, data) => {
         if (err) {
             return response.status(400).send({

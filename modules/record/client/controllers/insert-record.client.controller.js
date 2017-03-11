@@ -25,7 +25,7 @@ angular.module('record').controller('InsertRecordController', ['FormService', 'R
 
             // Creating a JSON object from the forms to be inserted into the DB
             for (var i = 0; i < vm.formControls.length; i++)
-                 record[vm.formControls[i].settings.label] = vm.formControls[i].settings.value;
+                 record[vm.formControls[i]._id] = vm.formControls[i].settings.value;
 
             // Insert the record
             RecordService.add(record, $state.params.categoryId)

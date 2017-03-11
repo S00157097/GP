@@ -43,8 +43,9 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
         FormService.readFormControls()
             .success((response) => {
                 for (let i = 0; i < response.controls.length; i++) {
-                    vm.headings.push(response.controls[i].settings.label);
+                    vm.headings.push(response.controls[i]);
                 }
+                console.log(response);
             });
 
         // Getting category records
