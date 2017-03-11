@@ -17,6 +17,7 @@
 						<tr md-row>
 							<th md-column ng-repeat="heading in vm.headings track by heading._id" ng-bind="heading.settings.label">
 							</th>
+							<th md-column></th>
 						</tr>
 					</thead>
 
@@ -30,6 +31,11 @@
 							<td md-cell ng-repeat="heading in vm.headings">
 								{{ (recordData.values[heading._id] ? vm.isDate(recordData.values[heading._id]) : '---') }}
 							</td>
+							<td md-cell>
+								<md-button ng-click="vm.updateRecord($event, recordData)"class="md-primary md-icon-button pull-right">
+									<i class="material-icons">edit</i>
+								</md-button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
@@ -38,6 +44,6 @@
 
 		<md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.data.length }}" md-limit-options="vm.query.limitOptions"
 			md-on-paginate="vm.getData" md-page-select>
-		</md-table-pagination>
+			</md-table-pagination>
 	</md-card-ccontent>
 </md-card>

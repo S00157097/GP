@@ -6,4 +6,5 @@ module.exports = function (app) {
 
   app.route('/backend/record/add').post(record.add);
   app.route('/backend/record/list').post(record.list);
+  app.route('/backend/record/update').post(record.update);
 };

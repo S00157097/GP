@@ -1,0 +1,27 @@
+<md-dialog aria-label="Update record" style="width: 500px">
+  <md-dialog-content layout-padding>
+
+    <div layout="row" layout-align="end center">
+      <md-button class="md-icon-button" ng-click="vm.closeDialog()">
+        <i class="material-icons">clear</i>
+      </md-button>
+    </div>
+    
+    <ng-form>
+      <!-- Form template -->
+      <md-list>
+        <md-list-item ng-repeat="control in vm.formControls track by control._id">
+          <render:control directive="{{control.type}}" control="control" collection="vm.formControls"></render:control>
+        </md-list-item>
+      </md-list>
+
+      <!-- Insert record button -->
+      <md-input-container class="md-block" layout layout-align="center center">
+        <md-button class="md-raised md-primary" ng-click="vm.save()">
+          Update
+        </md-button>
+      </md-input-container>
+    </ng-form>
+
+  </md-dialog-content>
+</md-dialog>
