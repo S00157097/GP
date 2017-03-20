@@ -27,5 +27,13 @@ angular.module('record').service('RecordService', ['$http', 'Authentication','$s
                 record: record
             });
         };
+
+        this.remove = (record, categoryId) => {
+            return $http.post('/backend/record/remove', {
+                userId: Authentication.user._id,
+                categoryId: categoryId,
+                recordId: record._id
+            });
+        };
     }
 ]);

@@ -30,6 +30,13 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
             vm.getData();
         };
 
+        vm.removeRecord = function (record) {
+            RecordService.remove(record, $state.params.categoryId)
+                .then(function (response) {
+                    vm.getData();
+                });
+        };
+
         vm.updateRecord = function (ev, rec) {
             $mdDialog.show({
                 controller: 'UpdateRecordController',

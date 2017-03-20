@@ -57,3 +57,19 @@ exports.list = (request, response) => {
         response.send(data);
     });
 };
+
+exports.remove = (request, response) => {
+    Records.remove({
+        _id: request.body.recordId,
+        userId: request.body.userId,
+        categoryId: request.body.categoryId
+    }).exec((err, data) => {
+        if (err) {
+            return response.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        }
+
+        response.send(data);
+    });
+};

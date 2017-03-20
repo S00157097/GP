@@ -41,10 +41,6 @@ angular.module('record').controller('UpdateRecordController', ['$scope','FormSer
             for (var i = 0; i < vm.formControls.length; i++)
                  record[vm.formControls[i]._id] = vm.formControls[i].settings.value;
             
-            console.log('this.record', this.record);
-            console.log('record', record);
-
-
             this.record.values = record;
             // Insert the record
             RecordService.update(this.record, $state.params.categoryId)

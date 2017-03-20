@@ -1,7 +1,6 @@
 <md-card>
 	<md-card-ccontent layout-padding>
 
-
 		<div layout layout-margin>
 			<span flex></span>
 			<md-button ng-click="vm.insertRecord($event)" class="md-primary md-raised md-icon-button">
@@ -32,9 +31,23 @@
 								{{ (recordData.values[heading._id] ? vm.isDate(recordData.values[heading._id]) : '---') }}
 							</td>
 							<td md-cell>
-								<md-button ng-click="vm.updateRecord($event, recordData)"class="md-primary md-icon-button pull-right">
+								<!--<md-button ng-click="vm.updateRecord($event, recordData)"class="md-primary md-icon-button pull-right">
 									<i class="material-icons">edit</i>
-								</md-button>
+								</md-button>-->
+
+								<md-menu class="pull-right">
+									<md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
+										<i class="material-icons">more_vert</i>
+									</md-button>
+									<md-menu-content width="6">
+										<md-menu-item>
+											<md-button ng-click="vm.updateRecord($event, recordData)">Update</md-button>
+										</md-menu-item>
+										<md-menu-item>
+											<md-button ng-click="vm.removeRecord(recordData)">Remove</md-button>
+										</md-menu-item>
+									</md-menu-content>
+								</md-menu>
 							</td>
 						</tr>
 					</tbody>
@@ -43,7 +56,7 @@
 		</div>
 
 		<md-table-pagination md-limit="vm.query.limit" md-page="vm.query.page" md-total="{{ vm.data.length }}" md-limit-options="vm.query.limitOptions"
-			md-on-paginate="vm.getData" md-page-select>
-			</md-table-pagination>
+		 md-on-paginate="vm.getData" md-page-select>
+		</md-table-pagination>
 	</md-card-ccontent>
 </md-card>
