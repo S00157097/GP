@@ -35,10 +35,9 @@ angular.module('form').directive('controlEditRadio', function () {
                         values: ['Default'],
                         value: 'Default'
                     };
-                }
 
-                // Generate an ID
-                $scope.passed._id = new Date().valueOf();
+                    $scope.passed._id = +new Date();
+                }
             }
         ]
     };
