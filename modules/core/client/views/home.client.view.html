@@ -1,6 +1,6 @@
 <section ng-controller="HomeController as vm">
 	<div class="jumbotron">
-		<h1>Welcome</h1>
+		<h1>Welcome to DB Done</h1>
 	</div>
 
 	<div class="container-fluid">
@@ -22,42 +22,38 @@
 			</div>
 		</div>
 
-		<div class="row content padding" ng-repeat="n in [1, 2, 3]" ng-class="{darker: $even}">
-			<h2 class="margin-bottom">Heading</h2>
+		<div class="row content padding" ng-repeat="n in descript" ng-class="{darker: $even}">
+			<h2 class="margin-bottom">{{n.head}}</h2>
 
 			<div class="row">
 				<div class="col-md-6" ng-show="$odd">
-					<img src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" alt="Some Image" class="img-responsive img-thumbnail">
+					<img ng-src="{{n.image}}" alt="Some Image" class="img-responsive img-thumbnail">
 				</div>
 
 				<div class="col-md-6">
-					<p class="md-padding text-center lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias assumenda quis a consectetur rem, quibusdam libero
-						cumque vitae quam placeat ut voluptates modi neque fuga tempore nihil veritatis quisquam repudiandae!</p>
+					<p class="md-padding text-center lead">{{n.text}}</p>
 				</div>
 
 				<div class="col-md-6" ng-hide="$odd">
-					<img src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" alt="Some Image" class="img-responsive img-thumbnail">
+					<img ng-src="{{n.image}}" alt="Some Image" class="img-responsive img-thumbnail">
 				</div>
 			</div>
 		</div>
 
 		<div class="row content padding">
-			<h2 class="margin-bottom">Heading</h2>
+			<h2 class="margin-bottom">Developers</h2>
 
 			<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="n in [1, 2, 3, 4]">
+				<div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="n in dev">
 					<md-card>
-						<img ng-src="https://material-design.storage.googleapis.com/publish/material_v_4/social.png" class="md-card-image" alt="Washed Out">
+						<img ng-src="{{n.image}}" class="md-card-image" alt="Washed Out">
 						<md-card-title>
 							<md-card-title-text>
-								<span class="md-headline">Developer</span>
+								<span class="md-headline">{{n.name}}</span>
 							</md-card-title-text>
 						</md-card-title>
 						<md-card-content>
-							<p>
-								The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-								Greene's musical language: feel it. It's a simple request, as well...
-							</p>
+							<p>{{n.description}}</p>
 						</md-card-content>
 					</md-card>
 				</div>
