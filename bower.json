@@ -21,7 +21,8 @@
     "angular-material": "^1.1.1",
     "angular-chart.js": "^1.0.3",
     "angular-material-data-table": "^0.10.9",
-    "angular-drag-and-drop-lists": "^1.4.0"
+    "angular-drag-and-drop-lists": "^1.4.0",
+    "material-scrolltop": "^0.6.4"
   },
   "resolutions": {
     "angular": "~1.5",

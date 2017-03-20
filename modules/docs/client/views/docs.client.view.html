@@ -1,23 +1,171 @@
 <section class="container">
 	<div layout flex>
-		<!-- ASIDE: Renders the aside navigation -->
 		<div class="md-margin" style="width: 300px;background-color: rgba(0, 0, 0, .1);">
 			<md-list>
-				<md-list-item ng-repeat="n in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" ng-click="null">
-					<span>Some Text</span>
+				<md-list-item ng-click="gotoElement('program')">
+					<span>Program</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('features')">
+					<span>Features</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('vision')">
+					<span>Vision</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('description')">
+					<span>Program's Description</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('stakeholders')">
+					<span>Stakeholders</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('instruction')">
+					<span>Instruction</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('register')">
+					<span>Register or Login</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('createStr')">
+					<span>Create Storage</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('openStr')">
+					<span>Open Storage</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('createCat')">
+					<span>Create Category</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('createForm')">
+					<span>Create Form</span>
+				</md-list-item>
+				<md-list-item ng-click="gotoElement('more')">
+					<span>Add More Options</span>
 				</md-list-item>
 			</md-list>
 		</div>
-		<!-- end ASIDE -->
-
-		<!-- CONTENT -->
 		<md-content class="md-padding" style="border-left: 1px solid #098" flex="70">
-			<div ng-repeat="o in [0, 1, 2, 3, 45, 6, 7, 8, 9]">
-				<h1 class="margin-bottom">About Storages</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque aliquid dolor odit unde, amet illo modi quae perspiciatis,
-					hic repellendus cum. Accusamus minima iusto eos alias doloribus fugit non rerum.</p>
+			<div>
+				<h1 id="program" class="margin-bottom">Program</h1>
+				<h3 id="features">Features</h3>
+				<ul>
+					<li>Build form templates.</li>
+					<li>Structure data with a 3 branch pattern.</li>
+					<li>Outsourced API of the data.</li>
+					<li>Maintain and change the data.</li>
+				</ul>
+				<h3 id="vision">Vision</h3>
+				<p>Giving people simplistic way to store data and out source it for their own use in JSON. - Easy storage structure not
+					for complex data. - It will allow easey management with easy navigation through personal raw alphanumerical data.</p>
+				<h3 id="description">Program's Description</h3>
+				<p>The program implements a system which allows the user to customize a way to store data. Providing tools for form creation
+					which serves are data entry. And the data is structured in a way which is simple and allows flexability. We see provided
+					data as information which is only significant for the user. - Using general decisions to differentiate the input from
+					different types of data. This allows the user to store meaningful information. The data structure consist of 4 main
+					componets. Storage -> Category -> Record and a Form</p>
+				<ul>
+					<li>Storage</li>
+					<li style="list-style-type:none">
+						<ul>
+							<li>It is a wapper that wraps all the categories into a unit which can be represented as a theme of data which is being
+								stored in there.</li>
+							<li>e.g. Shop, Restaurant, Class Room etc.</li>
+						</ul>
+					</li>
+					<li>Category</li>
+					<li style="list-style-type:none">
+						<ul>
+							<li>Categorises records within a Storage. - This allows for record seperation.</li>
+							<li>It acts as another container for data same as the Storage.</li>
+							<li>e.g. Products, Staff, Sales etc.</li>
+						</ul>
+					</li>
+					<li>Record</li>
+					<li style="list-style-type:none">
+						<ul>
+							<li>Record is an entity stored in a category representing one entry.</li>
+							<li>Each record consist of values assigned by the user which hold the information.</li>
+							<li>e.g. Clothing shop storage -> Suit category -> price, size, brand and color attributes within a record.</li>
+						</ul>
+					</li>
+					<li>Form</li>
+					<li style="list-style-type:none">
+						<ul>
+							<li>Form is a template with record attributes created bu the user.</li>
+							<li>Using that form the user has structure for every record</li>
+							<li>e.g. price : Number, size : Dropdown list, color, Dropdown list etc.</li>
+						</ul>
+					</li>
+				</ul>
 			</div>
-		</md-content>
-		<!-- end CONTENT -->
+			<div>
+				<h1 id="stakeholders" class="margin-bottom">Stakeholders</h1>
+				<blockquote>
+					<p>Low Interest - Low Power F</p>
+					<p>Low Interest - High Power D</p>
+					<p>High Interest - Low Power E A</p>
+					<p>High Interest - High Power B C</p>
+				</blockquote>
+				<table>
+					<thead>
+						<tr>
+							<th>Stakeholder</th>
+							<th>Note</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><strong>A</strong> Stock Keeper</td>
+							<td>Useful to record products in the shop. - Knowing expenditure every time when new stock needs to be refilled.</td>
+						</tr>
+						<tr>
+							<td><strong>B</strong> Website Owner</td>
+							<td>Will be able to manage his own item for his website by interfering with out program. The website owner will become
+								independant from the developer.</td>
+						</tr>
+						<tr>
+							<td><strong>C</strong> Web Developer</td>
+							<td>There is a need for a free sourced API for the company or personal reasons. The ease of creating one and maintaining
+								it for those types of projects is what this program provides that user.</td>
+						</tr>
+						<tr>
+							<td><strong>D</strong> Data Analyst</td>
+							<td>Data analysts need to be satisfied because they know how data should be structured. Learning from those people and
+								getting their feedback on how to accomplish certain tasks.</td>
+						</tr>
+						<tr>
+							<td><strong>E</strong> Developers</td>
+							<td>We could bring this project further or begin something new. We can get new resources and new knowledge from this project.</td>
+						</tr>
+						<tr>
+							<td><strong>F</strong> Users Who Need Order And Lists Of Data</td>
+							<td>People who have hobbies, and they want to keep records of recipes and other things of interest. - We need to be concenred
+								with ordinary people in order to make the program's interface simplistic.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<h1 id="instruction" class="margin-bottom">Instruction</h1>
+				<h3 id="register">Register or Login</h3>
+				<p>To register your account please click on icon in right top corner on Homepage, and follow instructions.</p>
+				<img src="http://localhost:3000/images/LoginRegister.png" alt="LoginRegister" class="img-responsive">
+				<h3 id="createStr">Create Storage</h3>
+				<p>To create storage, user must be registered and logged in. Open menu in left top corner and go to Storages section. In
+					this page click on "Add Storage" as on image below.</p>
+				<img src="http://localhost:3000/images/AddStorage.png" alt="AddStorage" class="img-responsive">
+				<p>Give a name to your storage</p>
+				<img src="http://localhost:3000/images/NameStorage.png" alt="NameStorage" class="img-responsive">
+				<h3 id="openStr">Open storage</h3>
+				<p>To open Storage click on dots as on image below.</p>
+				<img src="http://localhost:3000/images/OpenStorage.png" alt="OpenStorage" class="img-responsive">
+				<h3 id="createCat">Create Category</h3>
+				<p>Completely identical to Storages.</p>
+				<h3 id="createCat">Create Form</h3>
+				<p>To create Form open category and select "Edit Form" on the top, in edditing mode you can simply drag and drop necessary
+					elements as shown on images below.</p>
+				<img src="http://localhost:3000/images/SelectOption.png" alt="SelectOption" class="img-responsive">
+				<img src="http://localhost:3000/images/EditForm.png" alt="EditForm" class="img-responsive">
+				<p class="well well-lg text-center text-danger">Don't forget to Save your created form!</p>
+				<h3 id="more">Add More Options</h3>
+				<p>You can add more records in your form, for example in Dropdown list, simply type all what you need and press enter.</p>
+				<img src="http://localhost:3000/images/CreateRecords.png" alt="CreateRecords" class="img-responsive">
+			</div>
 	</div>
 </section>

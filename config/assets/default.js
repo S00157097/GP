@@ -7,7 +7,9 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-material/angular-material.css',
-        'public/lib/angular-material-data-table/dist/md-data-table.min.css'
+        'public/lib/angular-material-data-table/dist/md-data-table.min.css',
+
+        'public/lib/material-scrolltop/src/material-scrolltop.css'
       ],
       js: [
         'public/lib/jquery/dist/jquery.min.js',
@@ -27,6 +29,7 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/material-scrolltop/src/material-scrolltop.js',
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },
