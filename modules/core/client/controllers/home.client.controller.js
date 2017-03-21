@@ -9,7 +9,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     $scope.descript = [
       {
         head: "Create Storages and Categories",
-        image: 'http://localhost:3000/images/storage.png',
+        image: 'http://localhost:3000/images/storages.png',
         text: "Simple way to create Storages and Categories insinde your Storage. If you have your account and you are logged in, open menu on left side and select Storages."
       },
       {
