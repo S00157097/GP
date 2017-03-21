@@ -1,7 +1,35 @@
-<section ng-controller="SettingsController">
-  <div class="page-header">
-    <h1>Settings</h1>
+<section class="container" ng-controller="SettingsController">
+
+  <div class="row">
+    <div class="col-sm-4 col-md-4">
+      <md-card>
+        <md-card-content>
+          <md-list flex>
+            <md-list-item ng-click="null" ui-sref="settings.profile" ui-sref-active="active">
+              Edit Profile
+            </md-list-item>
+
+            <md-list-item ng-click="null" ui-sref="settings.picture" ui-sref-active="active">
+              Change Profile Picture
+            </md-list-item>
+
+            <md-list-item ng-click="null" ui-sref="settings.password" ui-sref-active="active" ng-show="user.provider === 'local'">
+              Change Password
+            </md-list-item>
+
+            <md-list-item ng-click="null" ui-sref="settings.accounts" ui-sref-active="active">
+              Manage Social Accounts
+            </md-list-item>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+
+    <div class="col-sm-9 col-md-8 settings-view">
+      <div ui-view></div>
+    </div>
   </div>
+<!--
   <div class="row">
     <nav class="col-sm-3 col-md-3">
       <ul class="nav nav-pills nav-stacked">
@@ -22,5 +50,5 @@
     <div class="col-sm-9 col-md-8 settings-view">
       <div ui-view></div>
     </div>
-  </div>
+  </div>-->
 </section>

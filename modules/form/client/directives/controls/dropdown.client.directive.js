@@ -32,14 +32,12 @@ angular.module('form').directive('controlEditDropdown', function() {
                     $scope.passed.settings = {
                         label: 'Default',
                         required: false,
-                        multipleEntries: false,
                         values: [],
                         value: ''
                     };
+
+                    $scope.passed._id = +new Date();
                 }
-                
-                // Generate an ID
-                $scope.passed._id = new Date().valueOf();
             }
         ]
     };

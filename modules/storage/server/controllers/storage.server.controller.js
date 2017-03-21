@@ -1,10 +1,33 @@
 'use strict';
 
+var event = require('events');
+var emitter = new event.EventEmitter();
 var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
     , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
+
+
+
+exports.latest = function (request, response) {
+    Storage.find({
+        userId: request.body.userId
+    })
+        .sort('-updated')
+        .limit(request.body.count)
+        .exec(function (err, data) {
+            if (err) {
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            }
+
+            if (data !== null) {
+                response.send(data);
+            }
+        });
+};
 
 /**
  * Read Storages
@@ -92,4 +115,3 @@ exports.delete = function (request, response) {
         response.end();
     });
 };
-

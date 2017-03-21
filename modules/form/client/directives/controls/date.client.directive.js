@@ -32,13 +32,11 @@ angular.module('form').directive('controlEditDate', function () {
                     $scope.passed.settings = {
                         label: 'Default',
                         required: false,
-                        multipleEntries: false,
                         value: ''
                     };
-                }
 
-                // Generate an ID
-                $scope.passed._id = new Date().valueOf();
+                    $scope.passed._id = +new Date();
+                }
             }
         ]
     };

@@ -35,13 +35,11 @@ angular.module('form').directive('controlEditNumber', function () {
                         max: undefined,
                         step: 1,
                         required: false,
-                        multipleEntries: false,
                         value: ''
                     };
-                }
 
-                // Generate an ID
-                $scope.passed._id = new Date().valueOf();
+                    $scope.passed._id = +new Date();
+                }
             }
         ]
     };

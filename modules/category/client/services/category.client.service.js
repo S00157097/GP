@@ -33,7 +33,8 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
         this.delete = function (category) {
             return $http.post('/backend/category/delete', {
                 userId: Authentication.user._id,
-                categoryId: category._id
+                categoryId: category._id,
+                storageId: $state.params.storageId
             });
         };
     }

@@ -6,17 +6,17 @@
 				<!-- Name ... Storage | Category -->
 				<md-card-title>
 					<md-card-title-text>
-						<span class="md-headline" ng-bind="::lat.name"></span>
+						<span class="md-headline" ng-bind="lat.name"></span>
 					</md-card-title-text>
 				</md-card-title>
 
 				<!-- Last Updated Date && View Button for 2 of them -->
 				<md-card-content>
 					<div layout layout-align="space-between end">
-						<span class="md-subhead" ng-bind="::lat.updated"></span>
+						<span class="md-subhead" ng-bind="lat.updated | date: 'MM/dd/yyyy'"></span>
 
-						<md-button class="md-raised md-primary">
-							View <span class="md-subhead" ng-bind="::lat.count"></span>
+						<md-button class="md-raised md-primary" ui-sref="category({storageId: lat._id})">
+							Open
 						</md-button>
 					</div>
 				</md-card-content>
@@ -26,15 +26,20 @@
 	<!-- end RENDERTWO -->
 
 	<!-- RENDERCHART -->
-	<div layout>
-		<div flex>
+	<div>
+		<md-card>
+			<md-card-content class="text-center darker">
+				This service is not yet implemented
+			</md-card-content>
+		</md-card>
+		<!--<div flex>
 			<md-card layout flex>
-				<!-- Draws the chart -->
+				<!- Draws the chart ->
 				<div flex="70" class="md-padding">
 					<canvas id="line" class="chart chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-series="vm.series" chart-options="vm.options"></canvas>
 				</div>
 
-				<!-- Renders Aside Menu ebside the chart -->
+				<!- Renders Aside Menu ebside the chart ->
 				<div flex="30" class="darker md-padding" layout="column" layout-align="space-between none">
 					<md-content>
 						<md-list>
@@ -48,6 +53,7 @@
 				</div>
 			</md-card>
 		</div>
+		-->
 	</div>
 	<!-- end RENDERCHART -->
 

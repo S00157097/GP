@@ -8,6 +8,7 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
         vm.data = undefined;
         vm.status = '';
         vm.headings = [];
+        vm.updatedRecord = undefined;
 
         // Record insertion modal opens up
         vm.insertRecord = function (ev) {
@@ -22,7 +23,36 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
             })
                 .then(function (answer) {
                     vm.status = 'You said the information was "' + answer + '".';
+                }, function () {
+                    vm.status = 'You cancelled the dialog.';
+                });
 
+            vm.getData();
+        };
+
+        vm.removeRecord = function (record) {
+            RecordService.remove(record, $state.params.categoryId)
+                .then(function (response) {
+                    vm.getData();
+                });
+        };
+
+        vm.updateRecord = function (ev, rec) {
+            $mdDialog.show({
+                controller: 'UpdateRecordController',
+                controllerAs: 'vm',
+                templateUrl: 'modules/record/client/templates/update-record.client.template.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: false,
+                bindToController: true,
+                locals: {
+                    record: rec
+                }
+            })
+                .then(function (answer) {
+                    vm.status = 'You said the information was "' + answer + '".';
                 }, function () {
                     vm.status = 'You cancelled the dialog.';
                 });
@@ -43,8 +73,9 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
         FormService.readFormControls()
             .success((response) => {
                 for (let i = 0; i < response.controls.length; i++) {
-                    vm.headings.push(response.controls[i].settings.label);
+                    vm.headings.push(response.controls[i]);
                 }
+                console.log(response);
             });
 
         // Getting category records

@@ -1,15 +1,15 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('dashboard').controller('DashboardController', [
-  function () {
+angular.module('dashboard').controller('DashboardController', ['StorageService',
+  function (StorageService) {
     var vm = this;
 
-    // 2 mdCards at the top
-    vm.latest = [
-      { name: 'Storage', updated: '01/11/2016', count: 4 },
-      { name: 'Category', updated: '01/11/2016', count: 14 }
-    ];
+    StorageService.latest(2)
+      .then(function (response) {
+        console.log(response);
+        vm.latest = response.data;
+      });
 
     // These settings render the chart
     vm.labels = ["January", "February", "March", "April", "May", "June", "July"];

@@ -8,4 +8,5 @@ module.exports = function (app) {
   app.route('/backend/storage/update_name').post(storage.updateName);
   app.route('/backend/storage/add').post(storage.add);
   app.route('/backend/storage/delete').post(storage.delete);
+  app.route('/backend/storage/latest').post(storage.latest);
 };
