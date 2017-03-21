@@ -74,7 +74,6 @@ angular.element(document).ready(function () {
       document.body.scrollLeft = scroll.left;
     }
   }
-
   //Then init the app
   angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });

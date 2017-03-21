@@ -5,6 +5,11 @@
         <form layout-padding name="userForm" ng-submit="updateUserProfile(userForm.$valid)" class="signin" novalidate autocomplete="off">
 
           <md-input-container class="md-block">
+            <label for="apiKey">API Key</label>
+            <input type="text" disabled="true" ng-model="getApiKey()">
+          </md-input-container>
+
+          <md-input-container class="md-block">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" ng-model="user.firstName" />
             <div ng-messages="userForm.firstName.$error" role="alert">
