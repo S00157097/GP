@@ -5,6 +5,13 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
     var vm = this;
     this.authentication = Authentication;
 
+    // Display 3 icons
+    this.services = [
+      { heading: 'Statistics', icon: 'multiline_chart', text: 'Build statistics based on you entered data.' },
+      { heading: 'Open Source API', icon: 'cloud_download', text: 'Convert your data into JSON format and use it anywhere you want.' },
+      { heading: 'Flexible Storage', icon: 'storage', text: 'Create storages in any way you like, no relationship needed.' }
+    ];
+
     //Description for storages, categories, forms and records
     $scope.descript = [
       {
@@ -29,29 +36,22 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
       {
         image: 'http://localhost:3000/images/Dima.jpg',
         name: "Dmitrijs Savostjanovs",
-        description: "some text goes here"
+        description: "He came with this beatifull idea. Perfect front-end and back-end programmer. Great team member with nice sence of humor. Worked on database, forms, records and design."
       },
       {
         image: 'http://localhost:3000/images/Misha.jpg',
         name: "Mihails Gromovs",
-        description: "some text goes here"
+        description: "He is front-end programmer, designed home page, documentation and worked on storages and recods."
       },
       {
         image: 'http://localhost:3000/images/Patrick.jpg',
         name: "Patrick Romhanyi",
-        description: "some text goes here"
+        description: "Team member who always must be, good ideas about project, worked with API and project deployment."
       },
       {
         image: 'http://localhost:3000/images/Sean.jpg',
         name: "Sean Kiernan",
-        description: "some text goes here"
+        description: "He was giving good ideas, but unfortunately left team."
       }
-    ];
-
-    // Display 3 icons
-    this.services = [
-      { heading: 'Statistics', icon: 'multiline_chart', text: 'Build statistics based on you entered data.' },
-      { heading: 'Open Source API', icon: 'cloud_download', text: 'Convert your data into JSON format and use it anywhere you want.' },
-      { heading: 'Flexible Storage', icon: 'storage', text: 'Create storages in any way you like, no relationship needed.' }
     ];
   }]);
