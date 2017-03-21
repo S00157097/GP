@@ -4,6 +4,7 @@ var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
     , Category = mongoose.model('Category')
+    , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
 
 /**
@@ -59,12 +60,13 @@ exports.list = function (request, response) {
  * Add Category
  */
 exports.add = function (request, response) {
+    let d = new Date();
     let category = new Category({
         _id: mongoose.Types.ObjectId(),
         userId: request.body.userId,
         storageId: request.body.storageId,
         name: request.body.categoryName,
-        updated: new Date()
+        updated: d
     });
 
     category.save((err, data) => {
@@ -73,7 +75,22 @@ exports.add = function (request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            response.send(category);
+            Storage.update({
+                $and: [
+                    { userId: request.body.userId },
+                    { _id: request.body.storageId }
+                ]
+            }, {
+                    updated: d
+                }).exec(function (err, data) {
+                    if (err) {
+                        return response.status(400).send({
+                            message: errorHandler.getErrorMessage(err)
+                        });
+                    } else {
+                        response.send(category);
+                    }
+                });
         }
     });
 };
@@ -92,8 +109,23 @@ exports.delete = function (request, response) {
             return response.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
+        } else {
+            Storage.update({
+                $and: [
+                    { userId: request.body.userId },
+                    { _id: request.body.storageId }
+                ]
+            }, {
+                    updated: new Date()
+                }).exec(function (err, data) {
+                    if (err) {
+                        return response.status(400).send({
+                            message: errorHandler.getErrorMessage(err)
+                        });
+                    } else {
+                        response.end();
+                    }
+                });
         }
-
-        response.end();
     });
 };
