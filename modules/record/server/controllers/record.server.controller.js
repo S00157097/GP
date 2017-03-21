@@ -59,7 +59,7 @@ exports.add = (request, response) => {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            emitter.emit('UPDATE_CATEGORY', request.body.userId, request.body.categoryId, response, data);            
+            emitter.emit('UPDATE_CATEGORY', request.body.userId, request.body.categoryId, response, data);
         }
     });
 };
@@ -90,7 +90,63 @@ exports.remove = (request, response) => {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            emitter.emit('UPDATE_CATEGORY', request.body.userId, request.body.categoryId, response, data);            
+            emitter.emit('UPDATE_CATEGORY', request.body.userId, request.body.categoryId, response, data);
         }
     });
 };
+
+exports.apiGet = function (request, response) {
+    Records.find({
+        userId: request.params.apiKey
+    }).exec(function (err3, data3) {
+        if (err3 || !data3) {
+            response.json({
+                error: 'err'
+            });
+        } else {
+
+            response.json(data3.reduce((st, item, index) => {
+                st.push(item.values);
+                return st;
+            }, []));
+        }
+    });
+};
+
+exports.apiGetById = function (request, response) {
+
+
+    Records.find({
+        userId: request.params.apiKey
+    }).exec(function (err3, data3) {
+        if (err3 || !data3) {
+            response.json({
+                error: 'err records'
+            });
+        } else {
+            let records = data3
+                .filter((item, index) => index == parseInt(request.params.id) - 1)
+                .map(item => item._id);
+            data3 = data3
+                .filter((item, index) => index == parseInt(request.params.id) - 1);
+                
+            response.json(data3.reduce((st, item, index) => {
+                st.push(item.values);
+                return st;
+            }, []));
+        }
+    });
+};
+
+function parseRecords(records, category) {
+    let arr = [];
+    for (let i = 0; i < records.length; i++) {
+        if (records[i].categoryId == category) {
+            arr.push(records[i].values);
+        } else {
+
+        }
+    }
+
+    return arr;
+}

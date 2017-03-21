@@ -8,4 +8,7 @@ module.exports = function (app) {
   app.route('/backend/record/list').post(record.list);
   app.route('/backend/record/update').post(record.update);
   app.route('/backend/record/remove').post(record.remove);
+
+  app.route('/api/:apiKey/records').get(record.apiGet);
+  app.route('/api/:apiKey/records/:id').get(record.apiGetById);
 };
