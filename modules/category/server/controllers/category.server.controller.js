@@ -9,7 +9,7 @@ var path = require('path')
     , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
 
-emitter.on('tadaa', function (user, storage, res, data) {
+emitter.on('UPDATE_STORAGE', function (user, storage, res, val) {
     Storage.update({
         $and: [
             { userId: user },
@@ -23,7 +23,7 @@ emitter.on('tadaa', function (user, storage, res, data) {
                     message: errorHandler.getErrorMessage(err)
                 });
             } else {
-                res.send(data);
+                res.send(val);
             }
         });
 });
@@ -96,7 +96,7 @@ exports.add = function (request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            emitter.emit('tadaa', request.body.userId, request.body.storageId, response, data);
+            emitter.emit('UPDATE_STORAGE', request.body.userId, request.body.storageId, response, category);
         }
     });
 };
@@ -116,7 +116,7 @@ exports.delete = function (request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            emitter.emit('tadaa', request.body.userId, request.body.storageId, response, data);
+            emitter.emit('UPDATE_STORAGE', request.body.userId, request.body.storageId, response, data);
         }
     });
 };

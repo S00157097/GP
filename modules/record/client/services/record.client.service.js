@@ -14,6 +14,7 @@ angular.module('record').service('RecordService', ['$http', 'Authentication','$s
 
         // Get Records
         this.list = (categoryId) => {
+            console.log($state);
             return $http.post('/backend/record/list', {
                 userId: Authentication.user._id,
                 categoryId: categoryId
