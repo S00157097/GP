@@ -81,7 +81,7 @@ exports.add = function (request, response) {
                     { _id: request.body.storageId }
                 ]
             }, {
-                    updated: d
+                    updated: new Date()
                 }).exec(function (err, data) {
                     if (err) {
                         return response.status(400).send({

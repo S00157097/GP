@@ -111,4 +111,3 @@ exports.delete = function (request, response) {
         response.end();
     });
 };
-
