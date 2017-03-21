@@ -6,6 +6,25 @@ var path = require('path')
     , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
 
+exports.latest = function (request, response) {
+    Storage.find({
+        userId: request.body.userId
+    })
+        .sort('-updated')
+        .limit(request.body.count)
+        .exec(function (err, data) {
+            if (err) {
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            }
+
+            if (data !== null) {
+                response.send(data);
+            }
+        });
+};
+
 /**
  * Read Storages
  */

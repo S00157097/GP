@@ -10,6 +10,13 @@ angular.module('storage').service('StorageService', ['$http', 'Authentication','
             });
         };
 
+        this.latest = function (count) {
+            return $http.post('/backend/storage/latest', {
+                userId: Authentication.user._id,
+                count: count
+            });
+        };
+
         // Updates Storages name
         this.updateName = function (storage) {
             return $http.post('/backend/storage/update_name', {
