@@ -1,10 +1,14 @@
 'use strict';
 
+var event = require('events');
+var emitter = new event.EventEmitter();
 var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
     , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
+
+
 
 exports.latest = function (request, response) {
     Storage.find({

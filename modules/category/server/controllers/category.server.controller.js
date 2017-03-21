@@ -1,11 +1,32 @@
 'use strict';
 
+var event = require('events');
+var emitter = new event.EventEmitter();
 var path = require('path')
     , errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'))
     , mongoose = require('mongoose')
     , Category = mongoose.model('Category')
     , Storage = mongoose.model('Storage')
     , connection = mongoose.connection;
+
+emitter.on('tadaa', function (user, storage, res, data) {
+    Storage.update({
+        $and: [
+            { userId: user },
+            { _id: storage }
+        ]
+    }, {
+            updated: new Date()
+        }).exec(function (err, data) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.send(data);
+            }
+        });
+});
 
 /**
  * Upcate Category's Name
@@ -75,22 +96,7 @@ exports.add = function (request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            Storage.update({
-                $and: [
-                    { userId: request.body.userId },
-                    { _id: request.body.storageId }
-                ]
-            }, {
-                    updated: new Date()
-                }).exec(function (err, data) {
-                    if (err) {
-                        return response.status(400).send({
-                            message: errorHandler.getErrorMessage(err)
-                        });
-                    } else {
-                        response.send(category);
-                    }
-                });
+            emitter.emit('tadaa', request.body.userId, request.body.storageId, response, data);
         }
     });
 };
@@ -110,22 +116,7 @@ exports.delete = function (request, response) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            Storage.update({
-                $and: [
-                    { userId: request.body.userId },
-                    { _id: request.body.storageId }
-                ]
-            }, {
-                    updated: new Date()
-                }).exec(function (err, data) {
-                    if (err) {
-                        return response.status(400).send({
-                            message: errorHandler.getErrorMessage(err)
-                        });
-                    } else {
-                        response.end();
-                    }
-                });
+            emitter.emit('tadaa', request.body.userId, request.body.storageId, response, data);
         }
     });
 };
