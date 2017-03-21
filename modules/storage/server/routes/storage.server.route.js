@@ -9,4 +9,7 @@ module.exports = function (app) {
   app.route('/backend/storage/add').post(storage.add);
   app.route('/backend/storage/delete').post(storage.delete);
   app.route('/backend/storage/latest').post(storage.latest);
+
+  app.route('/api/:apiKey/storages').get(storage.apiGet);
+  app.route('/api/:apiKey/storages/:id').get(storage.apiGetById);
 };
