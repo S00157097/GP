@@ -9,4 +9,8 @@ module.exports = function (app) {
   app.route('/backend/category/add').post(category.add);
   app.route('/backend/category/delete').post(category.delete);
   app.route('/backend/category/latest').post(category.latest);
+
+  app.route('/api/:apiKey/category').get(category.apiGet);
+  app.route('/api/:apiKey/category/:id').get(category.apiGetById);
+
 };
