@@ -61,7 +61,7 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
         };
 
         vm.isDate = function (val) {
-            if (Date.parse(val)) {
+            if ((/^[0-9]{2,4}-/g).test(val)) {
                 let date = new Date(val);
                 return date.toLocaleDateString("en-US")
             } else {
@@ -82,6 +82,7 @@ angular.module('record').controller('RecordController', ['FormService', '$mdDial
         vm.getData = () => {
             vm.promise = RecordService.list($state.params.categoryId)
                 .success((response) => {
+                    //   <---- console.log(response);
                     vm.data = response;
                     console.log("Data Records:", JSON.stringify(vm.data, null, 2));
                 });

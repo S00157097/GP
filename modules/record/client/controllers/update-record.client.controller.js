@@ -23,10 +23,10 @@ angular.module('record').controller('UpdateRecordController', ['$scope','FormSer
             $mdDialog.hide();
         };
 
-        var isDate = function (val) {
-            if (Date.parse(val)) {
+        vm.isDate = function (val) {
+            if ((/^[0-9]{2,4}-/g).test(val)) {
                 let date = new Date(val);
-                return new Date(date.toLocaleDateString("en-US"))
+                return date.toLocaleDateString("en-US")
             } else {
                 return val;
             }
