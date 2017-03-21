@@ -227,24 +227,6 @@ exports.apiGetById = function (request, response) {
 
 };
 
-function parseCategories(categories, records, storage) {
-    let arr = [];
-    let counter = 1;
-    for (let i = 0; i < categories.length; i++) {
-        if (categories[i].storageId == storage) {
-            arr.push({
-                id: counter,
-                name: categories[i].name,
-                updated: categories[i].updated,
-                records: parseRecords(records, categories[i]._id)
-            });
-            counter++;
-        }
-    }
-
-    return arr;
-}
-
 function parseRecords(records, category) {
     let arr = [];
     for (let i = 0; i < records.length; i++) {
