@@ -32,8 +32,6 @@ angular.module('dashboard').controller('DashboardController', ['StorageService',
                 return item;
               });
 
-            vm.categories
-
           });
       });
 
