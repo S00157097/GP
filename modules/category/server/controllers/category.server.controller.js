@@ -28,6 +28,25 @@ emitter.on('UPDATE_STORAGE', function (user, storage, res, val) {
         });
 });
 
+exports.latest = function (request, response) {
+    Category.find({
+        userId: request.body.userId
+    })
+        .sort('-updated')
+        .limit(request.body.count)
+        .exec(function (err, data) {
+            if (err) {
+                return response.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            }
+
+            if (data !== null) {
+                response.send(data);
+            }
+        });
+};
+
 /**
  * Upcate Category's Name
  */

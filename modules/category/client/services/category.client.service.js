@@ -12,6 +12,13 @@ angular.module('category').service('CategoryService', ['$http', 'Authentication'
             });
         };
 
+        this.latest = (count) => {
+            return $http.post('/backend/category/latest', {
+                userId: Authentication.user._id,
+                count: count
+            });
+        };
+
         // Get Categories for the user
         this.list = function () {
             return $http.post('/backend/category/list', {

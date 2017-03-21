@@ -68,11 +68,16 @@
 
 	<!-- LATESTRECORDS: renders 2 latest categories with records -->
 	<div layout>
-		<div flex ng-repeat="n in [1, 2]">
+		<div flex ng-repeat="category in vm.categories">
 			<md-card>
 				<!-- Category's Title -->
 				<md-card-title>
-					<md-card-title-text class="md-headline">Some Heading</md-card-title-text>
+					<md-card-title-text class="md-headline" laytou flex>
+						<div>
+							<span>{{ category.name }}</span>: 
+							<small ng-bind="category.storageName"></small>
+						</div>
+						</md-card-title-text>
 				</md-card-title>
 
 				<!-- 6 Records per category -->
